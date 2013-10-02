@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AutoTask</string>
+    <string name="newTaskButtonText">New Task</string>
+    <string name="takListButtonText">Task List</string>
+    <string name="newTastNameEditText">Task name</string>
 </resources>

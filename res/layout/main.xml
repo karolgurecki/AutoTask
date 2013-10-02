@@ -4,10 +4,15 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
         >
-    <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Hello World, StartPage"
-            />
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:text="@string/newTaskButtonText"
+            android:id="@+id/newTaskbutton" android:layout_gravity="left|center_vertical" android:layout_weight="0.5"/>
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:text="@string/takListButtonText"
+            android:id="@+id/taskListButton" android:layout_gravity="left|center_vertical" android:layout_weight="0.5"/>
 </LinearLayout>
 
