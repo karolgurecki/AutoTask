@@ -9,6 +9,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import org.karolgurecki.autotask.activities.NewTaskActivity;
+import org.springframework.beans.factory.config.AbstractFactoryBean;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.io.File;
 
 public class StartPage extends Activity {
 
@@ -21,6 +26,10 @@ public class StartPage extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+       0 ApplicationContext context = new ClassPathXmlApplicationContext(getString(R.xml.auto_task_context));
+
+
 
         newTaskButton = (Button) findViewById(R.id.newTaskbutton);
 
