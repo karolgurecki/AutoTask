@@ -6,8 +6,6 @@
 *.ear
 
 # idea
-.idea/*
-*.iml
 *.dll
 logs/**
 .settings/*
