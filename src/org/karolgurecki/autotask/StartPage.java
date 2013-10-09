@@ -8,8 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import org.karolgurecki.autotask.activities.NewTaskActivity;
 import org.karolgurecki.autotask.activities.TaskListActivity;
+import org.karolgurecki.autotask.factory.TaskFactory;
+import org.karolgurecki.autotask.tasks.AbstractTask;
 
 import java.io.File;
+import java.util.List;
 
 public class StartPage extends Activity {
 
@@ -24,6 +27,8 @@ public class StartPage extends Activity {
         setContentView(R.layout.main);
 
         new File(Environment.getExternalStorageDirectory()+"/AutoTask").mkdirs();
+
+        List<AbstractTask> tasks= TaskFactory.defaultTasksWithoutConfigCreator(this);
 
         newTaskButton = (Button) findViewById(R.id.newTaskbutton);
 

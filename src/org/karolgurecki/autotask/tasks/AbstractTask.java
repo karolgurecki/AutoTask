@@ -1,5 +1,5 @@
 package org.karolgurecki.autotask.tasks;
 
 
-public class Test {
+public abstract class AbstractTask {
 }
