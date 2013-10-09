@@ -28,7 +28,7 @@ public class StartPage extends Activity {
 
         new File(Environment.getExternalStorageDirectory()+"/AutoTask").mkdirs();
 
-        List<AbstractTask> tasks= TaskFactory.defaultTasksWithoutConfigCreator(this);
+        List<AbstractTask> tasks= TaskFactory.EveryTaskCreator(this);
 
         newTaskButton = (Button) findViewById(R.id.newTaskbutton);
 

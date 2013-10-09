@@ -9,11 +9,11 @@ public class ExceptionUtils {
     }
 
     /**
-     * Creates error string from from given exception
+     * Converts stack trace to string from from given exception
      * @param e the exception
      * @return created string
      */
-    public static String stactTraceToString(Exception e){
+    public static String stackTraceToString(Exception e){
         StringBuilder builder=new StringBuilder();
 
         builder.append(e.getMessage());
