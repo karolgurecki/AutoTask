@@ -5,19 +5,16 @@ import android.os.Bundle;
 import org.karolgurecki.autotask.R;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Nappa
- * Date: 29.09.13
- * Time: 17:24
- * To change this template use File | Settings | File Templates.
+ * Created by goreckik on 09.10.13.
  */
-
-public class NewTaskActivity extends Activity {
+public class TaskListActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.setContentView(R.layout.new_task);
+        setContentView(R.layout.task_list
 
+
+        );
     }
 }

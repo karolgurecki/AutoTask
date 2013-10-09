@@ -12,7 +12,7 @@
     <Button
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:text="@string/takListButtonText"
+            android:text="@string/taskListButtonText"
             android:id="@+id/taskListButton" android:layout_gravity="left|center_vertical" android:layout_weight="0.5"/>
 </LinearLayout>
 

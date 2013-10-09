@@ -13,6 +13,7 @@
             </intent-filter>
         </activity>
         <activity android:name="org.karolgurecki.autotask.activities.NewTaskActivity" android:label="@string/newTaskButtonText" />
+        <activity android:name="org.karolgurecki.autotask.activities.TaskListActivity" android:label="@string/taskListButtonText" />
     </application>
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 </manifest> 
