@@ -29,7 +29,7 @@ public class TaskFactory {
         try {
             return tasksWithoutConfigFromPropertyFileCreator(new FileReader(propertyFile));
         } catch (FileNotFoundException e) {
-            Log.e("AutoTask", ExceptionUtils.stactTraceToString(e));
+            Log.e("AutoTask", ExceptionUtils.stackTraceToString(e));
         }
 
         return null;
@@ -45,7 +45,7 @@ public class TaskFactory {
         try {
             properties.load(propertyReader);
         } catch (IOException e) {
-            Log.e("AutoTask", ExceptionUtils.stactTraceToString(e));
+            Log.e("AutoTask", ExceptionUtils.stackTraceToString(e));
         }
 
         return tasksWithoutConfigFromPropertyFileCreator(properties);
@@ -60,7 +60,7 @@ public class TaskFactory {
         try {
             taskClasses = properties.getProperty("tasks.classes").split(",");
         } catch (NullPointerException e) {
-            Log.e("AutoTask", ExceptionUtils.stactTraceToString(e));
+            Log.e("AutoTask", ExceptionUtils.stackTraceToString(e));
         }
 
         for (String taskClazz : taskClasses) {
@@ -69,7 +69,7 @@ public class TaskFactory {
                 Class clazz = Class.forName(taskClazz);
                 tasks.add((AbstractTask) clazz.newInstance());
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-                Log.e("AutoTask", ExceptionUtils.stactTraceToString(e));
+                Log.e("AutoTask", ExceptionUtils.stackTraceToString(e));
             }
         }
 
