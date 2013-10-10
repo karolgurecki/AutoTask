@@ -5,15 +5,15 @@
           android:versionName="1.0">
     <uses-sdk android:minSdkVersion="14"/>
     <application android:label="@string/app_name" android:theme="@android:style/Theme.DeviceDefault">
-        <activity android:name="StartPage"
+        <activity android:name=".ui.Main"
                   android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="org.karolgurecki.autotask.activities.NewTaskActivity" android:label="@string/newTaskButtonText" />
-        <activity android:name="org.karolgurecki.autotask.activities.TaskListActivity" android:label="@string/taskListButtonText" />
+        <activity android:name="org.karolgurecki.autotask.ui.NewTaskActivity" android:label="@string/newTaskButtonText" />
+        <activity android:name="org.karolgurecki.autotask.ui.TaskListActivity" android:label="@string/taskListButtonText" />
     </application>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 </manifest> 

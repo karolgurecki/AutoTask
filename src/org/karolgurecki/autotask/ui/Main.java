@@ -1,4 +1,4 @@
-package org.karolgurecki.autotask;
+package org.karolgurecki.autotask.ui;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,15 +6,14 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
-import org.karolgurecki.autotask.activities.NewTaskActivity;
-import org.karolgurecki.autotask.activities.TaskListActivity;
+import org.karolgurecki.autotask.R;
 import org.karolgurecki.autotask.factory.TaskFactory;
 import org.karolgurecki.autotask.tasks.AbstractTask;
 
 import java.io.File;
 import java.util.List;
 
-public class StartPage extends Activity {
+public class Main extends Activity {
 
     Button newTaskButton, taskListButton;
 
@@ -37,7 +36,7 @@ public class StartPage extends Activity {
         newTaskButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(StartPage.this, NewTaskActivity.class);
+                Intent intent = new Intent(Main.this, NewTaskActivity.class);
                 startActivity(intent);
             }
         });
@@ -45,7 +44,7 @@ public class StartPage extends Activity {
         taskListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(StartPage.this, TaskListActivity.class);
+                Intent intent = new Intent(Main.this, TaskListActivity.class);
                 startActivity(intent);
             }
         });
