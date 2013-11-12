@@ -1,4 +1,4 @@
-package org.karolgurecki.autotask.ui;
+package org.karolgurecki.autotask.ui.activities;
 
 import android.app.Activity;
 import android.os.Bundle;

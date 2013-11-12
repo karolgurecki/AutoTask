@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/newTextNameEdit" android:layout_gravity="left|center_vertical"
+            android:hint="@string/newTaskNameEditText" android:layout_alignParentTop="false"
+            />
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/triggers"
+            android:id="@+id/triggerButton" android:layout_gravity="left|center_vertical"
+            android:layout_below="@+id/newTextNameEdit"/>
+    <org.karolgurecki.autotask.ui.views.NotScrollableList
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/triggerList" android:layout_gravity="left|center_vertical"
+            android:layout_below="@+id/triggerButton" android:clickable="false"/>
+    <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/addNewTriggerList" android:layout_gravity="left|center_vertical"
+            android:layout_below="@+id/triggerList"/>
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/actions"
+            android:id="@+id/actionButton" android:layout_gravity="left|center_vertical"
+            android:layout_below="@+id/addNewTriggerList"/>
+    <org.karolgurecki.autotask.ui.views.NotScrollableList
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/actionList" android:layout_gravity="left|center_vertical"
+            android:layout_below="@+id/actionButton"
+            />
+    <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/addNewActionList" android:layout_gravity="left|center_vertical"
+            android:layout_alignParentBottom="true" android:layout_below="@+id/actionList"/>
+</RelativeLayout>

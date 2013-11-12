@@ -1,4 +1,4 @@
-package org.karolgurecki.autotask.ui;
+package org.karolgurecki.autotask.ui.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import org.karolgurecki.autotask.R;
 import org.karolgurecki.autotask.factory.TaskFactory;
-import org.karolgurecki.autotask.tasks.AbstractTask;
+import org.karolgurecki.autotask.tasks.Task;
 
 import java.io.File;
 import java.util.List;
@@ -16,6 +16,7 @@ import java.util.List;
 public class Main extends Activity {
 
     Button newTaskButton, taskListButton;
+    public static List<Task> TASKS;
 
     /**
      * Called when the activity is first created.
@@ -25,9 +26,9 @@ public class Main extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        new File(Environment.getExternalStorageDirectory()+"/AutoTask").mkdirs();
+        new File(Environment.getExternalStorageDirectory() + "/AutoTask").mkdirs();
 
-        List<AbstractTask> tasks= TaskFactory.EveryTaskCreator(this);
+        TASKS = TaskFactory.EveryTaskCreator(this);
 
         newTaskButton = (Button) findViewById(R.id.newTaskbutton);
 

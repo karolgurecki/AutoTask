@@ -4,4 +4,7 @@
     <string name="newTaskButtonText">Nowe Zadanie</string>
     <string name="taskListButtonText">Lista Zadań</string>
     <string name="newTaskNameEditText">Nazwa zadania</string>
+    <string name="actions">Akcje</string>
+    <string name="triggers">Wyzwalacze</string>
+    <string name="addNew">Dodaj nowy...</string>
 </resources>

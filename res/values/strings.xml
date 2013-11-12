@@ -4,4 +4,7 @@
     <string name="newTaskButtonText">New Task</string>
     <string name="taskListButtonText">Task List</string>
     <string name="newTaskNameEditText">Task name</string>
+    <string name="actions">Actions</string>
+    <string name="triggers">Triggers</string>
+    <string name="addNew">Add new...</string>
 </resources>
