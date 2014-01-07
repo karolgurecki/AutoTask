@@ -2,16 +2,16 @@ package org.karolgurecki.autotask.ui.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ListView;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.ExpandableListView;
 import org.karolgurecki.autotask.R;
-import org.karolgurecki.autotask.ui.adapters.ItemAdapter;
-import org.karolgurecki.autotask.ui.rows.ItemRow;
-import org.karolgurecki.autotask.ui.views.NotScrollableList;
+import org.karolgurecki.autotask.tasks.TaskObject;
+import org.karolgurecki.autotask.tasks.impl.TestTaskObject;
+import org.karolgurecki.autotask.ui.adapters.ExpandableListAdapter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -24,57 +24,83 @@ import java.util.List;
 
 public class NewTaskActivity extends Activity {
 
-    private Button triggerButton;
-
-    private Button actionButton;
-
-    private NotScrollableList triggerList;
-
-    private NotScrollableList actionList;
-
-    private ListView addNewTriggerList;
-
-    private ListView addNewActionList;
-
-    private List<ItemRow> itemRowList = new ArrayList<>();
-
-    private ItemAdapter triggerAdapter;
+    ExpandableListAdapter listAdapter;
+    ExpandableListView expListView;
+    List<String> listDataHeader;
+    HashMap<String, List<TaskObject>> listDataChild;
+    String add_trigger;
+    String add_action;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.edit_task);
 
-        triggerButton = (Button) findViewById(R.id.triggerButton);
-        actionButton = (Button) findViewById(R.id.actionButton);
-        triggerList = (NotScrollableList) findViewById(R.id.triggerList);
-        addNewTriggerList = (ListView) findViewById(R.id.addNewTriggerList);
-        actionList = (NotScrollableList) findViewById(R.id.actionList);
-        addNewActionList = (ListView) findViewById(R.id.addNewActionList);
+        // get the listview
+        expListView = (ExpandableListView) findViewById(R.id.itemLIst);
 
+        // preparing list data
+        prepareListData();
 
-        ItemRow rd = new ItemRow("item1", "description1");
-        itemRowList.add(rd);
-        rd = new ItemRow("item2", "description2");
-        itemRowList.add(rd);
-        rd = new ItemRow("item2", "description3");
-        itemRowList.add(rd);
+        listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
 
-        triggerAdapter = new ItemAdapter(this, R.layout.item_row, itemRowList);
+        // setting list adapter
+        expListView.setAdapter(listAdapter);
 
-        actionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ItemRow rd = new ItemRow("item1", "description1");
-                triggerAdapter.add(rd);
-            }
-        });
-        LayoutInflater mInflater;
+        add_trigger = getString(R.string.add_trigger);
+        add_action = getString(R.string.add_action);
+    }
 
-        mInflater = (LayoutInflater) getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-        triggerAdapter.setmInflater(mInflater);
-        triggerList.setAdapter(triggerAdapter);
+    /*
+     * Preparing the list data
+     */
+    private void prepareListData() {
+        listDataHeader = new ArrayList<>();
+        listDataChild = new HashMap<>();
 
+        // Adding child data
+        listDataHeader.add("Top 250");
+        listDataHeader.add("Now Showing");
 
+        // Adding child data
+        List<TaskObject> top250 = new ArrayList<>();
+        top250.add(new TestTaskObject("The Shawshank Redemption", ""));
+        top250.add(new TestTaskObject("The Shawshank Redemption", ""));
+
+        List<TaskObject> nowShowing = new ArrayList<>();
+        nowShowing.add(new TestTaskObject("The Shawshank Redemption", ""));
+
+        listDataChild.put(listDataHeader.get(0), top250); // Header, Child data
+        listDataChild.put(listDataHeader.get(1), nowShowing);
+    }
+
+    @Override
+    public boolean onCreatePanelMenu(int featureId, Menu menu) {
+        super.onCreatePanelMenu(featureId, menu);    //To change body of overridden methods use File | Settings | File Templates.
+
+        menu.add(getString(R.string.add_trigger));
+        menu.add(getString(R.string.add_action));
+        menu.add(getString(R.string.finish));
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        TaskObject taskObject;
+
+        if (item.getTitle().equals(add_action)) {
+            taskObject = new TestTaskObject("Action added", "by menu");
+            listAdapter.addItemToGroup(1, taskObject);
+            listAdapter.notifyDataSetChanged();
+        } else if (item.getTitle().equals(add_trigger)) {
+            taskObject = new TestTaskObject("Trigger added", "by menu");
+            listAdapter.addItemToGroup(0, taskObject);
+            listAdapter.notifyDataSetChanged();
+        } else {
+            finish();
+        }
+        return true;
     }
 }

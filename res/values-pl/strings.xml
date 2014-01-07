@@ -6,5 +6,8 @@
     <string name="newTaskNameEditText">Nazwa zadania</string>
     <string name="actions">Akcje</string>
     <string name="triggers">Wyzwalacze</string>
-    <string name="addNew">Dodaj nowy...</string>
+    <string name="addNew">Dodaj nowy…</string>
+    <string name="add_trigger">Dodaj wyzwalacz</string>
+    <string name="add_action">Dodaj akcje</string>
+    <string name="finish">Zakończ</string>
 </resources>

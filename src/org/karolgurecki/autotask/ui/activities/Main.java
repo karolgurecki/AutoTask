@@ -7,7 +7,6 @@ import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import org.karolgurecki.autotask.R;
-import org.karolgurecki.autotask.factory.TaskFactory;
 import org.karolgurecki.autotask.tasks.Task;
 
 import java.io.File;
@@ -28,7 +27,7 @@ public class Main extends Activity {
 
         new File(Environment.getExternalStorageDirectory() + "/AutoTask").mkdirs();
 
-        TASKS = TaskFactory.EveryTaskCreator(this);
+//        TASKS = TaskFactory.EveryTaskCreator(this);
 
         newTaskButton = (Button) findViewById(R.id.newTaskbutton);
 
@@ -38,6 +37,7 @@ public class Main extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Main.this, NewTaskActivity.class);
+
                 startActivity(intent);
             }
         });

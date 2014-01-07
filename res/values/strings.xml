@@ -7,4 +7,7 @@
     <string name="actions">Actions</string>
     <string name="triggers">Triggers</string>
     <string name="addNew">Add new...</string>
+    <string name="add_trigger">Add trigger</string>
+    <string name="add_action">Add action</string>
+    <string name="finish">Finish</string>
 </resources>
