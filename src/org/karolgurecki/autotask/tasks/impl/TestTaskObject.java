@@ -11,6 +11,10 @@ public class TestTaskObject implements TaskObject {
 
     String name, config;
 
+    public  TestTaskObject(){
+        this.name=this.getClass().getSimpleName();
+    }
+
     public TestTaskObject(String name, String config) {
         this.name = name;
         this.config = config;

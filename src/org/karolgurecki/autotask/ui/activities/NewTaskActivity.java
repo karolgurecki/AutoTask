@@ -1,14 +1,17 @@
 package org.karolgurecki.autotask.ui.activities;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ExpandableListView;
 import org.karolgurecki.autotask.R;
+import org.karolgurecki.autotask.factory.TaskFactory;
 import org.karolgurecki.autotask.tasks.TaskObject;
 import org.karolgurecki.autotask.tasks.impl.TestTaskObject;
 import org.karolgurecki.autotask.ui.adapters.ExpandableListAdapter;
+import org.karolgurecki.autotask.ui.dialogs.ListDialog;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,27 +27,33 @@ import java.util.List;
 
 public class NewTaskActivity extends Activity {
 
-    ExpandableListAdapter listAdapter;
-    ExpandableListView expListView;
-    List<String> listDataHeader;
-    HashMap<String, List<TaskObject>> listDataChild;
-    String add_trigger;
-    String add_action;
+    private ExpandableListAdapter listAdapter;
+    private ExpandableListView expListView;
+    private List<String> listDataHeader;
+    private HashMap<String, List<TaskObject>> listDataChild;
+    private String add_trigger;
+    private String add_action;
+    private static List<TaskObject> actionsList;
+    private static List<TaskObject> triggersList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.edit_task);
+        if (actionsList == null) {
+            actionsList = TaskFactory.tasksWithoutConfigFromPropertyFileCreator(getResources().openRawResource(R.raw.actions_classes));
+        }
 
-        // get the listview
+        if (triggersList == null) {
+            triggersList = TaskFactory.tasksWithoutConfigFromPropertyFileCreator(getResources().openRawResource(R.raw.actions_classes));
+        }
+
         expListView = (ExpandableListView) findViewById(R.id.itemLIst);
 
-        // preparing list data
         prepareListData();
 
         listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
 
-        // setting list adapter
         expListView.setAdapter(listAdapter);
 
         add_trigger = getString(R.string.add_trigger);
@@ -87,20 +96,21 @@ public class NewTaskActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        TaskObject taskObject;
-
         if (item.getTitle().equals(add_action)) {
-            taskObject = new TestTaskObject("Action added", "by menu");
-            listAdapter.addItemToGroup(1, taskObject);
-            listAdapter.notifyDataSetChanged();
+            chooseTaskObject(1,actionsList,getString(R.string.add_action));
         } else if (item.getTitle().equals(add_trigger)) {
-            taskObject = new TestTaskObject("Trigger added", "by menu");
-            listAdapter.addItemToGroup(0, taskObject);
-            listAdapter.notifyDataSetChanged();
+            chooseTaskObject(0,triggersList,getString(R.string.add_trigger));
         } else {
             finish();
         }
         return true;
+    }
+
+    private void chooseTaskObject(int listAdapterNum, List<TaskObject> taskObjects, String dialogTitle) {
+        TaskObject taskObject = null;
+
+        Dialog dialog = new ListDialog(this, taskObjects, dialogTitle, taskObject);
+
+        listAdapter.addItemToGroup(listAdapterNum, taskObject);
     }
 }

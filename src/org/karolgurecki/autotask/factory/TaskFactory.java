@@ -3,7 +3,7 @@ package org.karolgurecki.autotask.factory;
 import android.app.Activity;
 import android.util.Log;
 import org.karolgurecki.autotask.R;
-import org.karolgurecki.autotask.tasks.Task;
+import org.karolgurecki.autotask.tasks.TaskObject;
 import org.karolgurecki.autotask.utils.ExceptionUtils;
 
 import java.io.*;
@@ -20,11 +20,11 @@ public class TaskFactory {
     }
 
 
-    public static List<Task> tasksWithoutConfigFromPropertyFileCreator(String propertyFile) {
+    public static List<TaskObject> tasksWithoutConfigFromPropertyFileCreator(String propertyFile) {
         return tasksWithoutConfigFromPropertyFileCreator(new File(propertyFile));
     }
 
-    public static List<Task> tasksWithoutConfigFromPropertyFileCreator(File propertyFile) {
+    public static List<TaskObject> tasksWithoutConfigFromPropertyFileCreator(File propertyFile) {
         try {
             return tasksWithoutConfigFromPropertyFileCreator(new FileReader(propertyFile));
         } catch (FileNotFoundException e) {
@@ -34,11 +34,11 @@ public class TaskFactory {
         return null;
     }
 
-    public static List<Task> tasksWithoutConfigFromPropertyFileCreator(InputStream propertyInputStream) {
+    public static List<TaskObject> tasksWithoutConfigFromPropertyFileCreator(InputStream propertyInputStream) {
         return tasksWithoutConfigFromPropertyFileCreator(new InputStreamReader(propertyInputStream));
     }
 
-    public static List<Task> tasksWithoutConfigFromPropertyFileCreator(Reader propertyReader) {
+    public static List<TaskObject> tasksWithoutConfigFromPropertyFileCreator(Reader propertyReader) {
         Properties properties = new Properties();
 
         try {
@@ -51,8 +51,8 @@ public class TaskFactory {
 
     }
 
-    public static List<Task> tasksWithoutConfigFromPropertyFileCreator(Properties properties) {
-        List<Task> tasks = new ArrayList<Task>();
+    public static List<TaskObject> tasksWithoutConfigFromPropertyFileCreator(Properties properties) {
+        List<TaskObject> tasks = new ArrayList<TaskObject>();
 
         String[] taskClasses = null;
 
@@ -66,7 +66,7 @@ public class TaskFactory {
 
             try {
                 Class clazz = Class.forName(taskClazz);
-                tasks.add((Task) clazz.newInstance());
+                tasks.add((TaskObject) clazz.newInstance());
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
                 Log.e("AutoTask", ExceptionUtils.stackTraceToString(e));
             }
@@ -75,27 +75,27 @@ public class TaskFactory {
         return tasks;
     }
 
-    public static List<Task> EveryTaskCreator(Activity activity) {
-        List<Task> tasks = tasksWithoutConfigFromPropertyFileCreator(activity.getResources().openRawResource(R.raw.task_classes));
+    public static List<TaskObject> EveryTaskCreator(Activity activity) {
+        List<TaskObject> tasks = tasksWithoutConfigFromPropertyFileCreator(activity.getResources().openRawResource(R.raw.actions_classes));
 
-        for (Task task : tasks) {
-            task.setActivity(activity);
+        for (TaskObject task : tasks) {
+            //task.setActivity(activity);
         }
 
         return tasks;
     }
 
-    public static List<Task> tasksWithConfigFromPropertyFileCreator(String propertyFile) {
-        List<Task> tasks = tasksWithConfigFromPropertyFileCreator(new File(propertyFile));
+    public static List<TaskObject> tasksWithConfigFromPropertyFileCreator(String propertyFile) {
+        List<TaskObject> tasks = tasksWithConfigFromPropertyFileCreator(new File(propertyFile));
 
-        for (Task task : tasks) {
-            task.setActivity(new Activity());
+        for (TaskObject task : tasks) {
+           // task.setActivity(new Activity());
         }
 
         return tasks;
     }
 
-    public static List<Task> tasksWithConfigFromPropertyFileCreator(File propertyFile) {
+    public static List<TaskObject> tasksWithConfigFromPropertyFileCreator(File propertyFile) {
         try {
             return tasksWithConfigFromPropertyFileCreator(new FileReader(propertyFile));
         } catch (FileNotFoundException e) {
@@ -105,11 +105,11 @@ public class TaskFactory {
         return null;
     }
 
-    public static List<Task> tasksWithConfigFromPropertyFileCreator(InputStream propertyInputStream) {
+    public static List<TaskObject> tasksWithConfigFromPropertyFileCreator(InputStream propertyInputStream) {
         return tasksWithConfigFromPropertyFileCreator(new InputStreamReader(propertyInputStream));
     }
 
-    public static List<Task> tasksWithConfigFromPropertyFileCreator(Reader propertyReader) {
+    public static List<TaskObject> tasksWithConfigFromPropertyFileCreator(Reader propertyReader) {
         Properties properties = new Properties();
 
         try {
@@ -122,8 +122,8 @@ public class TaskFactory {
 
     }
 
-    public static List<Task> tasksWithConfigFromPropertyFileCreator(Properties properties) {
-        List<Task> tasks = new ArrayList<>();
+    public static List<TaskObject> tasksWithConfigFromPropertyFileCreator(Properties properties) {
+        List<TaskObject> tasks = new ArrayList<>();
 
         String[] taskClasses = null;
 
@@ -137,9 +137,9 @@ public class TaskFactory {
 
             try {
                 Class clazz = Class.forName(taskClazz);
-                Task task = (Task) clazz.newInstance();
+                TaskObject task = (TaskObject) clazz.newInstance();
 
-                task.configure(properties.getProperty(taskClazz + ".config"));
+                //task.(properties.getProperty(taskClazz + ".config"));
                 tasks.add(task);
 
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
