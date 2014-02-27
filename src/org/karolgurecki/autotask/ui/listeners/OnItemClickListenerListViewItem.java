@@ -6,6 +6,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
+import org.karolgurecki.autotask.R;
 
 /**
  * Created by: Nappa
@@ -15,10 +16,10 @@ import android.widget.Toast;
 public class OnItemClickListenerListViewItem implements OnItemClickListener {
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//        TextView textViewItem = ((TextView) view.findViewById(R.id.textViewItem));
-//
-//        // get the clicked item ID
-//        String listItemId = textViewItem.getTag().toString();
+        TextView textViewItem = ((TextView) view.findViewById(R.id.rowTitle));
+
+        // get the clicked item ID
+       // String listItemId = textViewItem.getTag().toString();
 
     }
 }

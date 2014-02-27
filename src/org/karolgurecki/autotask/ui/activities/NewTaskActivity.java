@@ -2,7 +2,11 @@ package org.karolgurecki.autotask.ui.activities;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ExpandableListView;
@@ -68,8 +72,8 @@ public class NewTaskActivity extends Activity {
         listDataChild = new HashMap<>();
 
         // Adding child data
-        listDataHeader.add("Top 250");
-        listDataHeader.add("Now Showing");
+        listDataHeader.add(getString(R.string.triggers));
+        listDataHeader.add(getString(R.string.actions));
 
         // Adding child data
         List<TaskObject> top250 = new ArrayList<>();
@@ -107,10 +111,17 @@ public class NewTaskActivity extends Activity {
     }
 
     private void chooseTaskObject(int listAdapterNum, List<TaskObject> taskObjects, String dialogTitle) {
-        TaskObject taskObject = null;
+        TaskObject taskObject = new TestTaskObject();
 
-        Dialog dialog = new ListDialog(this, taskObjects, dialogTitle, taskObject);
-
+        Dialog dialog = new ListDialog(this, taskObjects, dialogTitle);
+        Log.i("AutoTask","h");
         listAdapter.addItemToGroup(listAdapterNum, taskObject);
+    }
+
+    private BroadcastReceiver receiver=new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+        }
     }
 }
