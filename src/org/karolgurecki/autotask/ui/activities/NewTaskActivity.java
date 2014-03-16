@@ -5,17 +5,20 @@ import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ExpandableListView;
+import org.apache.commons.lang3.StringUtils;
 import org.karolgurecki.autotask.R;
 import org.karolgurecki.autotask.factory.TaskFactory;
 import org.karolgurecki.autotask.tasks.TaskObject;
-import org.karolgurecki.autotask.tasks.impl.TestTaskObject;
 import org.karolgurecki.autotask.ui.adapters.ExpandableListAdapter;
 import org.karolgurecki.autotask.ui.dialogs.ListDialog;
+import org.karolgurecki.autotask.utils.ExceptionUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,6 +42,9 @@ public class NewTaskActivity extends Activity {
     private String add_action;
     private static List<TaskObject> actionsList;
     private static List<TaskObject> triggersList;
+    private List<TaskObject> taskTriggerList = new ArrayList<>();
+    private List<TaskObject> taskActionsList = new ArrayList<>();
+    private Dialog dialog = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,16 +81,9 @@ public class NewTaskActivity extends Activity {
         listDataHeader.add(getString(R.string.triggers));
         listDataHeader.add(getString(R.string.actions));
 
-        // Adding child data
-        List<TaskObject> top250 = new ArrayList<>();
-        top250.add(new TestTaskObject("The Shawshank Redemption", ""));
-        top250.add(new TestTaskObject("The Shawshank Redemption", ""));
+        listDataChild.put(listDataHeader.get(0), taskTriggerList); // Header, Child data
+        listDataChild.put(listDataHeader.get(1), taskActionsList);
 
-        List<TaskObject> nowShowing = new ArrayList<>();
-        nowShowing.add(new TestTaskObject("The Shawshank Redemption", ""));
-
-        listDataChild.put(listDataHeader.get(0), top250); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), nowShowing);
     }
 
     @Override
@@ -101,9 +100,9 @@ public class NewTaskActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getTitle().equals(add_action)) {
-            chooseTaskObject(1,actionsList,getString(R.string.add_action));
+            chooseTaskObject(1, actionsList, getString(R.string.add_action));
         } else if (item.getTitle().equals(add_trigger)) {
-            chooseTaskObject(0,triggersList,getString(R.string.add_trigger));
+            chooseTaskObject(0, triggersList, getString(R.string.add_trigger));
         } else {
             finish();
         }
@@ -111,17 +110,60 @@ public class NewTaskActivity extends Activity {
     }
 
     private void chooseTaskObject(int listAdapterNum, List<TaskObject> taskObjects, String dialogTitle) {
-        TaskObject taskObject = new TestTaskObject();
-
-        Dialog dialog = new ListDialog(this, taskObjects, dialogTitle);
-        Log.i("AutoTask","h");
-        listAdapter.addItemToGroup(listAdapterNum, taskObject);
+        dialog = new ListDialog(this, taskObjects, dialogTitle);
     }
 
-    private BroadcastReceiver receiver=new BroadcastReceiver() {
+
+    private BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
 
+            String type = intent.getStringExtra("TYPE");
+            int index = intent.getIntExtra("INDEX", -1);
+
+            if (StringUtils.isNotBlank(type) && index >= 0) {
+                if (type.equalsIgnoreCase(getString(R.string.add_trigger))) {
+                    addObject(triggersList, taskTriggerList, index);
+                } else {
+                    addObject(actionsList, taskActionsList, index);
+                }
+            }
+
+            if (dialog != null) {
+                dialog.dismiss();
+                dialog = null;
+            }
+
         }
+
+        private void addObject(List<TaskObject> taskObjectList, List<TaskObject> taskList, int index) {
+            try {
+                TaskObject obj = taskObjectList.get(index).getClass().newInstance();
+                obj.openDialog();
+                taskList.add(obj);
+                listAdapter.notifyDataSetChanged();
+            } catch (InstantiationException | IllegalAccessException e) {
+                Log.e("AutoTask", ExceptionUtils.stackTraceToString(e));
+            }
+        }
+    };
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LocalBroadcastManager.getInstance(this).registerReceiver(receiver,
+                new IntentFilter("org.karolgurecki.autotask.addTaskObject"));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(receiver);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(receiver);
     }
 }

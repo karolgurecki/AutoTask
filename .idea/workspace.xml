@@ -45,14 +45,21 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="a" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa311a1c-8ddf-4843-aaee-bc7ee9f4f4de" name="Default" comment="">
+    <list default="true" id="fa311a1c-8ddf-4843-aaee-bc7ee9f4f4de" name="Default" comment="Adding task Objects">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/libs.xml" />
+      <change type="DELETED" beforePath="G:\Projects\AutoTask\libs\Spring-Thread-Example.zip" afterPath="" />
+      <change type="DELETED" beforePath="G:\Projects\AutoTask\libs\openbeans-1.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="G:\Projects\AutoTask\libs\spring-beans-4.0.0.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="G:\Projects\AutoTask\libs\spring-context-4.0.0.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="G:\Projects\AutoTask\libs\spring-core-4.0.0.RELEASE.jar" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AutoTask.iml" afterPath="$PROJECT_DIR$/AutoTask.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/org/karolgurecki/autotask/BuildConfig.java" afterPath="$PROJECT_DIR$/gen/org/karolgurecki/autotask/BuildConfig.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/dialogs/ListDialog.java" afterPath="$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/dialogs/ListDialog.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/Main.java" afterPath="$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/NewTaskActivity.java" afterPath="$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/NewTaskActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/listeners/OnItemClickListenerListViewItem.java" afterPath="$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/listeners/OnItemClickListenerListViewItem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/karolgurecki/autotask/factory/TaskFactory.java" afterPath="$PROJECT_DIR$/src/org/karolgurecki/autotask/factory/TaskFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/TaskObject.java" afterPath="$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/TaskObject.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/impl/TestTaskObject.java" afterPath="$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/impl/TestTaskObject.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AutoTask.iws" />
@@ -114,7 +121,142 @@
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/listeners/OnItemClickListenerListViewItem.java" line="21" class="org.karolgurecki.autotask.ui.listeners.OnItemClickListenerListViewItem" package="org.karolgurecki.autotask.ui.listeners">
+      <breakpoint url="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/NewTaskActivity.java" line="143" class="org.karolgurecki.autotask.ui.activities.NewTaskActivity$1" package="org.karolgurecki.autotask.ui.activities">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/NewTaskActivity.java" line="124" class="org.karolgurecki.autotask.ui.activities.NewTaskActivity$1" package="org.karolgurecki.autotask.ui.activities">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/NewTaskActivity.java" line="123" class="org.karolgurecki.autotask.ui.activities.NewTaskActivity$1" package="org.karolgurecki.autotask.ui.activities">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/NewTaskActivity.java" line="133" class="org.karolgurecki.autotask.ui.activities.NewTaskActivity$1" package="org.karolgurecki.autotask.ui.activities">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/listeners/OnItemClickListenerListViewItem.java" line="31" class="org.karolgurecki.autotask.ui.listeners.OnItemClickListenerListViewItem" package="org.karolgurecki.autotask.ui.listeners">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/NewTaskActivity.java" line="140" class="org.karolgurecki.autotask.ui.activities.NewTaskActivity$1" package="org.karolgurecki.autotask.ui.activities">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/NewTaskActivity.java" line="142" class="org.karolgurecki.autotask.ui.activities.NewTaskActivity$1" package="org.karolgurecki.autotask.ui.activities">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/NewTaskActivity.java" line="153" class="org.karolgurecki.autotask.ui.activities.NewTaskActivity" package="org.karolgurecki.autotask.ui.activities">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/NewTaskActivity.java" line="166" class="org.karolgurecki.autotask.ui.activities.NewTaskActivity" package="org.karolgurecki.autotask.ui.activities">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/NewTaskActivity.java" line="160" class="org.karolgurecki.autotask.ui.activities.NewTaskActivity" package="org.karolgurecki.autotask.ui.activities">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -148,19 +290,50 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NewTaskActivity.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="NewTaskActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/NewTaskActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="126" column="40" selection-start="4322" selection-end="4322" vertical-scroll-proportion="0.88084114" vertical-offset="1065" max-vertical-offset="1921">
+            <state line="154" column="27" selection-start="5365" selection-end="5365" vertical-scroll-proportion="0.0" vertical-offset="2244" max-vertical-offset="2584">
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TaskFactory.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/factory/TaskFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="35" selection-start="532" selection-end="532" vertical-scroll-proportion="0.33274338" vertical-offset="33" max-vertical-offset="2533">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OnItemClickListenerListViewItem.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/listeners/OnItemClickListenerListViewItem.java">
+      <file leaf-file-name="StringUtils.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.ideaLibSources/commons-lang3-3.3-sources.jar!/org/apache/commons/lang3/StringUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="9" selection-start="656" selection-end="656" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="527">
+            <state line="336" column="0" selection-start="12359" selection-end="12359" vertical-scroll-proportion="0.0" vertical-offset="5141" max-vertical-offset="129574">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestTaskObject.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/impl/TestTaskObject.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="11" selection-start="377" selection-end="377" vertical-scroll-proportion="0.0" vertical-offset="118" max-vertical-offset="782">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TaskObject.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/TaskObject.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="17" selection-start="282" selection-end="282" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
               <folding />
             </state>
           </provider>
@@ -169,25 +342,7 @@
       <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="0" selection-start="259" selection-end="259" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="1003">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="actions_classes.properties" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/raw/actions_classes.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="37" selection-start="0" selection-end="65" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ListDialog.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/dialogs/ListDialog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="11" selection-start="1133" selection-end="1133" vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="850">
+            <state line="9" column="0" selection-start="259" selection-end="259" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="986">
               <folding />
             </state>
           </provider>
@@ -206,15 +361,6 @@
         <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/holders/ViewHolder.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="11" column="13" selection-start="216" selection-end="216" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="527">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ItemAdapter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/adapters/ItemAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="17" selection-start="255" selection-end="255" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1156">
               <folding />
             </state>
           </provider>
@@ -246,16 +392,17 @@
         <option value="$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/holders/ViewHolder.java" />
         <option value="$PROJECT_DIR$/src/org/karolgurecki/autotask/factory/TaskFactory.java" />
         <option value="$PROJECT_DIR$/res/raw/task_classes.properties" />
-        <option value="$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/impl/TestTaskObject.java" />
         <option value="$PROJECT_DIR$/res/layout/task_list_row_item.xml" />
         <option value="$PROJECT_DIR$/res/raw/trigers_classes.properties" />
         <option value="$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/adapters/ItemAdapter.java" />
         <option value="$USER_HOME$/AppData/Local/Temp/Temp1_guava-libraries-b321e8aadca1.zip/guava-libraries-b321e8aadca1/guava/src/com/google/common/collect/Sets.java" />
         <option value="$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/adapters/ExpandableListAdapter.java" />
         <option value="$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/Main.java" />
-        <option value="$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/listeners/OnItemClickListenerListViewItem.java" />
         <option value="$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/dialogs/ListDialog.java" />
+        <option value="$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/listeners/OnItemClickListenerListViewItem.java" />
         <option value="$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/NewTaskActivity.java" />
+        <option value="$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/TaskObject.java" />
+        <option value="$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/impl/TestTaskObject.java" />
       </list>
     </option>
   </component>
@@ -304,6 +451,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -337,6 +485,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="autotask" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -492,13 +644,70 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AutoTask" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AutoTask" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="autotask" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tasks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AutoTask" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AutoTask" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="autotask" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AutoTask" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AutoTask" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
@@ -506,7 +715,7 @@
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs" />
     <property name="AndroidLayoutSelectedEditor" value="android-designer" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="4df1274051e06f5b" />
@@ -522,6 +731,7 @@
     <property name="options.searchVisible" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="LayoutCode.rearrangeEntriesJava" value="false" />
+    <property name="LayoutCode.rearrangeEntries" value="false" />
   </component>
   <component name="RunManager" selected="Android Application.AutoTask">
     <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails" singleton="true">
@@ -815,6 +1025,12 @@
       <workItem from="1393077321343" duration="349000" />
       <workItem from="1393164866892" duration="5948000" />
       <workItem from="1393183843790" duration="12000" />
+      <workItem from="1394310067662" duration="794000" />
+      <workItem from="1394476591955" duration="5000" />
+      <workItem from="1394974353442" duration="603000" />
+      <workItem from="1394975295458" duration="1863000" />
+      <workItem from="1394977173423" duration="2465000" />
+      <workItem from="1394979712102" duration="3389000" />
     </task>
     <task id="LOCAL-00001" summary="hghhhhhhh">
       <created>1389208254643</created>
@@ -824,7 +1040,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7539000" />
+    <option name="totallyTimeSpent" value="16658000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -848,7 +1064,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1036" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986537" sideWeight="0.67198175" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32915717" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
@@ -864,6 +1080,7 @@
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32915717" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3284091" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32613635" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24969475" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -872,7 +1089,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21550672" sideWeight="0.6002278" order="1" side_tool="false" content_ui="combo" x="-167" y="139" width="353" height="880" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284091" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" x="92" y="92" width="1496" height="836" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" x="92" y="92" width="1496" height="836" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -880,7 +1097,6 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986537" sideWeight="0.67198175" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284091" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -897,7 +1113,10 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="hghhhhhhh" />
-    <option name="LAST_COMMIT_MESSAGE" value="hghhhhhhh" />
+    <MESSAGE value="Adding task Objects" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding task Objects" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -907,6 +1126,13 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/listeners/OnItemClickListenerListViewItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="0" selection-start="647" selection-end="647" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="527">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/res/raw/actions_classes.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="37" selection-start="0" selection-end="65" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
@@ -945,7 +1171,9 @@
     <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/NewTaskActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="111" column="32" selection-start="3836" selection-end="3836" vertical-scroll-proportion="0.0" vertical-offset="1887" max-vertical-offset="2057">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -994,56 +1222,9 @@
     <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/NewTaskActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="111" column="32" selection-start="3836" selection-end="3836" vertical-scroll-proportion="0.0" vertical-offset="1887" max-vertical-offset="2057">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/listeners/OnItemClickListenerListViewItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="647" selection-end="647" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="527">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/raw/actions_classes.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="37" selection-start="0" selection-end="65" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/dialogs/ListDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="79" selection-start="1121" selection-end="1121" vertical-scroll-proportion="0.0" vertical-offset="527" max-vertical-offset="714">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/adapters/ExpandableListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="30" selection-start="2616" selection-end="2616" vertical-scroll-proportion="0.0" vertical-offset="1275" max-vertical-offset="1734">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/adapters/ItemAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="17" selection-start="255" selection-end="255" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1156">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/raw/trigers_classes.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="5" selection-start="0" selection-end="5" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/NewTaskActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="32" selection-start="3836" selection-end="3836" vertical-scroll-proportion="0.0" vertical-offset="1887" max-vertical-offset="2057">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1092,7 +1273,9 @@
     <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/NewTaskActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="111" column="32" selection-start="3836" selection-end="3836" vertical-scroll-proportion="0.0" vertical-offset="1887" max-vertical-offset="2057">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1129,19 +1312,14 @@
         <state line="51" column="0" selection-start="1494" selection-end="1494" vertical-scroll-proportion="0.0" vertical-offset="867" max-vertical-offset="901">
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/factory/TaskFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="0" selection-start="2207" selection-end="2207" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/task_list_row_item.xml">
-      <provider editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
       <provider selected="true" editor-type-id="android-designer">
         <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/raw/trigers_classes.properties">
@@ -1161,27 +1339,17 @@
         <state line="46" column="13" selection-start="1860" selection-end="1860" vertical-scroll-proportion="0.332533" vertical-offset="0" max-vertical-offset="0" />
       </provider>
     </entry>
-    <entry file="file://D:/Android/android-sdk/sources/android-18/android/widget/BaseExpandableListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="22" selection-start="1201" selection-end="1201" vertical-scroll-proportion="0.332533" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
     <entry file="file://D:/Android/android-sdk/sources/android-18/android/widget/AdapterView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="48" column="22" selection-start="1788" selection-end="1788" vertical-scroll-proportion="-1.5654261" vertical-offset="0" max-vertical-offset="0" />
       </provider>
     </entry>
-    <entry file="file://D:/Android/android-sdk/sources/android-18/android/app/Dialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="13" selection-start="2970" selection-end="2970" vertical-scroll-proportion="0.33333334" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/item_row.xml">
-      <provider editor-type-id="text-editor">
-        <state line="10" column="46" selection-start="408" selection-end="408" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="510" />
-      </provider>
       <provider selected="true" editor-type-id="android-designer">
         <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state line="10" column="46" selection-start="408" selection-end="408" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="510" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/raw/actions_classes.properties">
@@ -1205,28 +1373,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/listeners/OnItemClickListenerListViewItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="9" selection-start="656" selection-end="656" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/impl/TestTaskObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="12" selection-start="251" selection-end="251" vertical-scroll-proportion="0.37037036" vertical-offset="11" max-vertical-offset="578" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/adapters/ExpandableListAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="54" column="40" selection-start="2091" selection-end="2091" vertical-scroll-proportion="0.0" vertical-offset="525" max-vertical-offset="1734">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/adapters/ItemAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="17" selection-start="255" selection-end="255" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1156">
           <folding />
         </state>
       </provider>
@@ -1236,16 +1385,94 @@
         <state line="208" column="22" selection-start="10767" selection-end="10767" vertical-scroll-proportion="0.33333334" vertical-offset="2973" max-vertical-offset="12767" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/adapters/ItemAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="17" selection-start="255" selection-end="255" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1156">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/commons-lang3-3.3.jar!/org/apache/commons/lang3/StringUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="177" column="37" selection-start="635" selection-end="635" vertical-scroll-proportion="0.0" vertical-offset="2724" max-vertical-offset="129982" />
+      </provider>
+    </entry>
+    <entry file="file://D:/Android/android-sdk/sources/android-18/android/content/DialogInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="17" selection-start="707" selection-end="707" vertical-scroll-proportion="0.17873831" vertical-offset="0" max-vertical-offset="2550" />
+      </provider>
+    </entry>
+    <entry file="file://D:/Android/android-sdk/sources/android-18/android/app/Dialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="35" selection-start="2992" selection-end="2992" vertical-scroll-proportion="0.33294392" vertical-offset="259" max-vertical-offset="20060" />
+      </provider>
+    </entry>
+    <entry file="file://D:/Android/android-sdk/sources/android-18/android/database/DataSetObservable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="16" selection-start="1146" selection-end="1146" vertical-scroll-proportion="0.30538923" vertical-offset="0" max-vertical-offset="835" />
+      </provider>
+    </entry>
+    <entry file="file://D:/Android/android-sdk/sources/android-18/android/widget/BaseExpandableListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="31" selection-start="1959" selection-end="1959" vertical-scroll-proportion="0.35280374" vertical-offset="378" max-vertical-offset="2193" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/dialogs/ListDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="11" selection-start="1133" selection-end="1133" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="663">
+        <state line="30" column="89" selection-start="1023" selection-end="1023" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ideaLibSources/commons-lang3-3.3-sources.jar!/org/apache/commons/lang3/StringUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="336" column="0" selection-start="12359" selection-end="12359" vertical-scroll-proportion="0.0" vertical-offset="5141" max-vertical-offset="129574">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/listeners/OnItemClickListenerListViewItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="0" selection-start="947" selection-end="947" vertical-scroll-proportion="0.69582504" vertical-offset="92" max-vertical-offset="595">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Android/android-sdk/sources/android-18/android/content/IntentFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="350" column="11" selection-start="14023" selection-end="14023" vertical-scroll-proportion="8.3419485" vertical-offset="1227" max-vertical-offset="24752">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/NewTaskActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="126" column="40" selection-start="4322" selection-end="4322" vertical-scroll-proportion="0.88084114" vertical-offset="1065" max-vertical-offset="1921">
+        <state line="154" column="27" selection-start="5365" selection-end="5365" vertical-scroll-proportion="0.0" vertical-offset="2244" max-vertical-offset="2584">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/impl/TestTaskObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="11" selection-start="377" selection-end="377" vertical-scroll-proportion="0.0" vertical-offset="118" max-vertical-offset="782">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/TaskObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="17" selection-start="282" selection-end="282" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/factory/TaskFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="35" selection-start="532" selection-end="532" vertical-scroll-proportion="0.33274338" vertical-offset="33" max-vertical-offset="2533">
           <folding />
         </state>
       </provider>
@@ -1326,7 +1553,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Maven: aopalliance:aopalliance:1.0</last-edited>
+          <last-edited>libs</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

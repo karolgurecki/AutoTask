@@ -9,12 +9,11 @@ import android.widget.Button;
 import org.karolgurecki.autotask.R;
 
 import java.io.File;
-import java.util.List;
 
 public class Main extends Activity {
 
     Button newTaskButton, taskListButton;
-   // public static List<Task> TASKS;
+    // public static List<Task> TASKS;
 
     /**
      * Called when the activity is first created.

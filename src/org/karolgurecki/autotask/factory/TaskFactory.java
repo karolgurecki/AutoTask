@@ -89,7 +89,7 @@ public class TaskFactory {
         List<TaskObject> tasks = tasksWithConfigFromPropertyFileCreator(new File(propertyFile));
 
         for (TaskObject task : tasks) {
-           // task.setActivity(new Activity());
+            // task.setActivity(new Activity());
         }
 
         return tasks;

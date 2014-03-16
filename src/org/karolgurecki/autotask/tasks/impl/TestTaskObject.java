@@ -1,5 +1,6 @@
 package org.karolgurecki.autotask.tasks.impl;
 
+import android.content.IntentFilter;
 import org.karolgurecki.autotask.tasks.TaskObject;
 
 /**
@@ -11,8 +12,8 @@ public class TestTaskObject implements TaskObject {
 
     String name, config;
 
-    public  TestTaskObject(){
-        this.name=this.getClass().getSimpleName();
+    public TestTaskObject() {
+        this.name = this.getClass().getSimpleName();
     }
 
     public TestTaskObject(String name, String config) {
@@ -29,4 +30,15 @@ public class TestTaskObject implements TaskObject {
     public String getDisplayConfiguration() {
         return config;
     }
+
+    @Override
+    public void openDialog() {
+
+    }
+
+    @Override
+    public IntentFilter getIntentFilter() {
+        return null;
+    }
+
 }

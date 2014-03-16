@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.widget.ListView;
 import org.karolgurecki.autotask.R;
 import org.karolgurecki.autotask.tasks.TaskObject;
-import org.karolgurecki.autotask.tasks.impl.TestTaskObject;
 import org.karolgurecki.autotask.ui.adapters.ItemAdapter;
 import org.karolgurecki.autotask.ui.listeners.OnItemClickListenerListViewItem;
 
@@ -29,7 +28,7 @@ public class ListDialog extends Dialog {
         listView = (ListView) findViewById(R.id.listView);
         ItemAdapter adapter = new ItemAdapter(context, R.layout.item_row, taskObjects);
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new OnItemClickListenerListViewItem());
+        listView.setOnItemClickListener(new OnItemClickListenerListViewItem(title, context));
         setTitle(title);
         show();
     }

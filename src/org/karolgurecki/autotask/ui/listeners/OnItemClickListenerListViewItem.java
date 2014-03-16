@@ -1,12 +1,11 @@
 package org.karolgurecki.autotask.ui.listeners;
 
-import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.TextView;
-import android.widget.Toast;
-import org.karolgurecki.autotask.R;
 
 /**
  * Created by: Nappa
@@ -14,12 +13,22 @@ import org.karolgurecki.autotask.R;
  * Since: 0.01
  */
 public class OnItemClickListenerListViewItem implements OnItemClickListener {
+
+    private String type;
+    private Context context;
+
+    public OnItemClickListenerListViewItem(String type, Context context) {
+        this.type = type;
+        this.context = context;
+    }
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        TextView textViewItem = ((TextView) view.findViewById(R.id.rowTitle));
 
-        // get the clicked item ID
-       // String listItemId = textViewItem.getTag().toString();
+        Intent intent = new Intent("org.karolgurecki.autotask.addTaskObject");
+        intent.putExtra("INDEX", position);
+        intent.putExtra("TYPE", type);
 
+        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 }
