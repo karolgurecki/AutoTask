@@ -17,5 +17,5 @@ public interface TaskObject {
 
     IntentFilter getIntentFilter();
 
-
+    String getConfig();
 }

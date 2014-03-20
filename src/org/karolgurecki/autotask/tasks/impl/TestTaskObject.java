@@ -41,4 +41,9 @@ public class TestTaskObject implements TaskObject {
         return null;
     }
 
+    @Override
+    public String getConfig() {
+        return "testConfig";
+    }
+
 }

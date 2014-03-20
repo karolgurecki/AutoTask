@@ -10,4 +10,9 @@
     <string name="add_trigger">Add trigger</string>
     <string name="add_action">Add action</string>
     <string name="finish">Finish</string>
+    <string name="saveTaskTitleAlert">Save task</string>
+    <string name="doYouWantSave">Do you want to save this task?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="cancel">Cancel</string>
 </resources>

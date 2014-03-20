@@ -10,4 +10,9 @@
     <string name="add_trigger">Dodaj wyzwalacz</string>
     <string name="add_action">Dodaj akcje</string>
     <string name="finish">Zakończ</string>
+    <string name="saveTaskTitleAlert">Zapisz zadanie</string>
+    <string name="doYouWantSave">Czy chcesz zapić to zadanie?</string>
+    <string name="yes">Tak</string>
+    <string name="no">Nie</string>
+    <string name="cancel">Anuluj</string>
 </resources>
