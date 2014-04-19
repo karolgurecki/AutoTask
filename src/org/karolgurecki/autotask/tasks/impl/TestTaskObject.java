@@ -1,5 +1,6 @@
 package org.karolgurecki.autotask.tasks.impl;
 
+import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import org.karolgurecki.autotask.tasks.TaskObject;
 
@@ -38,6 +39,16 @@ public class TestTaskObject implements TaskObject {
 
     @Override
     public IntentFilter getIntentFilter() {
+        return null;
+    }
+
+    @Override
+    public void setResponseIntentFilter(IntentFilter intentFilter) {
+
+    }
+
+    @Override
+    public BroadcastReceiver getBroadcastReceiver() {
         return null;
     }
 

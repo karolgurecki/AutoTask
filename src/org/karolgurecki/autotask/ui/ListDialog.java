@@ -1,4 +1,4 @@
-package org.karolgurecki.autotask.ui.dialogs;
+package org.karolgurecki.autotask.ui;
 
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -8,7 +8,6 @@ import android.widget.ListView;
 import org.karolgurecki.autotask.R;
 import org.karolgurecki.autotask.tasks.TaskObject;
 import org.karolgurecki.autotask.ui.adapters.ItemAdapter;
-import org.karolgurecki.autotask.ui.listeners.OnItemClickListenerListViewItem;
 
 import java.util.List;
 

@@ -1,5 +1,6 @@
 package org.karolgurecki.autotask.tasks;
 
+import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 
 /**
@@ -16,6 +17,10 @@ public interface TaskObject {
     void openDialog();
 
     IntentFilter getIntentFilter();
+
+    void setResponseIntentFilter(IntentFilter intentFilter);
+
+    BroadcastReceiver getBroadcastReceiver();
 
     String getConfig();
 }

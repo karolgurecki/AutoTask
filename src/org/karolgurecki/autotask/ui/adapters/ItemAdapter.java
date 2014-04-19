@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import org.karolgurecki.autotask.R;
 import org.karolgurecki.autotask.tasks.TaskObject;
-import org.karolgurecki.autotask.ui.holders.ViewHolder;
+import org.karolgurecki.autotask.ui.ViewHolder;
 
 import java.util.List;
 

@@ -14,6 +14,14 @@
         </activity>
         <activity android:name=".ui.activities.NewTaskActivity" android:label="@string/newTaskButtonText"/>
         <activity android:name=".ui.activities.TaskListActivity" android:label="@string/taskListButtonText"/>
+        <service android:name=".service.StartUpService" android:label="Autotask Service"/>
+        <receiver android:name="org.karolgurecki.autotask.service.StartUpBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_EXTERNAL_APPLICATIONS_AVAILABLE"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
     </application>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 </manifest> 

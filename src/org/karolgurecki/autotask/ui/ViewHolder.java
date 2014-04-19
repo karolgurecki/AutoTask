@@ -1,4 +1,4 @@
-package org.karolgurecki.autotask.ui.holders;
+package org.karolgurecki.autotask.ui;
 
 import android.view.View;
 import android.widget.TextView;

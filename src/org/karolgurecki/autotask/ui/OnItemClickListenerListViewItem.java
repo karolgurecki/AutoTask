@@ -1,4 +1,4 @@
-package org.karolgurecki.autotask.ui.listeners;
+package org.karolgurecki.autotask.ui;
 
 import android.content.Context;
 import android.content.Intent;
