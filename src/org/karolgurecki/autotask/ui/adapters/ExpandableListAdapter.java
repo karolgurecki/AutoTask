@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 import org.karolgurecki.autotask.R;
+import org.karolgurecki.autotask.tasks.AbstractTaskObject;
 import org.karolgurecki.autotask.tasks.TaskObject;
 
 import java.util.HashMap;
@@ -18,18 +19,18 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private Context context;
     private List<String> listHeaders; // header titles
     // child data in format of header title, child title
-    private HashMap<String, List<TaskObject>> listChilds;
+    private HashMap<String, List<AbstractTaskObject>> listChildren;
 
     public ExpandableListAdapter(Context context, List<String> listHeaders,
-                                 HashMap<String, List<TaskObject>> listChildData) {
+                                 HashMap<String, List<AbstractTaskObject>> listChildData) {
         this.context = context;
         this.listHeaders = listHeaders;
-        this.listChilds = listChildData;
+        this.listChildren = listChildData;
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosititon) {
-        return this.listChilds.get(this.listHeaders.get(groupPosition)).get(childPosititon);
+        return this.listChildren.get(this.listHeaders.get(groupPosition)).get(childPosititon);
     }
 
     @Override
@@ -58,7 +59,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return this.listChilds.get(this.listHeaders.get(groupPosition)).size();
+        return this.listChildren.get(this.listHeaders.get(groupPosition)).size();
     }
 
     @Override
@@ -102,7 +103,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         return true;
     }
 
-    public void addItemToGroup(int groupPosition, TaskObject item) {
-        listChilds.get(listHeaders.get(groupPosition)).add(item);
+    public void addItemToGroup(int groupPosition, AbstractTaskObject item) {
+        listChildren.get(listHeaders.get(groupPosition)).add(item);
     }
 }

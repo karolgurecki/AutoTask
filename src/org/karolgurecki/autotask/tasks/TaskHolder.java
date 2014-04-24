@@ -15,9 +15,9 @@ import java.util.List;
  * Since: 0.01
  */
 public final class TaskHolder extends BroadcastReceiver {
-    private List<TaskObject> triggerList = new ArrayList<>();
+    private List<AbstractTaskObject> triggerList = new ArrayList<>();
 
-    private List<TaskObject> actionList = new ArrayList<>();
+    private List<AbstractTaskObject> actionList = new ArrayList<>();
 
     private Long timestamp;
 
@@ -25,12 +25,30 @@ public final class TaskHolder extends BroadcastReceiver {
 
     private Context context;
 
-    public TaskHolder(List<TaskObject> triggerList, List<TaskObject> actionList, Long timestamp, Context context, String name) {
+    /**
+     * Instantiates a new Task holder.
+     *
+     * @param triggerList the trigger list
+     * @param actionList  the action list
+     * @param timestamp   the timestamp
+     * @param context     the context
+     * @param name        the name
+     */
+    public TaskHolder(List<AbstractTaskObject> triggerList, List<AbstractTaskObject> actionList, Long timestamp,
+                      Context context, String name) {
         this(triggerList, actionList, timestamp, context);
         this.name = name;
     }
 
-    public TaskHolder(List<TaskObject> triggerList, List<TaskObject> actionList, Long timestamp, Context context) {
+    /**
+     * Instantiates a new Task holder.
+     *
+     * @param triggerList the trigger list
+     * @param actionList  the action list
+     * @param timestamp   the timestamp
+     * @param context     the context
+     */
+    public TaskHolder(List<AbstractTaskObject> triggerList, List<AbstractTaskObject> actionList, Long timestamp, Context context) {
         this.triggerList = triggerList;
         this.actionList = actionList;
         this.timestamp = timestamp;
@@ -47,6 +65,9 @@ public final class TaskHolder extends BroadcastReceiver {
         registerReceivers(actionList, null);
     }
 
+    /**
+     * On destoy.
+     */
     public void onDestoy() {
         unregisterReceivers(triggerList);
         unregisterReceivers(actionList);
@@ -57,48 +78,87 @@ public final class TaskHolder extends BroadcastReceiver {
 
     }
 
-    private void unregisterReceivers(List<TaskObject> taskObjectList) {
-        for (TaskObject taskObject : taskObjectList) {
-            LocalBroadcastManager.getInstance(context).unregisterReceiver(taskObject.getBroadcastReceiver());
+    private void unregisterReceivers(List<AbstractTaskObject> taskObjectList) {
+        for (AbstractTaskObject taskObject : taskObjectList) {
+            LocalBroadcastManager.getInstance(context).unregisterReceiver(taskObject);
         }
     }
 
-    private void registerReceivers(List<TaskObject> taskObjectList, IntentFilter intentFilter) {
-        for (TaskObject taskObject : taskObjectList) {
-            LocalBroadcastManager.getInstance(context).registerReceiver(taskObject.getBroadcastReceiver(),
-                    taskObject.getIntentFilter());
+    private void registerReceivers(List<AbstractTaskObject> taskObjectList, IntentFilter intentFilter) {
+        for (AbstractTaskObject taskObject : taskObjectList) {
+            LocalBroadcastManager.getInstance(context).registerReceiver(taskObject, taskObject.getIntentFilter());
             taskObject.setResponseIntentFilter(intentFilter);
         }
     }
 
-    public List<TaskObject> getTriggerList() {
+    /**
+     * Gets trigger list.
+     *
+     * @return the trigger list
+     */
+    public List<AbstractTaskObject> getTriggerList() {
         return triggerList;
     }
 
-    public void setTriggerList(List<TaskObject> triggerList) {
+    /**
+     * Sets trigger list.
+     *
+     * @param triggerList the trigger list
+     */
+    public void setTriggerList(List<AbstractTaskObject> triggerList) {
         this.triggerList = triggerList;
     }
 
-    public List<TaskObject> getActionList() {
+    /**
+     * Gets action list.
+     *
+     * @return the action list
+     */
+    public List<AbstractTaskObject> getActionList() {
         return actionList;
     }
 
-    public void setActionList(List<TaskObject> actionList) {
+    /**
+     * Sets action list.
+     *
+     * @param actionList the action list
+     */
+    public void setActionList(List<AbstractTaskObject> actionList) {
         this.actionList = actionList;
     }
 
+    /**
+     * Gets timestamp.
+     *
+     * @return the timestamp
+     */
     public Long getTimestamp() {
         return timestamp;
     }
 
+    /**
+     * Sets timestamp.
+     *
+     * @param timestamp the timestamp
+     */
     public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
 
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets name.
+     *
+     * @param name the name
+     */
     public void setName(String name) {
         this.name = name;
     }

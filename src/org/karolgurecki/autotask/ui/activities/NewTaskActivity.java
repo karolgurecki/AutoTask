@@ -18,7 +18,7 @@ import android.widget.TextView;
 import org.apache.commons.lang3.StringUtils;
 import org.karolgurecki.autotask.R;
 import org.karolgurecki.autotask.factory.TaskFactory;
-import org.karolgurecki.autotask.tasks.TaskObject;
+import org.karolgurecki.autotask.tasks.AbstractTaskObject;
 import org.karolgurecki.autotask.ui.ListDialog;
 import org.karolgurecki.autotask.ui.adapters.ExpandableListAdapter;
 import org.karolgurecki.autotask.utils.ExceptionUtils;
@@ -47,16 +47,16 @@ public class NewTaskActivity extends Activity {
 
     private static final String COMMA = ",";
     private static final String AUTO_TASK_TAG = "AutoTask";
-    private static List<TaskObject> actionsList;
-    private static List<TaskObject> triggersList;
+    private static List<AbstractTaskObject> actionsList;
+    private static List<AbstractTaskObject> triggersList;
     private ExpandableListAdapter listAdapter;
     private ExpandableListView expListView;
     private List<String> listDataHeader;
-    private HashMap<String, List<TaskObject>> listDataChild;
+    private HashMap<String, List<AbstractTaskObject>> listDataChild;
     private String add_trigger;
     private String add_action;
-    private List<TaskObject> taskTriggerList = new ArrayList<>();
-    private List<TaskObject> taskActionsList = new ArrayList<>();
+    private List<AbstractTaskObject> taskTriggerList = new ArrayList<>();
+    private List<AbstractTaskObject> taskActionsList = new ArrayList<>();
     private Dialog dialog = null;
     private BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
@@ -80,9 +80,9 @@ public class NewTaskActivity extends Activity {
 
         }
 
-        private void addObject(List<TaskObject> taskObjectList, List<TaskObject> taskList, int index) {
+        private void addObject(List<AbstractTaskObject> taskObjectList, List<AbstractTaskObject> taskList, int index) {
             try {
-                TaskObject obj = taskObjectList.get(index).getClass().newInstance();
+                AbstractTaskObject obj = taskObjectList.get(index).getClass().newInstance();
                 obj.openDialog();
                 taskList.add(obj);
                 listAdapter.notifyDataSetChanged();
@@ -99,11 +99,13 @@ public class NewTaskActivity extends Activity {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.edit_task);
         if (actionsList == null) {
-            actionsList = TaskFactory.tasksWithoutConfigFromPropertyFileCreator(getResources().openRawResource(R.raw.actions_classes));
+            actionsList = TaskFactory.createTaskObjects(getResources().openRawResource(R.raw.actions_classes),
+                    "tasks.classes", false);
         }
 
         if (triggersList == null) {
-            triggersList = TaskFactory.tasksWithoutConfigFromPropertyFileCreator(getResources().openRawResource(R.raw.actions_classes));
+            triggersList = TaskFactory.createTaskObjects(getResources().openRawResource(R.raw.actions_classes),
+                    "tasks.classes", false);
         }
         taskName = (TextView) findViewById(R.id.editText);
 
@@ -184,7 +186,7 @@ public class NewTaskActivity extends Activity {
         return true;
     }
 
-    private void chooseTaskObject(int listAdapterNum, List<TaskObject> taskObjects, String dialogTitle) {
+    private void chooseTaskObject(int listAdapterNum, List<AbstractTaskObject> taskObjects, String dialogTitle) {
         dialog = new ListDialog(this, taskObjects, dialogTitle);
     }
 
@@ -214,7 +216,7 @@ public class NewTaskActivity extends Activity {
         }
     }
 
-    private void appendConfig(StringBuilder builder, String classesPropName, List<TaskObject> taskObjectList) {
+    private void appendConfig(StringBuilder builder, String classesPropName, List<AbstractTaskObject> taskObjectList) {
         builder.append(String.format("%s=", classesPropName));
 
         for (int i = 0; i < taskObjectList.size(); i++) {
@@ -224,7 +226,7 @@ public class NewTaskActivity extends Activity {
             }
         }
         builder.append("\n");
-        for (TaskObject taskObject : taskObjectList) {
+        for (AbstractTaskObject taskObject : taskObjectList) {
             builder.append(String.format("%s.config=%s\n", taskObject.getClass().getName(), taskObject.getConfig()));
         }
     }

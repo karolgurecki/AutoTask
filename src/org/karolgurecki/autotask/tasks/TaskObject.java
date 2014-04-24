@@ -1,6 +1,5 @@
 package org.karolgurecki.autotask.tasks;
 
-import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 
 /**
@@ -10,17 +9,50 @@ import android.content.IntentFilter;
  */
 public interface TaskObject {
 
+    /**
+     * Gets displayed name of this task object
+     *
+     * @return the name to display
+     */
     String getDisplayName();
 
+    /**
+     * Gets formatted configuration of this task object.
+     *
+     * @return the configuration to display
+     */
     String getDisplayConfiguration();
 
+    /**
+     * Display dialog or activity with configuration UI.
+     */
     void openDialog();
 
+    /**
+     * Get intent filter on which task will receive/
+     *
+     * @return the intent filter
+     */
     IntentFilter getIntentFilter();
 
+    /**
+     * Sets intent filter to which massage will be send after broadcast receiver ends it's work.
+     *
+     * @param intentFilter the intent filter
+     */
     void setResponseIntentFilter(IntentFilter intentFilter);
 
-    BroadcastReceiver getBroadcastReceiver();
-
+    /**
+     * Gets configuration in string to save in the property file.
+     *
+     * @return the configuration in string
+     */
     String getConfig();
+
+    /**
+     * Sets configuration received from property file in string form
+     *
+     * @param config the configuration in string
+     */
+    void setConfig(String config);
 }
