@@ -15,4 +15,5 @@
     <string name="yes">Tak</string>
     <string name="no">Nie</string>
     <string name="cancel">Anuluj</string>
+    <string name="autotask">Autotask</string>
 </resources>

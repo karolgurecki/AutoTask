@@ -1,5 +1,6 @@
 package org.karolgurecki.autotask.tasks.impl;
 
+import android.content.Intent;
 import android.content.IntentFilter;
 import org.karolgurecki.autotask.tasks.TaskObject;
 
@@ -42,7 +43,7 @@ public class TestTaskObject implements TaskObject {
     }
 
     @Override
-    public void setResponseIntentFilter(IntentFilter intentFilter) {
+    public void setResponseIntent(Intent intent) {
 
     }
 
@@ -54,6 +55,11 @@ public class TestTaskObject implements TaskObject {
     @Override
     public void setConfig(String config) {
 
+    }
+
+    @Override
+    public Intent getIntent() {
+        return null;
     }
 
 }

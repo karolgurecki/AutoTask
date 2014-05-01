@@ -3,11 +3,12 @@ package org.karolgurecki.autotask.tasks;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.support.v4.content.LocalBroadcastManager;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by: Nappa
@@ -18,6 +19,8 @@ public final class TaskHolder extends BroadcastReceiver {
     private List<AbstractTaskObject> triggerList = new ArrayList<>();
 
     private List<AbstractTaskObject> actionList = new ArrayList<>();
+
+    private Map<String, Boolean> triggerTriggered = new HashMap<>();
 
     private Long timestamp;
 
@@ -53,6 +56,7 @@ public final class TaskHolder extends BroadcastReceiver {
         this.actionList = actionList;
         this.timestamp = timestamp;
         this.context = context;
+
     }
 
     /**
@@ -60,9 +64,13 @@ public final class TaskHolder extends BroadcastReceiver {
      */
     public void onCreate() {
         String intentActions = String.format("%s_%d", name, timestamp);
-        IntentFilter filter = new IntentFilter(intentActions);
-        registerReceivers(triggerList, filter);
+        Intent intent = new Intent(intentActions);
+        registerReceivers(triggerList, intent);
         registerReceivers(actionList, null);
+
+        for (AbstractTaskObject abstractTaskObject : triggerList) {
+            triggerTriggered.put(abstractTaskObject.getClass().getName(), Boolean.FALSE);
+        }
     }
 
     /**
@@ -75,7 +83,16 @@ public final class TaskHolder extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        String className = intent.getStringExtra("className");
+        Boolean switchValue = intent.getBooleanExtra("switchValue", false);
 
+        triggerTriggered.put(className, switchValue);
+
+        if (!triggerTriggered.containsValue(false)) {
+            for (AbstractTaskObject abstractTaskObject : actionList) {
+                context.sendBroadcast(abstractTaskObject.getIntent());
+            }
+        }
     }
 
     private void unregisterReceivers(List<AbstractTaskObject> taskObjectList) {
@@ -84,10 +101,10 @@ public final class TaskHolder extends BroadcastReceiver {
         }
     }
 
-    private void registerReceivers(List<AbstractTaskObject> taskObjectList, IntentFilter intentFilter) {
+    private void registerReceivers(List<AbstractTaskObject> taskObjectList, Intent intent) {
         for (AbstractTaskObject taskObject : taskObjectList) {
             LocalBroadcastManager.getInstance(context).registerReceiver(taskObject, taskObject.getIntentFilter());
-            taskObject.setResponseIntentFilter(intentFilter);
+            taskObject.setResponseIntent(intent);
         }
     }
 

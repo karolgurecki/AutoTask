@@ -1,7 +1,7 @@
 package org.karolgurecki.autotask.tasks;
 
 import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
+import android.content.Intent;
 
 /**
  * Created by: Karol Górecki
@@ -11,10 +11,10 @@ import android.content.IntentFilter;
  */
 public abstract class AbstractTaskObject extends BroadcastReceiver implements TaskObject {
 
-    protected IntentFilter responseIntentFilter;
+    protected Intent responseIntent;
 
     @Override
-    public void setResponseIntentFilter(IntentFilter intentFilter) {
-        this.responseIntentFilter = intentFilter;
+    public void setResponseIntent(Intent intent) {
+        this.responseIntent = intent;
     }
 }

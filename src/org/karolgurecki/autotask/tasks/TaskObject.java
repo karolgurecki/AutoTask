@@ -1,5 +1,6 @@
 package org.karolgurecki.autotask.tasks;
 
+import android.content.Intent;
 import android.content.IntentFilter;
 
 /**
@@ -38,9 +39,9 @@ public interface TaskObject {
     /**
      * Sets intent filter to which massage will be send after broadcast receiver ends it's work.
      *
-     * @param intentFilter the intent filter
+     * @param intent the intent filter
      */
-    void setResponseIntentFilter(IntentFilter intentFilter);
+    void setResponseIntent(Intent intent);
 
     /**
      * Gets configuration in string to save in the property file.
@@ -55,4 +56,9 @@ public interface TaskObject {
      * @param config the configuration in string
      */
     void setConfig(String config);
+
+    /**
+     * @return
+     */
+    Intent getIntent();
 }
