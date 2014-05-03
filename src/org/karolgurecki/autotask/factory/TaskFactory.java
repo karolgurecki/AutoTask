@@ -1,7 +1,7 @@
 package org.karolgurecki.autotask.factory;
 
 import android.util.Log;
-import org.karolgurecki.autotask.tasks.AbstractTaskObject;
+import org.karolgurecki.autotask.tasks.TaskObject;
 import org.karolgurecki.autotask.utils.ExceptionUtils;
 
 import java.io.File;
@@ -34,9 +34,9 @@ public class TaskFactory {
      * @param rootProperty the root property from which list of the classes to be created
      * @param loadConfig   this flag indicted if configuration of this class with be loaded from file
      *
-     * @return a list of AbstractTaskObject objects
+     * @return a list of TaskObject objects
      */
-    public static List<AbstractTaskObject> createTaskObjects(String propertyFile, String rootProperty, boolean loadConfig) {
+    public static List<TaskObject> createTaskObjects(String propertyFile, String rootProperty, boolean loadConfig) {
         return createTaskObjects(new File(propertyFile), rootProperty, loadConfig);
     }
 
@@ -47,9 +47,9 @@ public class TaskFactory {
      * @param rootProperty the root property from which list of the classes to be created
      * @param loadConfig   this flag indicted if configuration of this class with be loaded from file
      *
-     * @return a list of AbstractTaskObject objects
+     * @return a list of TaskObject objects
      */
-    public static List<AbstractTaskObject> createTaskObjects(File propertyFile, String rootProperty, boolean loadConfig) {
+    public static List<TaskObject> createTaskObjects(File propertyFile, String rootProperty, boolean loadConfig) {
         try {
             return createTaskObjects(new FileReader(propertyFile), rootProperty, loadConfig);
         } catch (FileNotFoundException e) {
@@ -66,10 +66,10 @@ public class TaskFactory {
      * @param rootProperty        the root property from which list of the classes to be created
      * @param loadConfig          this flag indicted if configuration of this class with be loaded from file
      *
-     * @return a list of AbstractTaskObject objects
+     * @return a list of TaskObject objects
      */
-    public static List<AbstractTaskObject> createTaskObjects(InputStream propertyInputStream, String rootProperty,
-                                                             boolean loadConfig) {
+    public static List<TaskObject> createTaskObjects(InputStream propertyInputStream, String rootProperty,
+                                                     boolean loadConfig) {
         return createTaskObjects(new InputStreamReader(propertyInputStream), rootProperty, loadConfig);
     }
 
@@ -80,10 +80,10 @@ public class TaskFactory {
      * @param rootProperty   the root property from which list of the classes to be created
      * @param loadConfig     this flag indicted if configuration of this class with be loaded from file
      *
-     * @return a list of AbstractTaskObject objects
+     * @return a list of TaskObject objects
      */
-    public static List<AbstractTaskObject> createTaskObjects(Reader propertyReader, String rootProperty,
-                                                             boolean loadConfig) {
+    public static List<TaskObject> createTaskObjects(Reader propertyReader, String rootProperty,
+                                                     boolean loadConfig) {
         Properties properties = new Properties();
 
         try {
@@ -104,11 +104,11 @@ public class TaskFactory {
      * @param rootProperty the root property from which list of the classes to be created
      * @param loadConfig   this flag indicted if configuration of this class with be loaded from file
      *
-     * @return a list of AbstractTaskObject objects
+     * @return a list of TaskObject objects
      */
-    public static List<AbstractTaskObject> createTaskObjects(Properties properties, String rootProperty,
-                                                             boolean loadConfig) {
-        List<AbstractTaskObject> tasks = new ArrayList<AbstractTaskObject>();
+    public static List<TaskObject> createTaskObjects(Properties properties, String rootProperty,
+                                                     boolean loadConfig) {
+        List<TaskObject> tasks = new ArrayList<TaskObject>();
 
         String[] taskClasses = null;
 
@@ -122,7 +122,7 @@ public class TaskFactory {
 
             try {
                 Class clazz = Class.forName(taskClazz);
-                AbstractTaskObject taskObject = (AbstractTaskObject) clazz.newInstance();
+                TaskObject taskObject = (TaskObject) clazz.newInstance();
                 if (loadConfig) {
                     taskObject.setConfig(properties.getProperty(String.format("%s.config", taskClazz)));
                 }

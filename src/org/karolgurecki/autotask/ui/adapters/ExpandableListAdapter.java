@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 import org.karolgurecki.autotask.R;
-import org.karolgurecki.autotask.tasks.AbstractTaskObject;
 import org.karolgurecki.autotask.tasks.TaskObject;
 
 import java.util.HashMap;
@@ -19,10 +18,10 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private Context context;
     private List<String> listHeaders; // header titles
     // child data in format of header title, child title
-    private HashMap<String, List<AbstractTaskObject>> listChildren;
+    private HashMap<String, List<TaskObject>> listChildren;
 
     public ExpandableListAdapter(Context context, List<String> listHeaders,
-                                 HashMap<String, List<AbstractTaskObject>> listChildData) {
+                                 HashMap<String, List<TaskObject>> listChildData) {
         this.context = context;
         this.listHeaders = listHeaders;
         this.listChildren = listChildData;
@@ -103,7 +102,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         return true;
     }
 
-    public void addItemToGroup(int groupPosition, AbstractTaskObject item) {
+    public void addItemToGroup(int groupPosition, TaskObject item) {
         listChildren.get(listHeaders.get(groupPosition)).add(item);
     }
 }

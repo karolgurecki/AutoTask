@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.ListView;
 import org.karolgurecki.autotask.R;
-import org.karolgurecki.autotask.tasks.AbstractTaskObject;
+import org.karolgurecki.autotask.tasks.TaskObject;
 import org.karolgurecki.autotask.ui.adapters.ItemAdapter;
 
 import java.util.List;
@@ -20,7 +20,7 @@ public class ListDialog extends Dialog {
 
     private ListView listView;
 
-    public ListDialog(Context context, List<AbstractTaskObject> taskObjects, String title) {
+    public ListDialog(Context context, List<TaskObject> taskObjects, String title) {
         super(context);
 
         setContentView(R.layout.task_list);

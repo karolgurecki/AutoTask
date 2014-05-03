@@ -18,7 +18,7 @@ import android.widget.TextView;
 import org.apache.commons.lang3.StringUtils;
 import org.karolgurecki.autotask.R;
 import org.karolgurecki.autotask.factory.TaskFactory;
-import org.karolgurecki.autotask.tasks.AbstractTaskObject;
+import org.karolgurecki.autotask.tasks.AbstractBroadcastReceiverTaskObject;
 import org.karolgurecki.autotask.ui.ListDialog;
 import org.karolgurecki.autotask.ui.adapters.ExpandableListAdapter;
 import org.karolgurecki.autotask.utils.ExceptionUtils;
@@ -47,16 +47,16 @@ public class NewTaskActivity extends Activity {
 
     private static final String COMMA = ",";
     private static final String AUTO_TASK_TAG = "AutoTask";
-    private static List<AbstractTaskObject> actionsList;
-    private static List<AbstractTaskObject> triggersList;
+    private static List<AbstractBroadcastReceiverTaskObject> actionsList;
+    private static List<AbstractBroadcastReceiverTaskObject> triggersList;
     private ExpandableListAdapter listAdapter;
     private ExpandableListView expListView;
     private List<String> listDataHeader;
-    private HashMap<String, List<AbstractTaskObject>> listDataChild;
+    private HashMap<String, List<AbstractBroadcastReceiverTaskObject>> listDataChild;
     private String add_trigger;
     private String add_action;
-    private List<AbstractTaskObject> taskTriggerList = new ArrayList<>();
-    private List<AbstractTaskObject> taskActionsList = new ArrayList<>();
+    private List<AbstractBroadcastReceiverTaskObject> taskTriggerList = new ArrayList<>();
+    private List<AbstractBroadcastReceiverTaskObject> taskActionsList = new ArrayList<>();
     private Dialog dialog = null;
     private BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
@@ -80,9 +80,9 @@ public class NewTaskActivity extends Activity {
 
         }
 
-        private void addObject(List<AbstractTaskObject> taskObjectList, List<AbstractTaskObject> taskList, int index) {
+        private void addObject(List<AbstractBroadcastReceiverTaskObject> taskObjectList, List<AbstractBroadcastReceiverTaskObject> taskList, int index) {
             try {
-                AbstractTaskObject obj = taskObjectList.get(index).getClass().newInstance();
+                AbstractBroadcastReceiverTaskObject obj = taskObjectList.get(index).getClass().newInstance();
                 obj.openDialog();
                 taskList.add(obj);
                 listAdapter.notifyDataSetChanged();
@@ -186,7 +186,7 @@ public class NewTaskActivity extends Activity {
         return true;
     }
 
-    private void chooseTaskObject(int listAdapterNum, List<AbstractTaskObject> taskObjects, String dialogTitle) {
+    private void chooseTaskObject(int listAdapterNum, List<AbstractBroadcastReceiverTaskObject> taskObjects, String dialogTitle) {
         dialog = new ListDialog(this, taskObjects, dialogTitle);
     }
 
@@ -216,7 +216,7 @@ public class NewTaskActivity extends Activity {
         }
     }
 
-    private void appendConfig(StringBuilder builder, String classesPropName, List<AbstractTaskObject> taskObjectList) {
+    private void appendConfig(StringBuilder builder, String classesPropName, List<AbstractBroadcastReceiverTaskObject> taskObjectList) {
         builder.append(String.format("%s=", classesPropName));
 
         for (int i = 0; i < taskObjectList.size(); i++) {
@@ -226,7 +226,7 @@ public class NewTaskActivity extends Activity {
             }
         }
         builder.append("\n");
-        for (AbstractTaskObject taskObject : taskObjectList) {
+        for (AbstractBroadcastReceiverTaskObject taskObject : taskObjectList) {
             builder.append(String.format("%s.config=%s\n", taskObject.getClass().getName(), taskObject.getConfig()));
         }
     }

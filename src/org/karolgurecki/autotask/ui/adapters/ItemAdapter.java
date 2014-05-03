@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import org.karolgurecki.autotask.R;
-import org.karolgurecki.autotask.tasks.AbstractTaskObject;
 import org.karolgurecki.autotask.tasks.TaskObject;
 import org.karolgurecki.autotask.ui.ViewHolder;
 
@@ -19,11 +18,11 @@ import java.util.List;
  * Version: 0.01
  * Since: 0.01
  */
-public class ItemAdapter extends ArrayAdapter<AbstractTaskObject> {
+public class ItemAdapter extends ArrayAdapter<TaskObject> {
 
     private LayoutInflater inflater;
 
-    public ItemAdapter(Context context, int resource, List<AbstractTaskObject> objects) {
+    public ItemAdapter(Context context, int resource, List<TaskObject> objects) {
         super(context, resource, objects);
         inflater = ((Activity) context).getLayoutInflater();
 

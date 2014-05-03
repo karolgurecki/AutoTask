@@ -9,12 +9,32 @@ import android.content.Intent;
  * Version: 0.01
  * Since: 0.01
  */
-public abstract class AbstractTaskObject extends BroadcastReceiver implements TaskObject {
+public abstract class AbstractBroadcastReceiverTaskObject extends BroadcastReceiver implements TaskObject {
 
     protected Intent responseIntent;
 
     @Override
     public void setResponseIntent(Intent intent) {
         this.responseIntent = intent;
+    }
+
+    @Override
+    public BroadcastReceiver getBroadcastReceiver() {
+        return this;
+    }
+
+    @Override
+    public TaskType getTaskType() {
+        return TaskType.BROADCASTRECEIVER;
+    }
+
+    @Override
+    public void start() {
+
+    }
+
+    @Override
+    public void stop() {
+
     }
 }

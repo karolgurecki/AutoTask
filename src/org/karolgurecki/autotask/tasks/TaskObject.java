@@ -1,5 +1,6 @@
 package org.karolgurecki.autotask.tasks;
 
+import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 
@@ -58,7 +59,27 @@ public interface TaskObject {
     void setConfig(String config);
 
     /**
-     * @return
+     * @return the intent on which task object will response
      */
     Intent getIntent();
+
+    /**
+     * @return this task object BroadcastReceiver
+     */
+    BroadcastReceiver getBroadcastReceiver();
+
+    /**
+     * @return the task object runtime type.
+     */
+    TaskType getTaskType();
+
+    /**
+     * Stats THREAD type task object
+     */
+    void start();
+
+    /**
+     * Stops THREAD type task object
+     */
+    void stop();
 }

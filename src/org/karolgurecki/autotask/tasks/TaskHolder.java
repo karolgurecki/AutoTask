@@ -16,9 +16,9 @@ import java.util.Map;
  * Since: 0.01
  */
 public final class TaskHolder extends BroadcastReceiver {
-    private List<AbstractTaskObject> triggerList = new ArrayList<>();
+    private List<TaskObject> triggerList = new ArrayList<>();
 
-    private List<AbstractTaskObject> actionList = new ArrayList<>();
+    private List<TaskObject> actionList = new ArrayList<>();
 
     private Map<String, Boolean> triggerTriggered = new HashMap<>();
 
@@ -37,7 +37,7 @@ public final class TaskHolder extends BroadcastReceiver {
      * @param context     the context
      * @param name        the name
      */
-    public TaskHolder(List<AbstractTaskObject> triggerList, List<AbstractTaskObject> actionList, Long timestamp,
+    public TaskHolder(List<TaskObject> triggerList, List<TaskObject> actionList, Long timestamp,
                       Context context, String name) {
         this(triggerList, actionList, timestamp, context);
         this.name = name;
@@ -51,7 +51,7 @@ public final class TaskHolder extends BroadcastReceiver {
      * @param timestamp   the timestamp
      * @param context     the context
      */
-    public TaskHolder(List<AbstractTaskObject> triggerList, List<AbstractTaskObject> actionList, Long timestamp, Context context) {
+    public TaskHolder(List<TaskObject> triggerList, List<TaskObject> actionList, Long timestamp, Context context) {
         this.triggerList = triggerList;
         this.actionList = actionList;
         this.timestamp = timestamp;
@@ -68,8 +68,8 @@ public final class TaskHolder extends BroadcastReceiver {
         registerReceivers(triggerList, intent);
         registerReceivers(actionList, null);
 
-        for (AbstractTaskObject abstractTaskObject : triggerList) {
-            triggerTriggered.put(abstractTaskObject.getClass().getName(), Boolean.FALSE);
+        for (TaskObject TaskObject : triggerList) {
+            triggerTriggered.put(TaskObject.getClass().getName(), Boolean.FALSE);
         }
     }
 
@@ -89,20 +89,20 @@ public final class TaskHolder extends BroadcastReceiver {
         triggerTriggered.put(className, switchValue);
 
         if (!triggerTriggered.containsValue(false)) {
-            for (AbstractTaskObject abstractTaskObject : actionList) {
-                context.sendBroadcast(abstractTaskObject.getIntent());
+            for (TaskObject TaskObject : actionList) {
+                context.sendBroadcast(TaskObject.getIntent());
             }
         }
     }
 
-    private void unregisterReceivers(List<AbstractTaskObject> taskObjectList) {
-        for (AbstractTaskObject taskObject : taskObjectList) {
+    private void unregisterReceivers(List<TaskObject> taskObjectList) {
+        for (TaskObject taskObject : taskObjectList) {
             LocalBroadcastManager.getInstance(context).unregisterReceiver(taskObject);
         }
     }
 
-    private void registerReceivers(List<AbstractTaskObject> taskObjectList, Intent intent) {
-        for (AbstractTaskObject taskObject : taskObjectList) {
+    private void registerReceivers(List<TaskObject> taskObjectList, Intent intent) {
+        for (TaskObject taskObject : taskObjectList) {
             LocalBroadcastManager.getInstance(context).registerReceiver(taskObject, taskObject.getIntentFilter());
             taskObject.setResponseIntent(intent);
         }
@@ -113,7 +113,7 @@ public final class TaskHolder extends BroadcastReceiver {
      *
      * @return the trigger list
      */
-    public List<AbstractTaskObject> getTriggerList() {
+    public List<TaskObject> getTriggerList() {
         return triggerList;
     }
 
@@ -122,7 +122,7 @@ public final class TaskHolder extends BroadcastReceiver {
      *
      * @param triggerList the trigger list
      */
-    public void setTriggerList(List<AbstractTaskObject> triggerList) {
+    public void setTriggerList(List<TaskObject> triggerList) {
         this.triggerList = triggerList;
     }
 
@@ -131,7 +131,7 @@ public final class TaskHolder extends BroadcastReceiver {
      *
      * @return the action list
      */
-    public List<AbstractTaskObject> getActionList() {
+    public List<TaskObject> getActionList() {
         return actionList;
     }
 
@@ -140,7 +140,7 @@ public final class TaskHolder extends BroadcastReceiver {
      *
      * @param actionList the action list
      */
-    public void setActionList(List<AbstractTaskObject> actionList) {
+    public void setActionList(List<TaskObject> actionList) {
         this.actionList = actionList;
     }
 
