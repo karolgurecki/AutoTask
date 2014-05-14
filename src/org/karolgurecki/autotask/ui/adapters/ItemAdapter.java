@@ -48,7 +48,7 @@ public class ItemAdapter extends ArrayAdapter<TaskObject> {
         //
         holder = (ViewHolder) convertView.getTag();
         item = holder.getTitle();
-        item.setText(itemRow.getDisplayName());
+        item.setText(itemRow.getDisplayName(convertView.getContext()));
 
         return convertView;
     }

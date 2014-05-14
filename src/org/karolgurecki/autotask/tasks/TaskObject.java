@@ -1,6 +1,7 @@
 package org.karolgurecki.autotask.tasks;
 
 import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 
@@ -16,19 +17,19 @@ public interface TaskObject {
      *
      * @return the name to display
      */
-    String getDisplayName();
+    String getDisplayName(Context context);
 
     /**
      * Gets formatted configuration of this task object.
      *
      * @return the configuration to display
      */
-    String getDisplayConfiguration();
+    String getDisplayConfiguration(Context context);
 
     /**
      * Display dialog or activity with configuration UI.
      */
-    void openDialog();
+    void openDialog(Context context);
 
     /**
      * Get intent filter on which task will receive/

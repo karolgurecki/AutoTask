@@ -60,20 +60,6 @@ public class TaskFactory {
     }
 
     /**
-     * Creates list of task objects from given inputStream
-     *
-     * @param propertyInputStream the inputStream
-     * @param rootProperty        the root property from which list of the classes to be created
-     * @param loadConfig          this flag indicted if configuration of this class with be loaded from file
-     *
-     * @return a list of TaskObject objects
-     */
-    public static List<TaskObject> createTaskObjects(InputStream propertyInputStream, String rootProperty,
-                                                     boolean loadConfig) {
-        return createTaskObjects(new InputStreamReader(propertyInputStream), rootProperty, loadConfig);
-    }
-
-    /**
      * Creates list of task objects from given reader
      *
      * @param propertyReader the reader
@@ -119,7 +105,7 @@ public class TaskFactory {
         }
 
         for (String taskClazz : taskClasses) {
-
+            Log.d("AutoTask", String.format("Creating %s", taskClazz));
             try {
                 Class clazz = Class.forName(taskClazz);
                 TaskObject taskObject = (TaskObject) clazz.newInstance();
@@ -133,5 +119,19 @@ public class TaskFactory {
         }
 
         return tasks;
+    }
+
+    /**
+     * Creates list of task objects from given inputStream
+     *
+     * @param propertyInputStream the inputStream
+     * @param rootProperty        the root property from which list of the classes to be created
+     * @param loadConfig          this flag indicted if configuration of this class with be loaded from file
+     *
+     * @return a list of TaskObject objects
+     */
+    public static List<TaskObject> createTaskObjects(InputStream propertyInputStream, String rootProperty,
+                                                     boolean loadConfig) {
+        return createTaskObjects(new InputStreamReader(propertyInputStream), rootProperty, loadConfig);
     }
 }

@@ -8,7 +8,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.Menu;
@@ -18,9 +17,10 @@ import android.widget.TextView;
 import org.apache.commons.lang3.StringUtils;
 import org.karolgurecki.autotask.R;
 import org.karolgurecki.autotask.factory.TaskFactory;
-import org.karolgurecki.autotask.tasks.AbstractBroadcastReceiverTaskObject;
+import org.karolgurecki.autotask.tasks.TaskObject;
 import org.karolgurecki.autotask.ui.ListDialog;
 import org.karolgurecki.autotask.ui.adapters.ExpandableListAdapter;
+import org.karolgurecki.autotask.utils.ConstanceFiledHolder;
 import org.karolgurecki.autotask.utils.ExceptionUtils;
 
 import java.io.File;
@@ -30,7 +30,6 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Properties;
 
 import static android.app.AlertDialog.Builder;
 import static android.content.DialogInterface.OnClickListener;
@@ -47,16 +46,15 @@ public class NewTaskActivity extends Activity {
 
     private static final String COMMA = ",";
     private static final String AUTO_TASK_TAG = "AutoTask";
-    private static List<AbstractBroadcastReceiverTaskObject> actionsList;
-    private static List<AbstractBroadcastReceiverTaskObject> triggersList;
+
     private ExpandableListAdapter listAdapter;
     private ExpandableListView expListView;
     private List<String> listDataHeader;
-    private HashMap<String, List<AbstractBroadcastReceiverTaskObject>> listDataChild;
+    private HashMap<String, List<TaskObject>> listDataChild;
     private String add_trigger;
     private String add_action;
-    private List<AbstractBroadcastReceiverTaskObject> taskTriggerList = new ArrayList<>();
-    private List<AbstractBroadcastReceiverTaskObject> taskActionsList = new ArrayList<>();
+    private List<TaskObject> taskTriggerList = new ArrayList<>();
+    private List<TaskObject> taskActionsList = new ArrayList<>();
     private Dialog dialog = null;
     private BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
@@ -67,9 +65,9 @@ public class NewTaskActivity extends Activity {
 
             if (StringUtils.isNotBlank(type) && index >= 0) {
                 if (type.equalsIgnoreCase(getString(R.string.add_trigger))) {
-                    addObject(triggersList, taskTriggerList, index);
+                    addObject(ConstanceFiledHolder.triggersList, taskTriggerList, index);
                 } else {
-                    addObject(actionsList, taskActionsList, index);
+                    addObject(ConstanceFiledHolder.actionsList, taskActionsList, index);
                 }
             }
 
@@ -80,10 +78,10 @@ public class NewTaskActivity extends Activity {
 
         }
 
-        private void addObject(List<AbstractBroadcastReceiverTaskObject> taskObjectList, List<AbstractBroadcastReceiverTaskObject> taskList, int index) {
+        private void addObject(List<TaskObject> taskObjectList, List<TaskObject> taskList, int index) {
             try {
-                AbstractBroadcastReceiverTaskObject obj = taskObjectList.get(index).getClass().newInstance();
-                obj.openDialog();
+                TaskObject obj = taskObjectList.get(index).getClass().newInstance();
+                obj.openDialog(NewTaskActivity.this);
                 taskList.add(obj);
                 listAdapter.notifyDataSetChanged();
             } catch (InstantiationException | IllegalAccessException e) {
@@ -98,13 +96,13 @@ public class NewTaskActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.edit_task);
-        if (actionsList == null) {
-            actionsList = TaskFactory.createTaskObjects(getResources().openRawResource(R.raw.actions_classes),
+        if (ConstanceFiledHolder.actionsList == null) {
+            ConstanceFiledHolder.actionsList = TaskFactory.createTaskObjects(getResources().openRawResource(R.raw.actions_classes),
                     "tasks.classes", false);
         }
 
-        if (triggersList == null) {
-            triggersList = TaskFactory.createTaskObjects(getResources().openRawResource(R.raw.actions_classes),
+        if (ConstanceFiledHolder.triggersList == null) {
+            ConstanceFiledHolder.triggersList = TaskFactory.createTaskObjects(getResources().openRawResource(R.raw.trigers_classes),
                     "tasks.classes", false);
         }
         taskName = (TextView) findViewById(R.id.editText);
@@ -125,21 +123,21 @@ public class NewTaskActivity extends Activity {
         alertDialogBuilder.setMessage(getString(R.string.doYouWantSave));
         alertDialogBuilder.setCancelable(true);
 
-        alertDialogBuilder.setPositiveButton(R.string.yes, new OnClickListener() {
+        alertDialogBuilder.setPositiveButton(android.R.string.yes, new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 saveTask();
                 finish();
             }
         });
-        alertDialogBuilder.setNegativeButton(R.string.no, new OnClickListener() {
+        alertDialogBuilder.setNegativeButton(android.R.string.no, new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
                 finish();
             }
         });
-        alertDialogBuilder.setNeutralButton(R.string.cancel, new OnClickListener() {
+        alertDialogBuilder.setNeutralButton(android.R.string.cancel, new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
@@ -163,46 +161,17 @@ public class NewTaskActivity extends Activity {
 
     }
 
-    @Override
-    public boolean onCreatePanelMenu(int featureId, Menu menu) {
-        super.onCreatePanelMenu(featureId, menu);    //To change body of overridden methods use File | Settings | File Templates.
-
-        menu.add(getString(R.string.add_trigger));
-        menu.add(getString(R.string.add_action));
-        menu.add(getString(R.string.finish));
-
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getTitle().equals(add_action)) {
-            chooseTaskObject(1, actionsList, getString(R.string.add_action));
-        } else if (item.getTitle().equals(add_trigger)) {
-            chooseTaskObject(0, triggersList, getString(R.string.add_trigger));
-        } else {
-            alertDialogBuilder.show();
-        }
-        return true;
-    }
-
-    private void chooseTaskObject(int listAdapterNum, List<AbstractBroadcastReceiverTaskObject> taskObjects, String dialogTitle) {
-        dialog = new ListDialog(this, taskObjects, dialogTitle);
-    }
-
     private void saveTask() {
         FileOutputStream stream = null;
         try {
-            File autoTaskFolder = new File(Environment.getExternalStorageDirectory() + "/AutoTask");
+            File autoTaskFolder = getFilesDir();
             stream = new FileOutputStream(new File(autoTaskFolder.getPath(),
                     String.format("%s.properties", taskName.getText())));
             StringBuilder builder = new StringBuilder();
             builder.append("#This file is auto generated by AutoTask DO NOT CHANGE IT!");
-            appendConfig(builder, "trigger.classes", triggersList);
-            appendConfig(builder, "actions.classes", actionsList);
+            appendConfig(builder, ConstanceFiledHolder.TRIGGER_CLASSES, ConstanceFiledHolder.triggersList);
+            appendConfig(builder, ConstanceFiledHolder.ACTION_CLASSES, ConstanceFiledHolder.actionsList);
             stream.write(builder.toString().getBytes(Charset.forName("ISO-8859-1")));
-            Properties properties = new Properties();
-            properties.store(stream, null);
         } catch (IOException e) {
             Log.e(AUTO_TASK_TAG, ExceptionUtils.stackTraceToString(e));
         } finally {
@@ -216,7 +185,7 @@ public class NewTaskActivity extends Activity {
         }
     }
 
-    private void appendConfig(StringBuilder builder, String classesPropName, List<AbstractBroadcastReceiverTaskObject> taskObjectList) {
+    private void appendConfig(StringBuilder builder, String classesPropName, List<TaskObject> taskObjectList) {
         builder.append(String.format("%s=", classesPropName));
 
         for (int i = 0; i < taskObjectList.size(); i++) {
@@ -226,7 +195,7 @@ public class NewTaskActivity extends Activity {
             }
         }
         builder.append("\n");
-        for (AbstractBroadcastReceiverTaskObject taskObject : taskObjectList) {
+        for (TaskObject taskObject : taskObjectList) {
             builder.append(String.format("%s.config=%s\n", taskObject.getClass().getName(), taskObject.getConfig()));
         }
     }
@@ -253,5 +222,32 @@ public class NewTaskActivity extends Activity {
     @Override
     public void onBackPressed() {
         alertDialogBuilder.show();
+    }
+
+    @Override
+    public boolean onCreatePanelMenu(int featureId, Menu menu) {
+        super.onCreatePanelMenu(featureId, menu);    //To change body of overridden methods use File | Settings | File Templates.
+
+        menu.add(getString(R.string.add_trigger));
+        menu.add(getString(R.string.add_action));
+        menu.add(getString(R.string.finish));
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getTitle().equals(add_action)) {
+            chooseTaskObject(1, ConstanceFiledHolder.actionsList, getString(R.string.add_action));
+        } else if (item.getTitle().equals(add_trigger)) {
+            chooseTaskObject(0, ConstanceFiledHolder.triggersList, getString(R.string.add_trigger));
+        } else {
+            alertDialogBuilder.show();
+        }
+        return true;
+    }
+
+    private void chooseTaskObject(int listAdapterNum, List<TaskObject> taskObjects, String dialogTitle) {
+        dialog = new ListDialog(this, taskObjects, dialogTitle);
     }
 }

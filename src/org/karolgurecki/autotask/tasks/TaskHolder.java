@@ -73,12 +73,26 @@ public final class TaskHolder extends BroadcastReceiver {
         }
     }
 
+    private void registerReceivers(List<TaskObject> taskObjectList, Intent intent) {
+        for (TaskObject taskObject : taskObjectList) {
+            LocalBroadcastManager.getInstance(context).registerReceiver(taskObject.getBroadcastReceiver(),
+                    taskObject.getIntentFilter());
+            taskObject.setResponseIntent(intent);
+        }
+    }
+
     /**
      * On destoy.
      */
     public void onDestoy() {
         unregisterReceivers(triggerList);
         unregisterReceivers(actionList);
+    }
+
+    private void unregisterReceivers(List<TaskObject> taskObjectList) {
+        for (TaskObject taskObject : taskObjectList) {
+            LocalBroadcastManager.getInstance(context).unregisterReceiver(taskObject.getBroadcastReceiver());
+        }
     }
 
     @Override
@@ -92,19 +106,6 @@ public final class TaskHolder extends BroadcastReceiver {
             for (TaskObject TaskObject : actionList) {
                 context.sendBroadcast(TaskObject.getIntent());
             }
-        }
-    }
-
-    private void unregisterReceivers(List<TaskObject> taskObjectList) {
-        for (TaskObject taskObject : taskObjectList) {
-            LocalBroadcastManager.getInstance(context).unregisterReceiver(taskObject);
-        }
-    }
-
-    private void registerReceivers(List<TaskObject> taskObjectList, Intent intent) {
-        for (TaskObject taskObject : taskObjectList) {
-            LocalBroadcastManager.getInstance(context).registerReceiver(taskObject, taskObject.getIntentFilter());
-            taskObject.setResponseIntent(intent);
         }
     }
 

@@ -1,8 +1,11 @@
 package org.karolgurecki.autotask.tasks.impl;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import org.karolgurecki.autotask.tasks.TaskObject;
+import org.karolgurecki.autotask.tasks.TaskType;
 
 /**
  * Created by: Nappa
@@ -23,17 +26,17 @@ public class TestTaskObject implements TaskObject {
     }
 
     @Override
-    public String getDisplayName() {
+    public String getDisplayName(Context context) {
         return name;
     }
 
     @Override
-    public String getDisplayConfiguration() {
+    public String getDisplayConfiguration(Context context) {
         return config;
     }
 
     @Override
-    public void openDialog() {
+    public void openDialog(Context context) {
 
     }
 
@@ -60,6 +63,26 @@ public class TestTaskObject implements TaskObject {
     @Override
     public Intent getIntent() {
         return null;
+    }
+
+    @Override
+    public BroadcastReceiver getBroadcastReceiver() {
+        return null;
+    }
+
+    @Override
+    public TaskType getTaskType() {
+        return null;
+    }
+
+    @Override
+    public void start() {
+
+    }
+
+    @Override
+    public void stop() {
+
     }
 
 }

@@ -5,7 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.v4.content.LocalBroadcastManager;
+import org.karolgurecki.autotask.R;
 import org.karolgurecki.autotask.tasks.AbstractBroadcastReceiverTaskObject;
+import org.karolgurecki.autotask.ui.tasks.AbstractOnOffDialog;
 
 /**
  * Created by: Karol Górecki
@@ -17,7 +19,7 @@ public class BluetoothTrigger extends AbstractBroadcastReceiverTaskObject {
 
     private static final Intent INTENT = new Intent(BluetoothAdapter.ACTION_STATE_CHANGED);
 
-    int activeValue = BluetoothAdapter.STATE_ON;
+    private int activeValue = BluetoothAdapter.STATE_ON;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -34,18 +36,20 @@ public class BluetoothTrigger extends AbstractBroadcastReceiverTaskObject {
     }
 
     @Override
-    public String getDisplayName() {
-        return null;
+    public String getDisplayName(Context context) {
+        return context.getString(R.string.bluetoothTrigger);
     }
 
     @Override
-    public String getDisplayConfiguration() {
-        return null;
+    public String getDisplayConfiguration(Context context) {
+        String config = activeValue == BluetoothAdapter.STATE_ON ? context.getString(R.string.on) :
+                context.getString(R.string.off);
+        return String.format("%s: %s", context.getString(R.string.ifString), config);
     }
 
     @Override
-    public void openDialog() {
-
+    public void openDialog(Context context) {
+        new BluetoothOnOffDialog(context, context.getString(R.string.bluetoothTriggerConfigTitle));
     }
 
     @Override
@@ -66,5 +70,21 @@ public class BluetoothTrigger extends AbstractBroadcastReceiverTaskObject {
     @Override
     public Intent getIntent() {
         return INTENT;
+    }
+
+    private class BluetoothOnOffDialog extends AbstractOnOffDialog {
+
+        private BluetoothOnOffDialog(Context context, String title) {
+            super(context, title);
+        }
+
+        @Override
+        protected void setActiveValue(boolean isOn) {
+            if (isOn) {
+                activeValue = BluetoothAdapter.STATE_ON;
+            } else {
+                activeValue = BluetoothAdapter.STATE_OFF;
+            }
+        }
     }
 }

@@ -28,32 +28,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public Object getChild(int groupPosition, int childPosititon) {
-        return this.listChildren.get(this.listHeaders.get(groupPosition)).get(childPosititon);
-    }
-
-    @Override
-    public long getChildId(int groupPosition, int childPosition) {
-        return childPosition;
-    }
-
-    @Override
-    public View getChildView(int groupPosition, final int childPosition,
-                             boolean isLastChild, View convertView, ViewGroup parent) {
-        TaskObject child = (TaskObject) getChild(groupPosition, childPosition);
-
-        if (convertView == null) {
-            LayoutInflater infalInflater = (LayoutInflater) this.context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.item_row, null);
-        }
-
-        TextView childHeaderTextView = (TextView) convertView.findViewById(R.id.itemTitle);
-        TextView childConfigTextView = (TextView) convertView.findViewById(R.id.itemDescription);
-
-        childHeaderTextView.setText(child.getDisplayName());
-        childConfigTextView.setText(child.getDisplayConfiguration());
-        return convertView;
+    public int getGroupCount() {
+        return this.listHeaders.size();
     }
 
     @Override
@@ -67,13 +43,23 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public int getGroupCount() {
-        return this.listHeaders.size();
+    public Object getChild(int groupPosition, int childPosititon) {
+        return this.listChildren.get(this.listHeaders.get(groupPosition)).get(childPosititon);
     }
 
     @Override
     public long getGroupId(int groupPosition) {
         return groupPosition;
+    }
+
+    @Override
+    public long getChildId(int groupPosition, int childPosition) {
+        return childPosition;
+    }
+
+    @Override
+    public boolean hasStableIds() {
+        return false;
     }
 
     @Override
@@ -93,8 +79,23 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public boolean hasStableIds() {
-        return false;
+    public View getChildView(int groupPosition, final int childPosition,
+                             boolean isLastChild, View convertView, ViewGroup parent) {
+        TaskObject child = (TaskObject) getChild(groupPosition, childPosition);
+
+        if (convertView == null) {
+            LayoutInflater infalInflater = (LayoutInflater) this.context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = infalInflater.inflate(R.layout.item_row, null);
+        }
+
+        TextView childHeaderTextView = (TextView) convertView.findViewById(R.id.itemTitle);
+        TextView childConfigTextView = (TextView) convertView.findViewById(R.id.itemDescription);
+
+        Context context = convertView.getContext();
+        childHeaderTextView.setText(child.getDisplayName(context));
+        childConfigTextView.setText(child.getDisplayConfiguration(context));
+        return convertView;
     }
 
     @Override

@@ -16,4 +16,10 @@
     <string name="no">No</string>
     <string name="cancel">Cancel</string>
     <string name="autotask">Autotask</string>
+    <string name="off">Off</string>
+    <string name="on">On</string>
+    <string name="confirm">Confirm</string>
+    <string name="bluetoothTriggerConfigTitle">Bluetooth trigger configuration</string>
+    <string name="bluetoothTrigger">Bluetooth trigger</string>
+    <string name="ifString">If</string>
 </resources>

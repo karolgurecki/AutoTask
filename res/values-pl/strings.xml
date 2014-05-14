@@ -16,4 +16,9 @@
     <string name="no">Nie</string>
     <string name="cancel">Anuluj</string>
     <string name="autotask">Autotask</string>
+    <string name="off">Wyłączony</string>
+    <string name="on">Włączony</string>
+    <string name="confirm">Potwierdź</string>
+    <string name="bluetoothTriggerConfigTitle">Konfiguracja</string>
+    <string name="ifString">Jeżeli</string>
 </resources>

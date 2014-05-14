@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import org.karolgurecki.autotask.R;
+import org.karolgurecki.autotask.service.StartUpService;
 
 public class Main extends Activity {
 
@@ -19,7 +20,7 @@ public class Main extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-
+        startService(new Intent(this, StartUpService.class));
 
         newTaskButton = (Button) findViewById(R.id.newTaskbutton);
 
