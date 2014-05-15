@@ -3,7 +3,8 @@ package org.karolgurecki.autotask.tasks;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.content.LocalBroadcastManager;
+import android.content.IntentFilter;
+import org.karolgurecki.autotask.utils.ConstanceFiledHolder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,6 +17,13 @@ import java.util.Map;
  * Since: 0.01
  */
 public final class TaskHolder extends BroadcastReceiver {
+
+    private String intentAction;
+
+    private Intent intent;
+
+    private IntentFilter intentFilter;
+
     private List<TaskObject> triggerList = new ArrayList<>();
 
     private List<TaskObject> actionList = new ArrayList<>();
@@ -63,8 +71,9 @@ public final class TaskHolder extends BroadcastReceiver {
      * It's called when task is creating
      */
     public void onCreate() {
-        String intentActions = String.format("%s_%d", name, timestamp);
-        Intent intent = new Intent(intentActions);
+        intentAction = String.format("%s.%s%d", getClass().getName(), name, timestamp);
+        intent = new Intent(intentAction);
+        intentFilter = new IntentFilter(intentAction);
         registerReceivers(triggerList, intent);
         registerReceivers(actionList, null);
 
@@ -75,8 +84,11 @@ public final class TaskHolder extends BroadcastReceiver {
 
     private void registerReceivers(List<TaskObject> taskObjectList, Intent intent) {
         for (TaskObject taskObject : taskObjectList) {
-            LocalBroadcastManager.getInstance(context).registerReceiver(taskObject.getBroadcastReceiver(),
-                    taskObject.getIntentFilter());
+            if (taskObject.getTaskType().equals(TaskType.BROADCASTRECEIVER)) {
+                context.registerReceiver(taskObject.getBroadcastReceiver(), taskObject.getIntentFilter());
+            } else {
+                taskObject.start();
+            }
             taskObject.setResponseIntent(intent);
         }
     }
@@ -91,14 +103,18 @@ public final class TaskHolder extends BroadcastReceiver {
 
     private void unregisterReceivers(List<TaskObject> taskObjectList) {
         for (TaskObject taskObject : taskObjectList) {
-            LocalBroadcastManager.getInstance(context).unregisterReceiver(taskObject.getBroadcastReceiver());
+            if (taskObject.getTaskType().equals(TaskType.BROADCASTRECEIVER)) {
+                context.unregisterReceiver(taskObject.getBroadcastReceiver());
+            } else {
+                taskObject.stop();
+            }
         }
     }
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        String className = intent.getStringExtra("className");
-        Boolean switchValue = intent.getBooleanExtra("switchValue", false);
+        String className = intent.getStringExtra(ConstanceFiledHolder.EXTRA_CLASS_NAAME);
+        Boolean switchValue = intent.getBooleanExtra(ConstanceFiledHolder.EXTRA_TRIGGER_ACTIVATED, false);
 
         triggerTriggered.put(className, switchValue);
 
@@ -109,77 +125,22 @@ public final class TaskHolder extends BroadcastReceiver {
         }
     }
 
+
     /**
-     * Gets trigger list.
+     * Gets intent.
      *
-     * @return the trigger list
+     * @return Value of intent.
      */
-    public List<TaskObject> getTriggerList() {
-        return triggerList;
+    public Intent getIntent() {
+        return intent;
     }
 
     /**
-     * Sets trigger list.
+     * Gets intentFilter.
      *
-     * @param triggerList the trigger list
+     * @return Value of intentFilter.
      */
-    public void setTriggerList(List<TaskObject> triggerList) {
-        this.triggerList = triggerList;
+    public IntentFilter getIntentFilter() {
+        return intentFilter;
     }
-
-    /**
-     * Gets action list.
-     *
-     * @return the action list
-     */
-    public List<TaskObject> getActionList() {
-        return actionList;
-    }
-
-    /**
-     * Sets action list.
-     *
-     * @param actionList the action list
-     */
-    public void setActionList(List<TaskObject> actionList) {
-        this.actionList = actionList;
-    }
-
-    /**
-     * Gets timestamp.
-     *
-     * @return the timestamp
-     */
-    public Long getTimestamp() {
-        return timestamp;
-    }
-
-    /**
-     * Sets timestamp.
-     *
-     * @param timestamp the timestamp
-     */
-    public void setTimestamp(Long timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    /**
-     * Gets name.
-     *
-     * @return the name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Sets name.
-     *
-     * @param name the name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
 }

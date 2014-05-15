@@ -1,7 +1,9 @@
 package org.karolgurecki.autotask.tasks;
 
 import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import org.karolgurecki.autotask.utils.ConstanceFiledHolder;
 
 /**
  * Created by: Karol Górecki
@@ -13,6 +15,20 @@ public abstract class AbstractBroadcastReceiverTaskObject extends BroadcastRecei
 
     protected Intent responseIntent;
 
+    protected Boolean activated;
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        receive(context, intent);
+        responseIntent.ext
+        responseIntent.putExtra(ConstanceFiledHolder.EXTRA_TRIGGER_ACTIVATED, activated);
+        responseIntent.putExtra(ConstanceFiledHolder.EXTRA_CLASS_NAAME, getClass().getName());
+
+        context.sendBroadcast(responseIntent);
+    }
+
+
+    protected abstract void receive(Context context, Intent intent);
     @Override
     public void setResponseIntent(Intent intent) {
         this.responseIntent = intent;

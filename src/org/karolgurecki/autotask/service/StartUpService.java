@@ -58,6 +58,7 @@ public class StartUpService extends Service {
                             createTaskObjects(properties, ConstanceFiledHolder.ACTION_CLASSES, true),
                             System.currentTimeMillis(), this, file.getName());
                     holder.onCreate();
+                    this.registerReceiver(holder, holder.getIntentFilter());
                     ConstanceFiledHolder.taskHolderSet.add(holder);
                 } catch (IOException e) {
                     Log.e(getString(R.string.autotask), ExceptionUtils.stackTraceToString(e));
@@ -73,5 +74,14 @@ public class StartUpService extends Service {
     public IBinder onBind(Intent intent) {
         Log.d("AutoTask", "Boo1");
         return null;
+    }
+
+    @Override
+    public boolean stopService(Intent name) {
+        for (TaskHolder holder : ConstanceFiledHolder.taskHolderSet) {
+            holder.onDestoy();
+            unregisterReceiver(holder);
+        }
+        return super.stopService(name);
     }
 }

@@ -4,7 +4,6 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.support.v4.content.LocalBroadcastManager;
 import org.karolgurecki.autotask.R;
 import org.karolgurecki.autotask.tasks.AbstractBroadcastReceiverTaskObject;
 import org.karolgurecki.autotask.ui.tasks.AbstractOnOffDialog;
@@ -18,20 +17,17 @@ import org.karolgurecki.autotask.ui.tasks.AbstractOnOffDialog;
 public class BluetoothTrigger extends AbstractBroadcastReceiverTaskObject {
 
     private static final Intent INTENT = new Intent(BluetoothAdapter.ACTION_STATE_CHANGED);
+    private static final IntentFilter INTENT_FILTER = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
 
     private int activeValue = BluetoothAdapter.STATE_ON;
 
     @Override
-    public void onReceive(Context context, Intent intent) {
+    public void receive(Context context, Intent intent) {
         if (INTENT.getAction().equalsIgnoreCase(intent.getAction())) {
-            Boolean activated = false;
-            if (activeValue == intent.getIntExtra(BluetoothAdapter.ACTION_STATE_CHANGED, -10)) {
+            activated = false;
+            if (activeValue == intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, -10)) {
                 activated = true;
             }
-
-            responseIntent.putExtra("org.karolgurecki.autotask.tasks.triggers.TRIGGER_ACTIVATED", activated);
-
-            LocalBroadcastManager.getInstance(context).sendBroadcast(responseIntent);
         }
     }
 
@@ -54,7 +50,7 @@ public class BluetoothTrigger extends AbstractBroadcastReceiverTaskObject {
 
     @Override
     public IntentFilter getIntentFilter() {
-        return null;
+        return INTENT_FILTER;
     }
 
     @Override
