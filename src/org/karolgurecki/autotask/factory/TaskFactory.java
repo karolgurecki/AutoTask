@@ -2,6 +2,7 @@ package org.karolgurecki.autotask.factory;
 
 import android.util.Log;
 import org.karolgurecki.autotask.tasks.TaskObject;
+import org.karolgurecki.autotask.utils.ConstanceFiledHolder;
 import org.karolgurecki.autotask.utils.ExceptionUtils;
 
 import java.io.File;
@@ -53,7 +54,7 @@ public class TaskFactory {
         try {
             return createTaskObjects(new FileReader(propertyFile), rootProperty, loadConfig);
         } catch (FileNotFoundException e) {
-            Log.e("AutoTask", ExceptionUtils.stackTraceToString(e));
+            Log.e(ConstanceFiledHolder.AUTOTASK_TAG, ExceptionUtils.stackTraceToString(e));
         }
 
         return null;
@@ -76,7 +77,7 @@ public class TaskFactory {
             properties.load(propertyReader);
             return createTaskObjects(properties, rootProperty, loadConfig);
         } catch (IOException e) {
-            Log.e("AutoTask", ExceptionUtils.stackTraceToString(e));
+            Log.e(ConstanceFiledHolder.AUTOTASK_TAG, ExceptionUtils.stackTraceToString(e));
         }
 
 
@@ -101,11 +102,11 @@ public class TaskFactory {
         try {
             taskClasses = properties.getProperty(rootProperty).split(",");
         } catch (NullPointerException e) {
-            Log.e("AutoTask", ExceptionUtils.stackTraceToString(e));
+            Log.e(ConstanceFiledHolder.AUTOTASK_TAG, ExceptionUtils.stackTraceToString(e));
         }
 
         for (String taskClazz : taskClasses) {
-            Log.d("AutoTask", String.format("Creating %s", taskClazz));
+            Log.d(ConstanceFiledHolder.AUTOTASK_TAG, String.format("Creating %s", taskClazz));
             try {
                 Class clazz = Class.forName(taskClazz);
                 TaskObject taskObject = (TaskObject) clazz.newInstance();
@@ -114,7 +115,7 @@ public class TaskFactory {
                 }
                 tasks.add(taskObject);
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-                Log.e("AutoTask", ExceptionUtils.stackTraceToString(e));
+                Log.e(ConstanceFiledHolder.AUTOTASK_TAG, ExceptionUtils.stackTraceToString(e));
             }
         }
 

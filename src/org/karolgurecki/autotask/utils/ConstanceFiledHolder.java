@@ -21,6 +21,7 @@ public class ConstanceFiledHolder {
     public static final String ACTION_CLASSES = "action.classes";
     public static final String EXTRA_TRIGGER_ACTIVATED = "org.karolgurecki.autotask.tasks.triggers.TRIGGER_ACTIVATED";
     public static final String EXTRA_CLASS_NAAME = "org.karolgurecki.autotask.tasks.triggers.CLASS_NAME";
+    public static final String AUTOTASK_TAG = "AutoTask";
     public static List<TaskObject> actionsList;
     public static List<TaskObject> triggersList;
 

@@ -45,7 +45,6 @@ import static android.content.DialogInterface.OnClickListener;
 public class NewTaskActivity extends Activity {
 
     private static final String COMMA = ",";
-    private static final String AUTO_TASK_TAG = "AutoTask";
 
     private ExpandableListAdapter listAdapter;
     private ExpandableListView expListView;
@@ -85,7 +84,7 @@ public class NewTaskActivity extends Activity {
                 taskList.add(obj);
                 listAdapter.notifyDataSetChanged();
             } catch (InstantiationException | IllegalAccessException e) {
-                Log.e(AUTO_TASK_TAG, ExceptionUtils.stackTraceToString(e));
+                Log.e(ConstanceFiledHolder.AUTOTASK_TAG, ExceptionUtils.stackTraceToString(e));
             }
         }
     };
@@ -173,13 +172,13 @@ public class NewTaskActivity extends Activity {
             appendConfig(builder, ConstanceFiledHolder.ACTION_CLASSES, ConstanceFiledHolder.actionsList);
             stream.write(builder.toString().getBytes(Charset.forName("ISO-8859-1")));
         } catch (IOException e) {
-            Log.e(AUTO_TASK_TAG, ExceptionUtils.stackTraceToString(e));
+            Log.e(ConstanceFiledHolder.AUTOTASK_TAG, ExceptionUtils.stackTraceToString(e));
         } finally {
             if (stream != null) {
                 try {
                     stream.close();
                 } catch (IOException e) {
-                    Log.e(AUTO_TASK_TAG, ExceptionUtils.stackTraceToString(e));
+                    Log.e(ConstanceFiledHolder.AUTOTASK_TAG, ExceptionUtils.stackTraceToString(e));
                 }
             }
         }

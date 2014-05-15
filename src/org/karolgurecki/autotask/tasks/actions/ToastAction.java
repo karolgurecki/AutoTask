@@ -23,6 +23,11 @@ public class ToastAction extends AbstractBroadcastReceiverTaskObject {
     }
 
     @Override
+    protected void receive(Context context, Intent intent) {
+
+    }
+
+    @Override
     public String getDisplayName(Context context) {
         return "Toast Action";
     }

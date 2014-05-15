@@ -20,7 +20,6 @@ public abstract class AbstractBroadcastReceiverTaskObject extends BroadcastRecei
     @Override
     public void onReceive(Context context, Intent intent) {
         receive(context, intent);
-        responseIntent.ext
         responseIntent.putExtra(ConstanceFiledHolder.EXTRA_TRIGGER_ACTIVATED, activated);
         responseIntent.putExtra(ConstanceFiledHolder.EXTRA_CLASS_NAAME, getClass().getName());
 
@@ -29,6 +28,7 @@ public abstract class AbstractBroadcastReceiverTaskObject extends BroadcastRecei
 
 
     protected abstract void receive(Context context, Intent intent);
+
     @Override
     public void setResponseIntent(Intent intent) {
         this.responseIntent = intent;

@@ -4,7 +4,6 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
-import org.karolgurecki.autotask.R;
 import org.karolgurecki.autotask.tasks.TaskHolder;
 import org.karolgurecki.autotask.utils.ConstanceFiledHolder;
 import org.karolgurecki.autotask.utils.ExceptionUtils;
@@ -33,9 +32,9 @@ public class StartUpService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
-        Log.d("AutoTask", "Boo2");
+        Log.d(ConstanceFiledHolder.AUTOTASK_TAG, "Boo2");
         File autoTaskFolder = getFilesDir();
-        Log.d("AutoTask", "Boo3");
+        Log.d(ConstanceFiledHolder.AUTOTASK_TAG, "Boo3");
         if (autoTaskFolder.exists()) {
             FileFilter fileFilter = new FileFilter() {
                 @Override
@@ -51,28 +50,35 @@ public class StartUpService extends Service {
 
             for (File file : fileArray) {
                 try {
+                    Log.d(ConstanceFiledHolder.AUTOTASK_TAG, String.format("Initializing task: %s", file.getName()));
                     Properties properties = new Properties();
                     properties.load(new FileReader(file));
                     TaskHolder holder = new TaskHolder(
                             createTaskObjects(properties, ConstanceFiledHolder.TRIGGER_CLASSES, true),
                             createTaskObjects(properties, ConstanceFiledHolder.ACTION_CLASSES, true),
                             System.currentTimeMillis(), this, file.getName());
-                    holder.onCreate();
                     this.registerReceiver(holder, holder.getIntentFilter());
-                    ConstanceFiledHolder.taskHolderSet.add(holder);
+                    if (ConstanceFiledHolder.taskHolderSet.add(holder)) {
+                        Log.d(ConstanceFiledHolder.AUTOTASK_TAG, String.format("Starting task: %s", file.getName()));
+                        holder.onCreate();
+                        Log.d(ConstanceFiledHolder.AUTOTASK_TAG, String.format("Started task: %s", file.getName()));
+                    } else {
+                        Log.d(ConstanceFiledHolder.AUTOTASK_TAG, String.format("Task %s already started", file.getName()));
+                    }
                 } catch (IOException e) {
-                    Log.e(getString(R.string.autotask), ExceptionUtils.stackTraceToString(e));
+                    Log.d(ConstanceFiledHolder.AUTOTASK_TAG, String.format("Failed to initialized task: %s", file.getName()));
+                    Log.e(ConstanceFiledHolder.AUTOTASK_TAG, ExceptionUtils.stackTraceToString(e));
                 }
 
             }
         } else if (!autoTaskFolder.mkdirs()) {
-            Log.e(getString(R.string.autotask), "Can't create a AutoTask folder");
+            Log.e(ConstanceFiledHolder.AUTOTASK_TAG, "Can't create a AutoTask folder");
         }
         return Service.START_STICKY;
     }
 
     public IBinder onBind(Intent intent) {
-        Log.d("AutoTask", "Boo1");
+        Log.d(ConstanceFiledHolder.AUTOTASK_TAG, "Boo1");
         return null;
     }
 
