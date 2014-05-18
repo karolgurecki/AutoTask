@@ -2,7 +2,7 @@ package org.karolgurecki.autotask.factory;
 
 import android.util.Log;
 import org.karolgurecki.autotask.tasks.TaskObject;
-import org.karolgurecki.autotask.utils.ConstanceFiledHolder;
+import org.karolgurecki.autotask.utils.ConstanceFieldHolder;
 import org.karolgurecki.autotask.utils.ExceptionUtils;
 
 import java.io.File;
@@ -54,7 +54,7 @@ public class TaskFactory {
         try {
             return createTaskObjects(new FileReader(propertyFile), rootProperty, loadConfig);
         } catch (FileNotFoundException e) {
-            Log.e(ConstanceFiledHolder.AUTOTASK_TAG, ExceptionUtils.stackTraceToString(e));
+            Log.e(ConstanceFieldHolder.AUTOTASK_TAG, ExceptionUtils.stackTraceToString(e));
         }
 
         return null;
@@ -77,7 +77,7 @@ public class TaskFactory {
             properties.load(propertyReader);
             return createTaskObjects(properties, rootProperty, loadConfig);
         } catch (IOException e) {
-            Log.e(ConstanceFiledHolder.AUTOTASK_TAG, ExceptionUtils.stackTraceToString(e));
+            Log.e(ConstanceFieldHolder.AUTOTASK_TAG, ExceptionUtils.stackTraceToString(e));
         }
 
 
@@ -95,30 +95,31 @@ public class TaskFactory {
      */
     public static List<TaskObject> createTaskObjects(Properties properties, String rootProperty,
                                                      boolean loadConfig) {
-        List<TaskObject> tasks = new ArrayList<TaskObject>();
+        List<TaskObject> tasks = new ArrayList<>();
 
         String[] taskClasses = null;
 
         try {
-            taskClasses = properties.getProperty(rootProperty).split(",");
+            taskClasses = properties.getProperty(rootProperty).split(ConstanceFieldHolder.COMMA);
         } catch (NullPointerException e) {
-            Log.e(ConstanceFiledHolder.AUTOTASK_TAG, ExceptionUtils.stackTraceToString(e));
+            Log.e(ConstanceFieldHolder.AUTOTASK_TAG, ExceptionUtils.stackTraceToString(e));
         }
 
-        for (String taskClazz : taskClasses) {
-            Log.d(ConstanceFiledHolder.AUTOTASK_TAG, String.format("Creating %s", taskClazz));
-            try {
-                Class clazz = Class.forName(taskClazz);
-                TaskObject taskObject = (TaskObject) clazz.newInstance();
-                if (loadConfig) {
-                    taskObject.setConfig(properties.getProperty(String.format("%s.config", taskClazz)));
+        if (taskClasses != null) {
+            for (String taskClazz : taskClasses) {
+                Log.d(ConstanceFieldHolder.AUTOTASK_TAG, String.format("Creating %s", taskClazz));
+                try {
+                    Class clazz = Class.forName(taskClazz);
+                    TaskObject taskObject = (TaskObject) clazz.newInstance();
+                    if (loadConfig) {
+                        taskObject.setConfig(properties.getProperty(String.format("%s.config", taskClazz)));
+                    }
+                    tasks.add(taskObject);
+                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+                    Log.e(ConstanceFieldHolder.AUTOTASK_TAG, ExceptionUtils.stackTraceToString(e));
                 }
-                tasks.add(taskObject);
-            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-                Log.e(ConstanceFiledHolder.AUTOTASK_TAG, ExceptionUtils.stackTraceToString(e));
             }
         }
-
         return tasks;
     }
 

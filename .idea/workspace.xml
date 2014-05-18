@@ -56,14 +56,14 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: org.karolgurecki.autotask" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa311a1c-8ddf-4843-aaee-bc7ee9f4f4de" name="Default" comment="Finally works!">
+    <list default="true" id="fa311a1c-8ddf-4843-aaee-bc7ee9f4f4de" name="Default" comment="Some changes">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/AbstractBroadcastReceiverTaskObject.java" afterPath="$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/AbstractBroadcastReceiverTaskObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/karolgurecki/autotask/utils/ConstanceFiledHolder.java" afterPath="$PROJECT_DIR$/src/org/karolgurecki/autotask/utils/ConstanceFiledHolder.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/NewTaskActivity.java" afterPath="$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/NewTaskActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/karolgurecki/autotask/service/StartUpService.java" afterPath="$PROJECT_DIR$/src/org/karolgurecki/autotask/service/StartUpService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/karolgurecki/autotask/factory/TaskFactory.java" afterPath="$PROJECT_DIR$/src/org/karolgurecki/autotask/factory/TaskFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/actions/ToastAction.java" afterPath="$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/actions/ToastAction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/TaskHolder.java" afterPath="$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/TaskHolder.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="G:\Projects\AutoTask\src\org\karolgurecki\autotask\utils\ConstanceFiledHolder.java" afterPath="$PROJECT_DIR$/src/org/karolgurecki/autotask/utils/ConstanceFieldHolder.java" />
     </list>
     <ignored path="AutoTask.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -274,8 +274,8 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties converted="true" />
     <breakpoint_rules converted="true" />
+    <ui_properties converted="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -283,35 +283,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AbstractBroadcastReceiverTaskObject.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="AbstractBroadcastReceiverTaskObject.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/AbstractBroadcastReceiverTaskObject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="57" max-vertical-offset="884">
-              <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.33274338" vertical-offset="152" max-vertical-offset="901">
+              <caret line="23" column="80" selection-start-line="23" selection-start-column="80" selection-end-line="23" selection-end-column="80" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TaskHolder.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/TaskHolder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1531" max-vertical-offset="2431">
-              <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
-              <folding>
-                <element signature="e#3988#3989#0" expanded="true" />
-                <element signature="e#4017#4018#0" expanded="true" />
-                <element signature="e#4149#4150#0" expanded="true" />
-                <element signature="e#4184#4185#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ToastAction.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ToastAction.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/actions/ToastAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36106196" vertical-offset="136" max-vertical-offset="918">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
               <caret line="26" column="8" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding />
             </state>
@@ -321,9 +306,12 @@
       <file leaf-file-name="StartUpService.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/service/StartUpService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="1360">
-              <caret line="66" column="103" selection-start-line="66" selection-start-column="103" selection-end-line="66" selection-end-column="103" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="1394">
+              <caret line="43" column="20" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="20" />
+              <folding>
+                <element signature="e#1096#1464#0" expanded="true" />
+                <element signature="e#1449#1450#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -331,12 +319,9 @@
       <file leaf-file-name="TaskFactory.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/factory/TaskFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.3157897" vertical-offset="1351" max-vertical-offset="2448">
-              <caret line="104" column="51" selection-start-line="104" selection-start-column="51" selection-end-line="104" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3634#3646#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="1393" max-vertical-offset="2210">
+              <caret line="108" column="12" selection-start-line="108" selection-start-column="12" selection-end-line="108" selection-end-column="12" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -344,8 +329,8 @@
       <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="52" max-vertical-offset="697">
-              <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
+              <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -354,31 +339,22 @@
       <file leaf-file-name="NewTaskActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/NewTaskActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="4369">
-              <caret line="50" column="40" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1037" max-vertical-offset="3655">
+              <caret line="94" column="78" selection-start-line="94" selection-start-column="56" selection-end-line="94" selection-end-column="56" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2288#2319#0" expanded="true" />
-                <element signature="e#4276#4307#0" expanded="true" />
-                <element signature="e#4330#4360#0" expanded="true" />
-                <element signature="e#4447#4485#0" expanded="true" />
-                <element signature="e#4526#4559#0" expanded="true" />
-                <element signature="e#4678#4870#0" expanded="true" />
-                <element signature="e#4859#4860#0" expanded="true" />
-                <element signature="e#4939#5136#0" expanded="true" />
-                <element signature="e#5125#5126#0" expanded="true" />
-                <element signature="e#5208#5379#0" expanded="true" />
-                <element signature="e#5368#5369#0" expanded="true" />
-                <element signature="e#5614#5642#0" expanded="true" />
-                <element signature="e#5672#5699#0" expanded="true" />
-                <element signature="e#8260#8261#0" expanded="true" />
-                <element signature="e#8301#8302#0" expanded="true" />
-                <element signature="e#8531#8562#0" expanded="true" />
-                <element signature="e#8582#8612#0" expanded="true" />
-                <element signature="e#8632#8658#0" expanded="true" />
-                <element signature="e#8878#8908#0" expanded="true" />
-                <element signature="e#9036#9067#0" expanded="true" />
+                <element signature="e#5678#5706#0" expanded="true" />
+                <element signature="e#5736#5763#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConstanceFieldHolder.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/utils/ConstanceFieldHolder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="646">
+              <caret line="20" column="56" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -386,7 +362,7 @@
       <file leaf-file-name="TaskListActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/TaskListActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+            <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="442">
               <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
               <folding />
             </state>
@@ -396,7 +372,7 @@
       <file leaf-file-name="ItemAdapter.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/adapters/ItemAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
+            <state vertical-scroll-proportion="0.0" vertical-offset="850" max-vertical-offset="1156">
               <caret line="50" column="68" selection-start-line="50" selection-start-column="68" selection-end-line="50" selection-end-column="68" />
               <folding />
             </state>
@@ -406,7 +382,7 @@
       <file leaf-file-name="TaskObject.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/TaskObject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="867" max-vertical-offset="1513">
+            <state vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="1564">
               <caret line="26" column="50" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="50" />
               <folding />
             </state>
@@ -462,14 +438,15 @@
         <option value="$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/adapters/ItemAdapter.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/res/raw/actions_classes.properties" />
-        <option value="$PROJECT_DIR$/src/org/karolgurecki/autotask/utils/ConstanceFiledHolder.java" />
         <option value="$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/TaskHolder.java" />
         <option value="$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/triggers/BluetoothTrigger.java" />
         <option value="$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/AbstractBroadcastReceiverTaskObject.java" />
-        <option value="$PROJECT_DIR$/src/org/karolgurecki/autotask/factory/TaskFactory.java" />
-        <option value="$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/NewTaskActivity.java" />
-        <option value="$PROJECT_DIR$/src/org/karolgurecki/autotask/service/StartUpService.java" />
         <option value="$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/actions/ToastAction.java" />
+        <option value="$PROJECT_DIR$/src/org/karolgurecki/autotask/utils/ConstanceFiledHolder.java" />
+        <option value="$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/NewTaskActivity.java" />
+        <option value="$PROJECT_DIR$/src/org/karolgurecki/autotask/utils/ConstanceFieldHolder.java" />
+        <option value="$PROJECT_DIR$/src/org/karolgurecki/autotask/service/StartUpService.java" />
+        <option value="$PROJECT_DIR$/src/org/karolgurecki/autotask/factory/TaskFactory.java" />
       </list>
     </option>
   </component>
@@ -517,6 +494,8 @@
       <sortByType ProjectPane="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -809,8 +788,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -846,6 +823,7 @@
   </component>
   <component name="RecentsManager">
     <key name="IntroduceConstantDialog.RECENTS_KEY">
+      <recent name="org.karolgurecki.autotask.utils.ConstanceFieldHolder" />
       <recent name="org.karolgurecki.autotask.utils.ConstanceFiledHolder" />
       <recent name="org.karolgurecki.autotask.service.StartUpService" />
     </key>
@@ -1176,7 +1154,10 @@
       <workItem from="1399916074395" duration="3620000" />
       <workItem from="1400000528610" duration="143000" />
       <workItem from="1400090117065" duration="3581000" />
-      <workItem from="1400173725263" duration="4118000" />
+      <workItem from="1400173725263" duration="4307000" />
+      <workItem from="1400218208609" duration="14000" />
+      <workItem from="1400338486049" duration="599000" />
+      <workItem from="1400406266466" duration="2825000" />
     </task>
     <task id="LOCAL-00001" summary="hghhhhhhh">
       <created>1389208254643</created>
@@ -1218,11 +1199,15 @@
       <created>1400178120761</created>
       <updated>1400178120761</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Some changes">
+      <created>1400178863495</created>
+      <updated>1400178863495</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73915000" />
+    <option name="totallyTimeSpent" value="77542000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1310,7 +1295,8 @@
     <MESSAGE value="Small Changes&#10;- First Draft of Bluetooth trigger" />
     <MESSAGE value="Implementation of bluetooth trigger&#10;" />
     <MESSAGE value="Finally works!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finally works!" />
+    <MESSAGE value="Some changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some changes" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1325,7 +1311,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/org/karolgurecki/autotask/service/StartUpService.java</url>
-          <line>38</line>
+          <line>37</line>
           <properties />
           <option name="timeStamp" value="27" />
         </line-breakpoint>
@@ -1381,13 +1367,13 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/res/layout/edit_task.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/utils/ExceptionUtils.java">
@@ -1552,36 +1538,33 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/task_list_row_item.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/task_list.xml">
       <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/task_list.xml">
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/ListDialog.java">
@@ -1592,14 +1575,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/on_off_choser.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.74271846" vertical-offset="0" max-vertical-offset="824">
           <caret line="36" column="48" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
-          <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/raw/trigers_classes.properties">
@@ -1613,7 +1595,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
           <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1621,7 +1602,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
           <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1629,7 +1609,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1241">
           <caret line="33" column="57" selection-start-line="33" selection-start-column="57" selection-end-line="33" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1644,7 +1623,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.39929327" vertical-offset="1372" max-vertical-offset="1938">
           <caret line="94" column="23" selection-start-line="94" selection-start-column="16" selection-end-line="94" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1659,7 +1637,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="12" max-vertical-offset="595">
           <caret line="27" column="66" selection-start-line="27" selection-start-column="66" selection-end-line="27" selection-end-column="66" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1667,7 +1644,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="562">
           <caret line="0" column="65" selection-start-line="0" selection-start-column="65" selection-end-line="0" selection-end-column="65" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1675,15 +1651,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1262" max-vertical-offset="28798">
           <caret line="115" column="31" selection-start-line="115" selection-start-column="31" selection-end-line="115" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/utils/ConstanceFiledHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
-          <caret line="22" column="103" selection-start-line="22" selection-start-column="103" selection-end-line="22" selection-end-column="103" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1701,69 +1668,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1745" max-vertical-offset="2431">
           <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
-          <folding>
-            <element signature="e#3988#3989#0" expanded="true" />
-            <element signature="e#4017#4018#0" expanded="true" />
-            <element signature="e#4149#4150#0" expanded="true" />
-            <element signature="e#4184#4185#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/AbstractBroadcastReceiverTaskObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="57" max-vertical-offset="884">
-          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/factory/TaskFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.3157897" vertical-offset="1351" max-vertical-offset="2448">
-          <caret line="104" column="51" selection-start-line="104" selection-start-column="51" selection-end-line="104" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3634#3646#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="197" max-vertical-offset="697">
-          <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/NewTaskActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="4369">
-          <caret line="50" column="40" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2288#2319#0" expanded="true" />
-            <element signature="e#4276#4307#0" expanded="true" />
-            <element signature="e#4330#4360#0" expanded="true" />
-            <element signature="e#4447#4485#0" expanded="true" />
-            <element signature="e#4526#4559#0" expanded="true" />
-            <element signature="e#4678#4870#0" expanded="true" />
-            <element signature="e#4859#4860#0" expanded="true" />
-            <element signature="e#4939#5136#0" expanded="true" />
-            <element signature="e#5125#5126#0" expanded="true" />
-            <element signature="e#5208#5379#0" expanded="true" />
-            <element signature="e#5368#5369#0" expanded="true" />
-            <element signature="e#5614#5642#0" expanded="true" />
-            <element signature="e#5672#5699#0" expanded="true" />
-            <element signature="e#8260#8261#0" expanded="true" />
-            <element signature="e#8301#8302#0" expanded="true" />
-            <element signature="e#8531#8562#0" expanded="true" />
-            <element signature="e#8582#8612#0" expanded="true" />
-            <element signature="e#8632#8658#0" expanded="true" />
-            <element signature="e#8878#8908#0" expanded="true" />
-            <element signature="e#9036#9067#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1791,18 +1696,64 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/service/StartUpService.java">
+    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/actions/ToastAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="1360">
-          <caret line="66" column="103" selection-start-line="66" selection-start-column="103" selection-end-line="66" selection-end-column="103" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
+          <caret line="26" column="8" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/actions/ToastAction.java">
+    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36106196" vertical-offset="136" max-vertical-offset="918">
-          <caret line="26" column="8" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
+          <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/ui/activities/NewTaskActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="3638">
+          <caret line="94" column="78" selection-start-line="94" selection-start-column="56" selection-end-line="94" selection-end-column="56" />
+          <folding>
+            <element signature="e#5678#5706#0" expanded="true" />
+            <element signature="e#5736#5763#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/utils/ConstanceFieldHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+          <caret line="20" column="56" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/service/StartUpService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="271" max-vertical-offset="1394">
+          <caret line="43" column="20" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="20" />
+          <folding>
+            <element signature="e#1096#1464#0" expanded="true" />
+            <element signature="e#1449#1450#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/factory/TaskFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1393" max-vertical-offset="2210">
+          <caret line="108" column="12" selection-start-line="108" selection-start-column="12" selection-end-line="108" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/karolgurecki/autotask/tasks/AbstractBroadcastReceiverTaskObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33274338" vertical-offset="152" max-vertical-offset="901">
+          <caret line="23" column="80" selection-start-line="23" selection-start-column="80" selection-end-line="23" selection-end-column="80" />
           <folding />
         </state>
       </provider>

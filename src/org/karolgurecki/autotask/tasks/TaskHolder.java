@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import org.karolgurecki.autotask.utils.ConstanceFiledHolder;
+import org.karolgurecki.autotask.utils.ConstanceFieldHolder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -113,8 +113,8 @@ public final class TaskHolder extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        String className = intent.getStringExtra(ConstanceFiledHolder.EXTRA_CLASS_NAAME);
-        Boolean switchValue = intent.getBooleanExtra(ConstanceFiledHolder.EXTRA_TRIGGER_ACTIVATED, false);
+        String className = intent.getStringExtra(ConstanceFieldHolder.EXTRA_CLASS_NAAME);
+        Boolean switchValue = intent.getBooleanExtra(ConstanceFieldHolder.EXTRA_TRIGGER_ACTIVATED, false);
 
         triggerTriggered.put(className, switchValue);
 
