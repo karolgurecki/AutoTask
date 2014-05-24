@@ -8,6 +8,11 @@ import org.karolgurecki.autotask.R;
 import org.karolgurecki.autotask.tasks.AbstractBroadcastReceiverTaskObject;
 import org.karolgurecki.autotask.ui.tasks.AbstractOnOffDialog;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 /**
  * Created by: Karol Górecki
  * <a href="mailto:kagurecki@gmail.com?Subject=Autotask Question" target="_top">kagurecki (at) gmail.com</a>
@@ -19,16 +24,30 @@ public class BluetoothTrigger extends AbstractBroadcastReceiverTaskObject {
     private static final Intent INTENT = new Intent(BluetoothAdapter.ACTION_STATE_CHANGED);
     private static final IntentFilter INTENT_FILTER = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
 
-    private int activeValue = BluetoothAdapter.STATE_ON;
+
+    private static final Map<Integer, Set<Intent>> ACTIVATED_VALUES_MAP = new HashMap<>();
+
+    private static int activeValue = BluetoothAdapter.STATE_ON;
 
     @Override
-    public void receive(Context context, Intent intent) {
+    public Map<Boolean, Set<Intent>> receive(Context context, Intent intent) {
+        Map<Boolean, Set<Intent>> response = new HashMap<>();
         if (INTENT.getAction().equalsIgnoreCase(intent.getAction())) {
-            activated = false;
-            if (activeValue == intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, -10)) {
-                activated = true;
+            int intExtra = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, -10);
+
+            if (BluetoothAdapter.STATE_ON == intExtra) {
+                response.put(true, ACTIVATED_VALUES_MAP.get(BluetoothAdapter.STATE_ON));
+                response.put(false, ACTIVATED_VALUES_MAP.get(BluetoothAdapter.STATE_OFF));
+            } else if (BluetoothAdapter.STATE_OFF == intExtra) {
+                response.put(true, ACTIVATED_VALUES_MAP.get(BluetoothAdapter.STATE_OFF));
+                response.put(false, ACTIVATED_VALUES_MAP.get(BluetoothAdapter.STATE_ON));
+            } else {
+                Set<Intent> tempSet = new HashSet<>(ACTIVATED_VALUES_MAP.get(BluetoothAdapter.STATE_OFF));
+                tempSet.addAll(ACTIVATED_VALUES_MAP.get(BluetoothAdapter.STATE_ON));
+                response.put(false, tempSet);
             }
         }
+        return response;
     }
 
     @Override
@@ -66,6 +85,18 @@ public class BluetoothTrigger extends AbstractBroadcastReceiverTaskObject {
     @Override
     public Intent getIntent() {
         return INTENT;
+    }
+
+    @Override
+    public void assignResponseIntentToActivationStatus() {
+        Set<Intent> responseIntents = ACTIVATED_VALUES_MAP.get(activeValue);
+
+        if (responseIntents == null) {
+            responseIntents = new HashSet<>();
+            ACTIVATED_VALUES_MAP.put(activeValue, responseIntents);
+        }
+
+        responseIntents.add(responseIntent);
     }
 
     private class BluetoothOnOffDialog extends AbstractOnOffDialog {

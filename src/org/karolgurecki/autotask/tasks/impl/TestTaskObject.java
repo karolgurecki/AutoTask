@@ -85,4 +85,9 @@ public class TestTaskObject implements TaskObject {
 
     }
 
+    @Override
+    public void assignResponseIntentToActivationStatus() {
+
+    }
+
 }

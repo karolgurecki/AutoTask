@@ -1,9 +1,7 @@
 package org.karolgurecki.autotask.tasks;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import org.karolgurecki.autotask.utils.ConstanceFieldHolder;
 
 import java.util.ArrayList;
@@ -16,13 +14,9 @@ import java.util.Map;
  * Version: 0.01
  * Since: 0.01
  */
-public final class TaskHolder extends BroadcastReceiver {
-
-    private String intentAction;
+public final class TaskHolder {
 
     private Intent intent;
-
-    private IntentFilter intentFilter;
 
     private List<TaskObject> triggerList = new ArrayList<>();
 
@@ -30,7 +24,6 @@ public final class TaskHolder extends BroadcastReceiver {
 
     private Map<String, Boolean> triggerTriggered = new HashMap<>();
 
-    private Long timestamp;
 
     private String name;
 
@@ -41,45 +34,29 @@ public final class TaskHolder extends BroadcastReceiver {
      *
      * @param triggerList the trigger list
      * @param actionList  the action list
-     * @param timestamp   the timestamp
      * @param context     the context
      * @param name        the name
      */
-    public TaskHolder(List<TaskObject> triggerList, List<TaskObject> actionList, Long timestamp,
-                      Context context, String name) {
-        this(triggerList, actionList, timestamp, context);
-        this.name = name;
-    }
-
-    /**
-     * Instantiates a new Task holder.
-     *
-     * @param triggerList the trigger list
-     * @param actionList  the action list
-     * @param timestamp   the timestamp
-     * @param context     the context
-     */
-    public TaskHolder(List<TaskObject> triggerList, List<TaskObject> actionList, Long timestamp, Context context) {
+    public TaskHolder(List<TaskObject> triggerList, List<TaskObject> actionList, Context context, String name) {
         this.triggerList = triggerList;
         this.actionList = actionList;
-        this.timestamp = timestamp;
         this.context = context;
-
+        this.name = name;
     }
 
     /**
      * It's called when task is creating
      */
-    public void onCreate() {
-        intentAction = String.format("%s.%s%d", getClass().getName(), name, timestamp);
-        intent = new Intent(intentAction);
-        intentFilter = new IntentFilter(intentAction);
+    public TaskHolder onCreate() {
+        intent = new Intent(TaskHolderMap.TASK_HOLDER_MAP_ACTION);
+        intent.putExtra(ConstanceFieldHolder.TASK_HOLDER_NAME_EXTRA, name);
         registerReceivers(triggerList, intent);
         registerReceivers(actionList, null);
 
         for (TaskObject TaskObject : triggerList) {
             triggerTriggered.put(TaskObject.getClass().getName(), Boolean.FALSE);
         }
+        return this;
     }
 
     private void registerReceivers(List<TaskObject> taskObjectList, Intent intent) {
@@ -94,9 +71,9 @@ public final class TaskHolder extends BroadcastReceiver {
     }
 
     /**
-     * On destoy.
+     * On destroy.
      */
-    public void onDestoy() {
+    public void onDestroy() {
         unregisterReceivers(triggerList);
         unregisterReceivers(actionList);
     }
@@ -111,7 +88,6 @@ public final class TaskHolder extends BroadcastReceiver {
         }
     }
 
-    @Override
     public void onReceive(Context context, Intent intent) {
         String className = intent.getStringExtra(ConstanceFieldHolder.EXTRA_CLASS_NAAME);
         Boolean switchValue = intent.getBooleanExtra(ConstanceFieldHolder.EXTRA_TRIGGER_ACTIVATED, false);
@@ -133,14 +109,5 @@ public final class TaskHolder extends BroadcastReceiver {
      */
     public Intent getIntent() {
         return intent;
-    }
-
-    /**
-     * Gets intentFilter.
-     *
-     * @return Value of intentFilter.
-     */
-    public IntentFilter getIntentFilter() {
-        return intentFilter;
     }
 }

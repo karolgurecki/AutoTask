@@ -6,6 +6,8 @@ import android.content.IntentFilter;
 import android.widget.Toast;
 import org.karolgurecki.autotask.tasks.AbstractBroadcastReceiverTaskObject;
 
+import java.util.Map;
+
 /**
  * Created by: Karol Górecki
  * <a href="mailto:kagurecki@gmail.com?Subject=Autotask Question" target="_top">kagurecki (at) gmail.com</a>
@@ -23,8 +25,8 @@ public class ToastAction extends AbstractBroadcastReceiverTaskObject {
     }
 
     @Override
-    protected void receive(Context context, Intent intent) {
-
+    protected Map receive(Context context, Intent intent) {
+        return null;
     }
 
     @Override
@@ -49,7 +51,7 @@ public class ToastAction extends AbstractBroadcastReceiverTaskObject {
 
     @Override
     public String getConfig() {
-        return null;
+        return "";
     }
 
     @Override
@@ -60,5 +62,10 @@ public class ToastAction extends AbstractBroadcastReceiverTaskObject {
     @Override
     public Intent getIntent() {
         return INTENT;
+    }
+
+    @Override
+    public void assignResponseIntentToActivationStatus() {
+
     }
 }

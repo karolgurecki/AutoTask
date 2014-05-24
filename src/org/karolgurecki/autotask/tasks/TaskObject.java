@@ -83,4 +83,9 @@ public interface TaskObject {
      * Stops THREAD type task object
      */
     void stop();
+
+    /**
+     * Assigns the temporary activation status to given response Intent
+     */
+    void assignResponseIntentToActivationStatus();
 }

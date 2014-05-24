@@ -165,14 +165,14 @@ public class NewTaskActivity extends Activity {
         try {
             File autoTaskFolder = getFilesDir();
             stream = new FileOutputStream(new File(autoTaskFolder.getPath(),
-                    String.format("%s.%S", taskName.getText().toString().replace(' ',
+                    String.format("%s.%s", taskName.getText().toString().replace(' ',
                             ConstanceFieldHolder.SPACE_REPLACEMENT), ConstanceFieldHolder.PROPERTIES_FILE_EXTENTION)
             ));
             Properties properties = new Properties();
-            properties.store(stream, ConstanceFieldHolder.PROPERTIES_COMMENT);
             properties.setProperty(ConstanceFieldHolder.NAME_PROPERTY, taskName.getText().toString());
             appendConfig(properties, ConstanceFieldHolder.TRIGGER_CLASSES, ConstanceFieldHolder.triggersList);
             appendConfig(properties, ConstanceFieldHolder.ACTION_CLASSES, ConstanceFieldHolder.actionsList);
+            properties.store(stream, ConstanceFieldHolder.PROPERTIES_COMMENT);
         } catch (IOException e) {
             Log.e(ConstanceFieldHolder.AUTOTASK_TAG, ExceptionUtils.stackTraceToString(e));
         } finally {
