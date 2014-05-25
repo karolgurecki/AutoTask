@@ -24,7 +24,6 @@ public class BluetoothTrigger extends AbstractBroadcastReceiverTaskObject {
     private static final Intent INTENT = new Intent(BluetoothAdapter.ACTION_STATE_CHANGED);
     private static final IntentFilter INTENT_FILTER = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
 
-
     private static final Map<Integer, Set<Intent>> ACTIVATED_VALUES_MAP = new HashMap<>();
 
     private static int activeValue = BluetoothAdapter.STATE_ON;
@@ -36,18 +35,25 @@ public class BluetoothTrigger extends AbstractBroadcastReceiverTaskObject {
             int intExtra = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, -10);
 
             if (BluetoothAdapter.STATE_ON == intExtra) {
-                response.put(true, ACTIVATED_VALUES_MAP.get(BluetoothAdapter.STATE_ON));
-                response.put(false, ACTIVATED_VALUES_MAP.get(BluetoothAdapter.STATE_OFF));
+                response.put(true, getIntentsFromActivateddMap(BluetoothAdapter.STATE_ON));
+                response.put(false, getIntentsFromActivateddMap(BluetoothAdapter.STATE_OFF));
             } else if (BluetoothAdapter.STATE_OFF == intExtra) {
-                response.put(true, ACTIVATED_VALUES_MAP.get(BluetoothAdapter.STATE_OFF));
-                response.put(false, ACTIVATED_VALUES_MAP.get(BluetoothAdapter.STATE_ON));
+                response.put(true, getIntentsFromActivateddMap(BluetoothAdapter.STATE_OFF));
+                response.put(false, getIntentsFromActivateddMap(BluetoothAdapter.STATE_ON));
             } else {
-                Set<Intent> tempSet = new HashSet<>(ACTIVATED_VALUES_MAP.get(BluetoothAdapter.STATE_OFF));
-                tempSet.addAll(ACTIVATED_VALUES_MAP.get(BluetoothAdapter.STATE_ON));
+                Set<Intent> tempSet = new HashSet<>();
+                for (Set<Intent> set : ACTIVATED_VALUES_MAP.values()) {
+                    tempSet.addAll(set);
+                }
                 response.put(false, tempSet);
             }
         }
         return response;
+    }
+
+    private Set<Intent> getIntentsFromActivateddMap(int key) {
+        Set<Intent> intentSet = ACTIVATED_VALUES_MAP.get(key);
+        return intentSet != null ? intentSet : new HashSet<Intent>();
     }
 
     @Override

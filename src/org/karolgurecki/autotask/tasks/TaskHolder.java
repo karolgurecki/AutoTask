@@ -67,6 +67,7 @@ public final class TaskHolder {
                 taskObject.start();
             }
             taskObject.setResponseIntent(intent);
+            taskObject.assignResponseIntentToActivationStatus();
         }
     }
 

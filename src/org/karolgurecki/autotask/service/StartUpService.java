@@ -2,6 +2,7 @@ package org.karolgurecki.autotask.service;
 
 import android.app.Service;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.IBinder;
 import android.util.Log;
 import org.karolgurecki.autotask.tasks.TaskHolder;
@@ -27,7 +28,6 @@ import static org.karolgurecki.autotask.factory.TaskFactory.createTaskObjects;
 public class StartUpService extends Service {
 
     public static final Set<String> TASK_PROPERTIES_NAME_SET = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
-    private static final TaskHolderMap TASK_HOLDER_MAP = new TaskHolderMap();
     private final static FileFilter FILE_FILTER = new FileFilter() {
         @Override
         public boolean accept(File pathname) {
@@ -36,6 +36,7 @@ public class StartUpService extends Service {
                     !TASK_PROPERTIES_NAME_SET.contains(name);
         }
     };
+    private static TaskHolderMap TASK_HOLDER_MAP;
 
     @Override
     public void onCreate() {
@@ -45,6 +46,10 @@ public class StartUpService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
+        if (TASK_HOLDER_MAP == null) {
+            TASK_HOLDER_MAP = new TaskHolderMap();
+            registerReceiver(TASK_HOLDER_MAP, new IntentFilter(TaskHolderMap.TASK_HOLDER_MAP_ACTION));
+        }
         Log.d(ConstanceFieldHolder.AUTOTASK_TAG, "Boo2");
         File autoTaskFolder = getFilesDir();
         Log.d(ConstanceFieldHolder.AUTOTASK_TAG, "Boo3");
@@ -88,6 +93,7 @@ public class StartUpService extends Service {
     @Override
     public boolean stopService(Intent name) {
         TASK_HOLDER_MAP.destroyAll();
+        unregisterReceiver(TASK_HOLDER_MAP);
         return super.stopService(name);
     }
 }
