@@ -4,8 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.widget.TextView;
 import org.karolgurecki.autotask.R;
 
 /**
@@ -14,19 +13,19 @@ import org.karolgurecki.autotask.R;
  * Version: 0.01
  * Since: 0.01
  */
-public abstract class AbstractOnOffDialog extends Dialog {
+public abstract class AbstractInputTextDialog extends Dialog {
 
-    private RadioGroup radioOnOffGroup;
+    private TextView textView;
     private Button confirmButton;
     private Button cancelButton;
 
-    public AbstractOnOffDialog(Context context, String title) {
+    public AbstractInputTextDialog(Context context, String title) {
         super(context);
-        setContentView(R.layout.on_off_chooser);
+        setContentView(R.layout.text_field_dialog);
         setCancelable(true);
         setTitle(title);
         setRadioListener();
-        cancelButton = (Button) findViewById(R.id.cancelButton);
+        cancelButton = (Button) findViewById(R.id.textDialogCancelButton);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,18 +36,17 @@ public abstract class AbstractOnOffDialog extends Dialog {
     }
 
     private void setRadioListener() {
-        radioOnOffGroup = (RadioGroup) findViewById(R.id.radioOnOff);
-        confirmButton = (Button) findViewById(R.id.conformButton);
+        textView = (TextView) findViewById(R.id.textDialogEditText);
+        confirmButton = (Button) findViewById(R.id.textDialogConfirmButton);
 
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RadioButton radioButton = (RadioButton) findViewById(radioOnOffGroup.getCheckedRadioButtonId());
-                setActiveValue(radioButton.getText().toString().equalsIgnoreCase(getContext().getString(R.string.on)));
+                setActiveValue(textView.getText().toString());
                 dismiss();
             }
         });
     }
 
-    protected abstract void setActiveValue(boolean isOn);
+    protected abstract void setActiveValue(String text);
 }

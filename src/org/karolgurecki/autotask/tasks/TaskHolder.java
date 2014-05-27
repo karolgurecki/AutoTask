@@ -50,8 +50,8 @@ public final class TaskHolder {
     public TaskHolder onCreate() {
         intent = new Intent(TaskHolderMap.TASK_HOLDER_MAP_ACTION);
         intent.putExtra(ConstanceFieldHolder.TASK_HOLDER_NAME_EXTRA, name);
-        registerReceivers(triggerList, intent);
-        registerReceivers(actionList, null);
+        registerReceivers(triggerList);
+        registerReceivers(actionList);
 
         for (TaskObject TaskObject : triggerList) {
             triggerTriggered.put(TaskObject.getClass().getName(), Boolean.FALSE);
@@ -59,7 +59,7 @@ public final class TaskHolder {
         return this;
     }
 
-    private void registerReceivers(List<TaskObject> taskObjectList, Intent intent) {
+    private void registerReceivers(List<TaskObject> taskObjectList) {
         for (TaskObject taskObject : taskObjectList) {
             if (taskObject.getTaskType().equals(TaskType.BROADCASTRECEIVER)) {
                 context.registerReceiver(taskObject.getBroadcastReceiver(), taskObject.getIntentFilter());

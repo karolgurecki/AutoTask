@@ -22,4 +22,7 @@
     <string name="bluetoothTriggerConfigTitle">Bluetooth trigger configuration</string>
     <string name="bluetoothTrigger">Bluetooth trigger</string>
     <string name="ifString">If</string>
+    <string name="toastDialogTitle">Toast Text Confuguration</string>
+    <string name="display">Display</string>
+    <string name="toastActionName">Toast Action</string>
 </resources>

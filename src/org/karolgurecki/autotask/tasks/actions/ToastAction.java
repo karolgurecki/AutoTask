@@ -4,8 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.widget.Toast;
+import org.karolgurecki.autotask.R;
 import org.karolgurecki.autotask.tasks.AbstractBroadcastReceiverTaskObject;
+import org.karolgurecki.autotask.ui.tasks.AbstractInputTextDialog;
+import org.karolgurecki.autotask.utils.ConstanceFieldHolder;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -18,10 +22,13 @@ public class ToastAction extends AbstractBroadcastReceiverTaskObject {
     private static final String ACTION = "org.karolgurecki.autotask.tasks.actions.ToastAction";
     private static final IntentFilter INTENT_FILTER = new IntentFilter(ACTION);
     private static final Intent INTENT = new Intent(ACTION);
+    private static final Map<String, String> STRING_STRING_MAP = new HashMap<>();
+    private static String toastString;
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Toast.makeText(context, "Test", Toast.LENGTH_LONG).show();
+        String taskName = intent.getStringExtra(ConstanceFieldHolder.TASK_HOLDER_NAME_EXTRA);
+        Toast.makeText(context, STRING_STRING_MAP.get(taskName), Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -31,17 +38,17 @@ public class ToastAction extends AbstractBroadcastReceiverTaskObject {
 
     @Override
     public String getDisplayName(Context context) {
-        return "Toast Action";
+        return context.getString(R.string.toastActionName);
     }
 
     @Override
     public String getDisplayConfiguration(Context context) {
-        return "";
+        return String.format("%s:%s", context.getString(R.string.display), toastString);
     }
 
     @Override
     public void openDialog(Context context) {
-
+        new ToastActionTextEditDialog(context, context.getString(R.string.toastDialogTitle));
     }
 
     @Override
@@ -51,12 +58,12 @@ public class ToastAction extends AbstractBroadcastReceiverTaskObject {
 
     @Override
     public String getConfig() {
-        return "";
+        return toastString;
     }
 
     @Override
     public void setConfig(String config) {
-
+        toastString = config;
     }
 
     @Override
@@ -66,6 +73,19 @@ public class ToastAction extends AbstractBroadcastReceiverTaskObject {
 
     @Override
     public void assignResponseIntentToActivationStatus() {
+        String taskName = responseIntent.getStringExtra(ConstanceFieldHolder.TASK_HOLDER_NAME_EXTRA);
+        STRING_STRING_MAP.put(taskName, toastString);
+    }
 
+    final class ToastActionTextEditDialog extends AbstractInputTextDialog {
+
+        public ToastActionTextEditDialog(Context context, String title) {
+            super(context, title);
+        }
+
+        @Override
+        protected void setActiveValue(String text) {
+            toastString = text;
+        }
     }
 }
