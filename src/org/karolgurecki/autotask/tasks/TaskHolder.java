@@ -97,7 +97,9 @@ public final class TaskHolder {
 
         if (!triggerTriggered.containsValue(false)) {
             for (TaskObject TaskObject : actionList) {
-                context.sendBroadcast(TaskObject.getIntent());
+                Intent taskObjectIntent = TaskObject.getIntent();
+                taskObjectIntent.putExtra(ConstanceFieldHolder.TASK_HOLDER_NAME_EXTRA, name);
+                context.sendBroadcast(taskObjectIntent);
             }
         }
     }

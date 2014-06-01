@@ -68,13 +68,14 @@ public class ToastAction extends AbstractBroadcastReceiverTaskObject {
 
     @Override
     public Intent getIntent() {
-        return INTENT;
+        return new Intent(INTENT);
     }
 
     @Override
     public void assignResponseIntentToActivationStatus() {
         String taskName = responseIntent.getStringExtra(ConstanceFieldHolder.TASK_HOLDER_NAME_EXTRA);
         STRING_STRING_MAP.put(taskName, toastString);
+
     }
 
     final class ToastActionTextEditDialog extends AbstractInputTextDialog {

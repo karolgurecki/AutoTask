@@ -14,9 +14,9 @@ import java.io.File;
 import java.io.FileFilter;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Properties;
-import java.util.Set;
-import java.util.TreeSet;
 
 import static org.karolgurecki.autotask.factory.TaskFactory.createTaskObjects;
 
@@ -27,16 +27,16 @@ import static org.karolgurecki.autotask.factory.TaskFactory.createTaskObjects;
  */
 public class StartUpService extends Service {
 
-    public static final Set<String> TASK_PROPERTIES_NAME_SET = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
+    public static final List<String> TASK_PROPERTIES_NAME_LIST = new LinkedList<>();
     private final static FileFilter FILE_FILTER = new FileFilter() {
         @Override
         public boolean accept(File pathname) {
             String name = pathname.getName().toLowerCase();
             return name.endsWith(ConstanceFieldHolder.PROPERTIES_FILE_EXTENTION.toLowerCase()) &&
-                    !TASK_PROPERTIES_NAME_SET.contains(name);
+                    !TASK_PROPERTIES_NAME_LIST.contains(name);
         }
     };
-    private static TaskHolderMap TASK_HOLDER_MAP;
+    public static TaskHolderMap TASK_HOLDER_MAP;
 
     @Override
     public void onCreate() {
@@ -72,12 +72,14 @@ public class StartUpService extends Service {
                     Log.d(ConstanceFieldHolder.AUTOTASK_TAG, String.format("Started task: %s", file.getName()));
                     if (temp != null) {
                         temp.onDestroy();
+                    } else {
+                        TASK_PROPERTIES_NAME_LIST.add(name);
                     }
                 } catch (IOException e) {
                     Log.d(ConstanceFieldHolder.AUTOTASK_TAG, String.format("Failed to initialized task: %s", file.getName()));
                     Log.e(ConstanceFieldHolder.AUTOTASK_TAG, ExceptionUtils.stackTraceToString(e));
                 }
-                TASK_PROPERTIES_NAME_SET.add(file.getName());
+
             }
         } else if (!autoTaskFolder.mkdirs()) {
             Log.e(ConstanceFieldHolder.AUTOTASK_TAG, "Can't create a AutoTask folder");
