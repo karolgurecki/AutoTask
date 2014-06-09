@@ -58,6 +58,8 @@ public class TaskListActivity extends Activity {
                         if (file.delete()) {
                             StartUpService.TASK_HOLDER_MAP.remove(taskName);
                             adapter.notifyDataSetChanged();
+                            finish();
+                            startActivity(getIntent());
                         } else {
                             Log.e(ConstanceFieldHolder.AUTOTASK_TAG, String.format("Can't delete %s task", taskName));
                             StartUpService.TASK_PROPERTIES_NAME_LIST.add(taskName);

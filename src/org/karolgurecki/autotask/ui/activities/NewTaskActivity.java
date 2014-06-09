@@ -113,6 +113,8 @@ public class NewTaskActivity extends Activity {
         listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
 
         expListView.setAdapter(listAdapter);
+        expListView.expandGroup(0, false);
+        expListView.expandGroup(1, false);
 
         add_trigger = getString(R.string.add_trigger);
         add_action = getString(R.string.add_action);
