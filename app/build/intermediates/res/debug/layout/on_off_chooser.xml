@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:orientation="vertical">
+
+    <RadioGroup
+            android:id="@+id/radioOnOff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <RadioButton
+                android:id="@+id/radioOn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/on"
+                android:checked="false"/>
+
+        <RadioButton
+                android:id="@+id/radioOff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/off"/>
+
+    </RadioGroup>
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/confirm"
+            android:id="@+id/conformButton" android:layout_gravity="center"/>
+    <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@android:string/cancel" android:layout_gravity="center"/>
+
+</LinearLayout><!-- From: file:/D:/My/AutoTask/app/src/main/res/layout/on_off_chooser.xml -->

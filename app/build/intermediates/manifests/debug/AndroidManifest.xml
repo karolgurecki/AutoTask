@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.karolgurecki.autotask"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="16" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+
+    <application
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.DeviceDefault" >
+        <activity
+            android:name="org.karolgurecki.autotask.ui.activities.Main"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="org.karolgurecki.autotask.ui.activities.NewTaskActivity"
+            android:label="@string/newTaskButtonText" />
+        <activity
+            android:name="org.karolgurecki.autotask.ui.activities.TaskListActivity"
+            android:label="@string/taskListButtonText" />
+        <activity
+            android:name="org.karolgurecki.autotask.ui.activities.TaskList"
+            android:label="Task List" />
+
+        <service
+            android:name="org.karolgurecki.autotask.service.StartUpService"
+            android:label="Autotask Service" />
+
+        <receiver android:name="org.karolgurecki.autotask.service.StartUpBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_EXTERNAL_APPLICATIONS_AVAILABLE" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

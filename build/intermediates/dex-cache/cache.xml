@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="D:\My\AutoTask\app\build\intermediates\pre-dexed\debug\support-v4-18.0.0-7d581375e5c0843235d3707fc73ac3878bc398c3.jar"
+        jar="D:\Android\android-studio\sdk\extras\android\m2repository\com\android\support\support-v4\18.0.0\support-v4-18.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="44ec51e9d395a47aab135e5e1b556c0007442156"/>
+    <item
+        dex="D:\My\AutoTask\app\build\intermediates\pre-dexed\debug\guava-16.0.1-f8c0ad5d6ac5b4e05d5e62fcc1a3bae4fccf0ac3.jar"
+        jar="C:\Users\goreckik\.gradle\caches\modules-2\files-2.1\com.google.guava\guava\16.0.1\5fa98cd1a63c99a44dd8d3b77e4762b066a5d0c5\guava-16.0.1.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="5fa98cd1a63c99a44dd8d3b77e4762b066a5d0c5"/>
+    <item
+        dex="D:\My\AutoTask\app\build\intermediates\pre-dexed\debug\commons-lang3-3.3.2-0dfaef0f8aec85ce781c6e5ba90ca102d87e7a79.jar"
+        jar="C:\Users\goreckik\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.3.2\90a3822c38ec8c996e84c16a3477ef632cbc87a3\commons-lang3-3.3.2.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="90a3822c38ec8c996e84c16a3477ef632cbc87a3"/>
+    <item
+        dex="D:\My\AutoTask\app\build\intermediates\pre-dexed\debug\commons-collections4-4.0-eef55195857a996501d51fd4550de4ec9aaf65ec.jar"
+        jar="C:\Users\goreckik\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-collections4\4.0\da217367fd25e88df52ba79e47658d4cf928b0d1\commons-collections4-4.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="da217367fd25e88df52ba79e47658d4cf928b0d1"/>
+    <item
+        dex="D:\My\AutoTask\app\build\intermediates\pre-dexed\debug\support-v13-18.0.0-71855d3666bdb8ca6da994d1d0d3ddd10eb57a93.jar"
+        jar="D:\Android\android-studio\sdk\extras\android\m2repository\com\android\support\support-v13\18.0.0\support-v13-18.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="6a2fa0c0b54359ee359fd40244e1ce2dc6cab408"/>
+
+</pre-dex-items>
