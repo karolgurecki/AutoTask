@@ -22,3 +22,11 @@ target/*
 *.settings/**
 
 dll/**
+
+
+*.iml
+/.gradle
+/.idea
+
+/target
+/out
