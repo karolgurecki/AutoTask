@@ -30,7 +30,6 @@ dll/**
 
 /target
 /out
-gradle/wrapper/gradle-wrapper.jar
-gradle/wrapper/gradle-wrapper.properties
+/gradle
 gradlew
 gradlew.bat
