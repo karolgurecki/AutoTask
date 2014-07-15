@@ -50,9 +50,7 @@ public class StartUpService extends Service {
             TASK_HOLDER_MAP = new TaskHolderMap();
             registerReceiver(TASK_HOLDER_MAP, new IntentFilter(TaskHolderMap.TASK_HOLDER_MAP_ACTION));
         }
-        Log.d(ConstanceFieldHolder.AUTOTASK_TAG, "Boo2");
         File autoTaskFolder = getFilesDir();
-        Log.d(ConstanceFieldHolder.AUTOTASK_TAG, "Boo3");
         if (autoTaskFolder.exists()) {
             File[] fileArray = autoTaskFolder.listFiles(FILE_FILTER);
 
@@ -88,7 +86,6 @@ public class StartUpService extends Service {
     }
 
     public IBinder onBind(Intent intent) {
-        Log.d(ConstanceFieldHolder.AUTOTASK_TAG, "Boo1");
         return null;
     }
 
