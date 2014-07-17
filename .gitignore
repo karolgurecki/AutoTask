@@ -20,7 +20,7 @@ target/*
 *.classpath
 *.project
 *.settings/**
-
+build/**
 dll/**
 
 
