@@ -34,3 +34,4 @@ dll/**
 gradlew
 gradlew.bat
 /local.properties
+/app/build
