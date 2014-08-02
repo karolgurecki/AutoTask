@@ -14,7 +14,6 @@
         </activity>
         <activity android:name=".ui.activities.NewTaskActivity" android:label="@string/newTaskButtonText"/>
         <activity android:name=".ui.activities.TaskListActivity" android:label="@string/taskListButtonText"/>
-        <activity android:name=".ui.activities.TaskList" android:label="Task List"/>
         <service android:name=".service.StartUpService" android:label="Autotask Service"/>
         <receiver android:name="org.karolgurecki.autotask.service.StartUpBroadcastReceiver">
             <intent-filter>

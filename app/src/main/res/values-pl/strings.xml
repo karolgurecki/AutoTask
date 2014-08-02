@@ -19,6 +19,10 @@
     <string name="off">Wyłączony</string>
     <string name="on">Włączony</string>
     <string name="confirm">Potwierdź</string>
-    <string name="bluetoothTriggerConfigTitle">Konfiguracja</string>
+    <string name="bluetoothTriggerConfigTitle">Bluetooth trigger configuration</string>
+    <string name="bluetoothTrigger">Bluetooth trigger</string>
     <string name="ifString">Jeżeli</string>
+    <string name="toastDialogTitle">Toast Text Confuguration</string>
+    <string name="display">Display</string>
+    <string name="toastActionName">Toast Action</string>
 </resources>
