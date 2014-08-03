@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
+
 import org.apache.commons.lang3.StringUtils;
 import org.karolgurecki.autotask.R;
 import org.karolgurecki.autotask.factory.TaskFactory;
@@ -46,8 +47,8 @@ import static android.content.DialogInterface.OnClickListener;
 public class NewTaskActivity extends Activity {
 
 
+    private LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(this);
     private ExpandableListAdapter listAdapter;
-    private ExpandableListView expListView;
     private List<String> listDataHeader;
     private HashMap<String, List<TaskObject>> listDataChild;
     private String add_trigger;
@@ -107,7 +108,7 @@ public class NewTaskActivity extends Activity {
         }
         taskName = (TextView) findViewById(R.id.editText);
 
-        expListView = (ExpandableListView) findViewById(R.id.itemLIst);
+        ExpandableListView expListView = (ExpandableListView) findViewById(R.id.itemLIst);
 
         prepareListData();
 
@@ -207,20 +208,20 @@ public class NewTaskActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        LocalBroadcastManager.getInstance(this).registerReceiver(receiver,
-                new IntentFilter("org.karolgurecki.autotask.addTaskObject"));
+        localBroadcastManager.registerReceiver(receiver,
+                new IntentFilter(ConstanceFieldHolder.INTERNAL_ADD_TASK_OBJECT_ACTION));
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(receiver);
+        localBroadcastManager.unregisterReceiver(receiver);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(receiver);
+        localBroadcastManager.unregisterReceiver(receiver);
     }
 
     @Override
@@ -242,16 +243,16 @@ public class NewTaskActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getTitle().equals(add_action)) {
-            chooseTaskObject(1, ConstanceFieldHolder.actionsList, getString(R.string.add_action));
+            chooseTaskObject(ConstanceFieldHolder.actionsList, getString(R.string.add_action));
         } else if (item.getTitle().equals(add_trigger)) {
-            chooseTaskObject(0, ConstanceFieldHolder.triggersList, getString(R.string.add_trigger));
+            chooseTaskObject(ConstanceFieldHolder.triggersList, getString(R.string.add_trigger));
         } else {
             alertDialogBuilder.show();
         }
         return true;
     }
 
-    private void chooseTaskObject(int listAdapterNum, List<TaskObject> taskObjects, String dialogTitle) {
+    private void chooseTaskObject(List<TaskObject> taskObjects, String dialogTitle) {
         dialog = new ListDialog(this, taskObjects, dialogTitle);
     }
 }
