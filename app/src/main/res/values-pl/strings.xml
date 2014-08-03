@@ -25,4 +25,6 @@
     <string name="toastDialogTitle">Toast Text Confuguration</string>
     <string name="display">Display</string>
     <string name="toastActionName">Toast Action</string>
+    <string name="wifiTriggerName">Wi-Fi Trigger</string>
+    <string name="wifiTriggerConfigTitle">Wi-Fi trigger configuration</string>
 </resources>

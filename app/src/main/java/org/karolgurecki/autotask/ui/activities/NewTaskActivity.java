@@ -75,6 +75,7 @@ public class NewTaskActivity extends Activity {
                 dialog = null;
             }
 
+
         }
 
         private void addObject(List<TaskObject> taskObjectList, List<TaskObject> taskList, int index) {
@@ -172,8 +173,8 @@ public class NewTaskActivity extends Activity {
             ));
             Properties properties = new Properties();
             properties.setProperty(ConstanceFieldHolder.NAME_PROPERTY, taskName.getText().toString());
-            appendConfig(properties, ConstanceFieldHolder.TRIGGER_CLASSES, ConstanceFieldHolder.triggersList);
-            appendConfig(properties, ConstanceFieldHolder.ACTION_CLASSES, ConstanceFieldHolder.actionsList);
+            appendConfig(properties, ConstanceFieldHolder.TRIGGER_CLASSES, taskTriggerList);
+            appendConfig(properties, ConstanceFieldHolder.ACTION_CLASSES, taskActionsList);
             properties.store(stream, ConstanceFieldHolder.PROPERTIES_COMMENT);
         } catch (IOException e) {
             Log.e(ConstanceFieldHolder.AUTOTASK_TAG, ExceptionUtils.stackTraceToString(e));

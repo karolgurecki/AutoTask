@@ -1,9 +1,9 @@
 package org.karolgurecki.autotask.tasks.triggers;
 
-import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.wifi.WifiManager;
 import org.karolgurecki.autotask.R;
 import org.karolgurecki.autotask.tasks.AbstractBroadcastReceiverTaskObject;
 import org.karolgurecki.autotask.ui.tasks.AbstractOnOffDialog;
@@ -19,26 +19,26 @@ import java.util.Set;
  * Version: 0.01
  * Since: 0.01
  */
-public class BluetoothTrigger extends AbstractBroadcastReceiverTaskObject {
+public class WifiTrigger extends AbstractBroadcastReceiverTaskObject {
 
-    private static final IntentFilter INTENT_FILTER = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
+    private static final IntentFilter INTENT_FILTER = new IntentFilter(WifiManager.WIFI_STATE_CHANGED_ACTION);
 
     private static final Map<Integer, Set<Intent>> ACTIVATED_VALUES_MAP = new HashMap<>();
 
-    private static int activeValue = BluetoothAdapter.STATE_ON;
+    private static int activeValue = WifiManager.WIFI_STATE_ENABLED;
 
     @Override
-    public Map<Boolean, Set<Intent>> receive(Context context, Intent intent) {
+    protected Map<Boolean, Set<Intent>> receive(Context context, Intent intent) {
         Map<Boolean, Set<Intent>> response = new HashMap<>();
-        if (BluetoothAdapter.ACTION_STATE_CHANGED.equalsIgnoreCase(intent.getAction())) {
-            int intExtra = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, -10);
+        if (WifiManager.WIFI_STATE_CHANGED_ACTION.equalsIgnoreCase(intent.getAction())) {
+            int intExtra = intent.getIntExtra(WifiManager.EXTRA_WIFI_STATE, -10);
 
-            if (BluetoothAdapter.STATE_ON == intExtra) {
-                response.put(true, getIntentsFromActivateddMap(BluetoothAdapter.STATE_ON));
-                response.put(false, getIntentsFromActivateddMap(BluetoothAdapter.STATE_OFF));
-            } else if (BluetoothAdapter.STATE_OFF == intExtra) {
-                response.put(true, getIntentsFromActivateddMap(BluetoothAdapter.STATE_OFF));
-                response.put(false, getIntentsFromActivateddMap(BluetoothAdapter.STATE_ON));
+            if (WifiManager.WIFI_STATE_ENABLED == intExtra) {
+                response.put(true, getIntentsFromActivateddMap(WifiManager.WIFI_STATE_ENABLED));
+                response.put(false, getIntentsFromActivateddMap(WifiManager.WIFI_STATE_DISABLED));
+            } else if (WifiManager.WIFI_STATE_DISABLED == intExtra) {
+                response.put(true, getIntentsFromActivateddMap(WifiManager.WIFI_STATE_DISABLED));
+                response.put(false, getIntentsFromActivateddMap(WifiManager.WIFI_STATE_ENABLED));
             } else {
                 Set<Intent> tempSet = new HashSet<>();
                 for (Set<Intent> set : ACTIVATED_VALUES_MAP.values()) {
@@ -57,19 +57,19 @@ public class BluetoothTrigger extends AbstractBroadcastReceiverTaskObject {
 
     @Override
     public String getDisplayName(Context context) {
-        return context.getString(R.string.bluetoothTrigger);
+        return context.getString(R.string.wifiTriggerName);
     }
 
     @Override
     public String getDisplayConfiguration(Context context) {
-        String config = activeValue == BluetoothAdapter.STATE_ON ? context.getString(R.string.on) :
+        String config = activeValue == WifiManager.WIFI_STATE_ENABLED ? context.getString(R.string.on) :
                 context.getString(R.string.off);
         return String.format("%s: %s", context.getString(R.string.ifString), config);
     }
 
     @Override
     public void openDialog(Context context) {
-        new BluetoothOnOffDialog(context, context.getString(R.string.bluetoothTriggerConfigTitle));
+        new WifiOnOffDialog(context, context.getString(R.string.wifiTriggerConfigTitle));
     }
 
     @Override
@@ -104,18 +104,18 @@ public class BluetoothTrigger extends AbstractBroadcastReceiverTaskObject {
         responseIntents.add(responseIntent);
     }
 
-    private class BluetoothOnOffDialog extends AbstractOnOffDialog {
+    private class WifiOnOffDialog extends AbstractOnOffDialog {
 
-        private BluetoothOnOffDialog(Context context, String title) {
+        private WifiOnOffDialog(Context context, String title) {
             super(context, title);
         }
 
         @Override
         protected void setActiveValue(boolean isOn) {
             if (isOn) {
-                activeValue = BluetoothAdapter.STATE_ON;
+                activeValue = WifiManager.WIFI_STATE_ENABLED;
             } else {
-                activeValue = BluetoothAdapter.STATE_OFF;
+                activeValue = WifiManager.WIFI_STATE_DISABLED;
             }
         }
     }

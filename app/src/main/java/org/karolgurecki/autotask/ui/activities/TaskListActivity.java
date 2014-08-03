@@ -3,6 +3,7 @@ package org.karolgurecki.autotask.ui.activities;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -58,8 +59,10 @@ public class TaskListActivity extends Activity {
                         if (file.delete()) {
                             StartUpService.TASK_HOLDER_MAP.remove(taskName);
                             adapter.notifyDataSetChanged();
+                            Intent thisActivityIntent=getIntent();
+                            thisActivityIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                             finish();
-                            startActivity(getIntent());
+                            startActivity(thisActivityIntent);
                         } else {
                             Log.e(ConstanceFieldHolder.AUTOTASK_TAG, String.format("Can't delete %s task", taskName));
                             StartUpService.TASK_PROPERTIES_NAME_LIST.add(taskName);
