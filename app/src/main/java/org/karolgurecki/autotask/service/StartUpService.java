@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
 import android.util.Log;
+
+import com.google.common.io.Files;
+
 import org.karolgurecki.autotask.tasks.TaskHolder;
 import org.karolgurecki.autotask.tasks.TaskHolderMap;
 import org.karolgurecki.autotask.utils.ConstanceFieldHolder;
@@ -14,6 +17,7 @@ import java.io.File;
 import java.io.FileFilter;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
@@ -56,6 +60,7 @@ public class StartUpService extends Service {
 
             for (File file : fileArray) {
                 try {
+                    Log.d(ConstanceFieldHolder.AUTOTASK_TAG, Files.toString(file, Charset.forName("UTF-8")));
                     Log.d(ConstanceFieldHolder.AUTOTASK_TAG, String.format("Initializing task: %s", file.getName()));
                     Properties properties = new Properties();
                     properties.load(new FileReader(file));

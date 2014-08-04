@@ -47,7 +47,7 @@ import static android.content.DialogInterface.OnClickListener;
 public class NewTaskActivity extends Activity {
 
 
-    private LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(this);
+    private LocalBroadcastManager localBroadcastManager;
     private ExpandableListAdapter listAdapter;
     private List<String> listDataHeader;
     private HashMap<String, List<TaskObject>> listDataChild;
@@ -97,6 +97,7 @@ public class NewTaskActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.edit_task);
+        localBroadcastManager = LocalBroadcastManager.getInstance(this);
         if (ConstanceFieldHolder.actionsList == null) {
             ConstanceFieldHolder.actionsList = TaskFactory.createTaskObjects(getResources().openRawResource(R.raw.actions_classes),
                     ConstanceFieldHolder.TASKS_CLASSES_PROPERTY, false);
