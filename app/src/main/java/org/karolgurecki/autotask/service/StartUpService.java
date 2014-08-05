@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
 import android.util.Log;
-
 import com.google.common.io.Files;
-
 import org.karolgurecki.autotask.tasks.TaskHolder;
 import org.karolgurecki.autotask.tasks.TaskHolderMap;
 import org.karolgurecki.autotask.utils.ConstanceFieldHolder;

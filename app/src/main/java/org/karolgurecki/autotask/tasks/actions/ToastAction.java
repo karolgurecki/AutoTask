@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.widget.Toast;
 import org.karolgurecki.autotask.R;
-import org.karolgurecki.autotask.tasks.AbstractBroadcastReceiverTaskObject;
 import org.karolgurecki.autotask.ui.tasks.AbstractInputTextDialog;
 import org.karolgurecki.autotask.utils.ConstanceFieldHolder;
 
@@ -18,7 +17,7 @@ import java.util.Map;
  * Version: 0.01
  * Since: 0.01
  */
-public class ToastAction extends AbstractBroadcastReceiverTaskObject {
+public class ToastAction extends AbstractActionTaskObject {
     private static final String ACTION = "org.karolgurecki.autotask.tasks.actions.ToastAction";
     private static final IntentFilter INTENT_FILTER = new IntentFilter(ACTION);
     private static final Intent INTENT = new Intent(ACTION);

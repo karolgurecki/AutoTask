@@ -2,6 +2,7 @@ package org.karolgurecki.autotask.tasks;
 
 import android.content.Context;
 import android.content.Intent;
+import org.karolgurecki.autotask.service.StartUpService;
 import org.karolgurecki.autotask.utils.ConstanceFieldHolder;
 
 import java.util.ArrayList;
@@ -31,13 +32,12 @@ public final class TaskHolder {
 
     /**
      * Instantiates a new Task holder.
-     *
-     * @param triggerList the trigger list
+     *  @param triggerList the trigger list
      * @param actionList  the action list
      * @param context     the context
      * @param name        the name
      */
-    public TaskHolder(List<TaskObject> triggerList, List<TaskObject> actionList, Context context, String name) {
+    public TaskHolder(List<TaskObject> triggerList, List<TaskObject> actionList, StartUpService context, String name) {
         this.triggerList = triggerList;
         this.actionList = actionList;
         this.context = context;

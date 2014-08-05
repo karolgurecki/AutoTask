@@ -19,7 +19,7 @@ import java.util.Set;
  * Version: 0.01
  * Since: 0.01
  */
-public class WifiTrigger extends AbstractBroadcastReceiverTaskObject {
+public class WifiTrigger extends AbstractBroadcastReceiverTrigger {
 
     private static final IntentFilter INTENT_FILTER = new IntentFilter(WifiManager.WIFI_STATE_CHANGED_ACTION);
 

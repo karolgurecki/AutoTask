@@ -127,14 +127,14 @@ public class NewTaskActivity extends Activity {
         alertDialogBuilder.setMessage(getString(R.string.doYouWantSave));
         alertDialogBuilder.setCancelable(true);
 
-        alertDialogBuilder.setPositiveButton(android.R.string.yes, new OnClickListener() {
+        alertDialogBuilder.setPositiveButton(R.string.yes, new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 saveTask();
                 finish();
             }
         });
-        alertDialogBuilder.setNegativeButton(android.R.string.no, new OnClickListener() {
+        alertDialogBuilder.setNegativeButton(R.string.no, new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();

@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
-
-import org.karolgurecki.autotask.tasks.AbstractBroadcastReceiverTaskObject;
 import org.karolgurecki.autotask.utils.ConstanceFieldHolder;
 
 import java.util.HashMap;
@@ -15,7 +13,7 @@ import java.util.Set;
 /**
  * Created by Nappa on 2014-08-03.
  */
-public class CallNumberAction extends AbstractBroadcastReceiverTaskObject {
+public class CallNumberAction extends AbstractActionTaskObject {
 
     private static final String ACTION = "org.karolgurecki.autotask.tasks.actions.CallNumberAction";
     private static final IntentFilter INTENT_FILTER = new IntentFilter(ACTION);
@@ -27,8 +25,8 @@ public class CallNumberAction extends AbstractBroadcastReceiverTaskObject {
     public void onReceive(Context context, Intent intent) {
         String taskName = intent.getStringExtra(ConstanceFieldHolder.TASK_HOLDER_NAME_EXTRA);
         String number = STRING_STRING_MAP.get(taskName);
-        Uri telUri=Uri.parse(String.format("tel:%s",number));
-        Intent dialIntent=new Intent(Intent.ACTION_DIAL, telUri);
+        Uri telUri = Uri.parse(String.format("tel:%s", number));
+        Intent dialIntent = new Intent(Intent.ACTION_DIAL, telUri);
         context.startActivity(dialIntent);
     }
 
@@ -39,7 +37,7 @@ public class CallNumberAction extends AbstractBroadcastReceiverTaskObject {
 
     @Override
     public String getDisplayName(Context context) {
-        return null;
+        return "Call Number Action";
     }
 
     @Override
