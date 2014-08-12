@@ -2,11 +2,14 @@ package org.karolgurecki.autotask.ui.tasks;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import org.karolgurecki.autotask.R;
+import org.karolgurecki.autotask.utils.ConstanceFieldHolder;
 
 /**
  * Created by: Karol Górecki
@@ -20,12 +23,12 @@ public abstract class AbstractOnOffDialog extends Dialog {
     private Button confirmButton;
     private Button cancelButton;
 
-    public AbstractOnOffDialog(Context context, String title) {
+    public AbstractOnOffDialog(Context context, String title, String type) {
         super(context);
         setContentView(R.layout.on_off_chooser);
         setCancelable(true);
         setTitle(title);
-        setRadioListener();
+        setRadioListener(context,type);
         cancelButton = (Button) findViewById(R.id.cancelButton);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,7 +39,7 @@ public abstract class AbstractOnOffDialog extends Dialog {
         show();
     }
 
-    private void setRadioListener() {
+    private void setRadioListener(final Context context, final String type) {
         radioOnOffGroup = (RadioGroup) findViewById(R.id.radioOnOff);
         confirmButton = (Button) findViewById(R.id.conformButton);
 
@@ -44,8 +47,14 @@ public abstract class AbstractOnOffDialog extends Dialog {
             @Override
             public void onClick(View v) {
                 RadioButton radioButton = (RadioButton) findViewById(radioOnOffGroup.getCheckedRadioButtonId());
-                setActiveValue(radioButton.getText().toString().equalsIgnoreCase(getContext().getString(R.string.on)));
-                dismiss();
+                if(radioButton!=null) {
+                    setActiveValue(radioButton.getText().toString().equalsIgnoreCase(getContext().getString(R.string.on)));
+                    Intent intent=new Intent(
+                            ConstanceFieldHolder.INTERNAL_CONFIRM_ADDING_TASK_OBJECT_ACTION);
+                    intent.putExtra(ConstanceFieldHolder.EXTRA_TYPE,type);
+                    LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+                    dismiss();
+                }
             }
         });
     }

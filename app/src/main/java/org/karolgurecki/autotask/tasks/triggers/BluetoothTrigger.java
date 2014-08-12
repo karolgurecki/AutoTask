@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import org.karolgurecki.autotask.R;
 import org.karolgurecki.autotask.tasks.AbstractBroadcastReceiverTaskObject;
 import org.karolgurecki.autotask.ui.tasks.AbstractOnOffDialog;
+import org.karolgurecki.autotask.utils.ConstanceFieldHolder;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -107,7 +108,7 @@ public class BluetoothTrigger extends AbstractBroadcastReceiverTrigger {
     private class BluetoothOnOffDialog extends AbstractOnOffDialog {
 
         private BluetoothOnOffDialog(Context context, String title) {
-            super(context, title);
+            super(context, title, ConstanceFieldHolder.TRIGGER_TYPE);
         }
 
         @Override

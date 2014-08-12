@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
+
+import org.karolgurecki.autotask.R;
 import org.karolgurecki.autotask.utils.ConstanceFieldHolder;
 
 import java.util.HashMap;
@@ -37,7 +39,7 @@ public class CallNumberAction extends AbstractActionTaskObject {
 
     @Override
     public String getDisplayName(Context context) {
-        return "Call Number Action";
+        return context.getString(R.string.callNumberActionDisplayName);
     }
 
     @Override

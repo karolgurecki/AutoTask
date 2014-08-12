@@ -7,6 +7,7 @@ import android.net.wifi.WifiManager;
 import org.karolgurecki.autotask.R;
 import org.karolgurecki.autotask.tasks.AbstractBroadcastReceiverTaskObject;
 import org.karolgurecki.autotask.ui.tasks.AbstractOnOffDialog;
+import org.karolgurecki.autotask.utils.ConstanceFieldHolder;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -107,7 +108,7 @@ public class WifiTrigger extends AbstractBroadcastReceiverTrigger {
     private class WifiOnOffDialog extends AbstractOnOffDialog {
 
         private WifiOnOffDialog(Context context, String title) {
-            super(context, title);
+            super(context, title, ConstanceFieldHolder.TRIGGER_TYPE);
         }
 
         @Override

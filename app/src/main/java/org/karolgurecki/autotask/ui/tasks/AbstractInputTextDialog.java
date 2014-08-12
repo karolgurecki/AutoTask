@@ -2,10 +2,13 @@ package org.karolgurecki.autotask.ui.tasks;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import org.karolgurecki.autotask.R;
+import org.karolgurecki.autotask.utils.ConstanceFieldHolder;
 
 /**
  * Created by: Karol Górecki
@@ -19,12 +22,12 @@ public abstract class AbstractInputTextDialog extends Dialog {
     private Button confirmButton;
     private Button cancelButton;
 
-    public AbstractInputTextDialog(Context context, String title) {
+    public AbstractInputTextDialog(Context context, String title, String type) {
         super(context);
         setContentView(R.layout.text_field_dialog);
         setCancelable(true);
         setTitle(title);
-        setRadioListener();
+        setRadioListener(context, type);
         cancelButton = (Button) findViewById(R.id.textDialogCancelButton);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,18 +38,27 @@ public abstract class AbstractInputTextDialog extends Dialog {
         show();
     }
 
-    private void setRadioListener() {
+    private void setRadioListener(final Context context, final String type) {
         textView = (TextView) findViewById(R.id.textDialogEditText);
         confirmButton = (Button) findViewById(R.id.textDialogConfirmButton);
 
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setActiveValue(textView.getText().toString());
-                dismiss();
+                if(setActiveValue(textView.getText().toString())){
+                    Intent intent=new Intent(
+                            ConstanceFieldHolder.INTERNAL_CONFIRM_ADDING_TASK_OBJECT_ACTION);
+                    intent.putExtra(ConstanceFieldHolder.EXTRA_TYPE,type);
+                    LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+                    dismiss();
+                }
             }
         });
     }
 
-    protected abstract void setActiveValue(String text);
+    /**
+     * Sets active value.
+     * @return true if it's valid value
+     */
+    protected abstract boolean setActiveValue(String text);
 }

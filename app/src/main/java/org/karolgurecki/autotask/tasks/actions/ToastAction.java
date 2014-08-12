@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.widget.Toast;
+
 import org.karolgurecki.autotask.R;
 import org.karolgurecki.autotask.ui.tasks.AbstractInputTextDialog;
 import org.karolgurecki.autotask.utils.ConstanceFieldHolder;
@@ -80,12 +81,16 @@ public class ToastAction extends AbstractActionTaskObject {
     final class ToastActionTextEditDialog extends AbstractInputTextDialog {
 
         public ToastActionTextEditDialog(Context context, String title) {
-            super(context, title);
+            super(context, title, ConstanceFieldHolder.ACTION_TYPE);
         }
 
         @Override
-        protected void setActiveValue(String text) {
+        protected boolean setActiveValue(String text) {
+            if (text == null) {
+                return false;
+            }
             toastString = text;
+            return true;
         }
     }
 }

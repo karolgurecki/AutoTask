@@ -27,4 +27,5 @@
     <string name="toastActionName">Toast Action</string>
     <string name="wifiTriggerName">Wi-Fi Trigger</string>
     <string name="wifiTriggerConfigTitle">Wi-Fi trigger configuration</string>
+    <string name="callNumberActionDisplayName">Call Number Action</string>
 </resources>

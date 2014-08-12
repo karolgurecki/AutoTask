@@ -26,6 +26,11 @@ public class ConstanceFieldHolder {
     public static final String IS_ON_EXTRA = "org.karolgurecki.autotask.ui.onOffDialog.is_on";
     public static final String TASK_HOLDER_NAME_EXTRA = "org.karolgurecki.autotask.tasks.taskHolder.NAME_EXTRA";
     public static final String INTERNAL_ADD_TASK_OBJECT_ACTION = "org.karolgurecki.autotask.addTaskObject";
+    public static final String INTERNAL_CONFIRM_ADDING_TASK_OBJECT_ACTION = "org.karolgurecki.autotask.confirmAddingTaskObject";
+    public static final String EXTRA_TYPE = "TYPE";
+    public static final String EXTRA_INDEX = "INDEX";
+    public static final String TRIGGER_TYPE="TRIGGER";
+    public static final String ACTION_TYPE="ACTION";
     public static List<TaskObject> actionsList;
     public static List<TaskObject> triggersList;
 
