@@ -3,6 +3,9 @@ package org.karolgurecki.autotask.tasks.actions;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Vibrator;
+
+import org.karolgurecki.autotask.R;
 
 import java.util.Map;
 import java.util.Set;
@@ -14,14 +17,25 @@ import java.util.Set;
  * Since: 0.01
  */
 public class VibrateAction extends AbstractActionTaskObject {
+
+    private static final String ACTION = "org.karolgurecki.autotask.tasks.actions.VibrateAction";
+    private static final IntentFilter INTENT_FILTER = new IntentFilter(ACTION);
+    private static final Intent INTENT = new Intent(ACTION);
+
     @Override
     protected Map<Boolean, Set<Intent>> receive(Context context, Intent intent) {
         return null;
     }
 
     @Override
+    public void onReceive(Context context, Intent intent) {
+        Vibrator vibrator=(Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+        vibrator.vibrate(500l);
+    }
+
+    @Override
     public String getDisplayName(Context context) {
-        return "Vibrate Action";
+        return context.getString(R.string.vibrateActionName);
     }
 
     @Override
@@ -36,7 +50,7 @@ public class VibrateAction extends AbstractActionTaskObject {
 
     @Override
     public IntentFilter getIntentFilter() {
-        return null;
+        return INTENT_FILTER;
     }
 
     @Override
@@ -51,7 +65,7 @@ public class VibrateAction extends AbstractActionTaskObject {
 
     @Override
     public Intent getIntent() {
-        return null;
+        return INTENT;
     }
 
     @Override

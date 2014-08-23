@@ -20,7 +20,6 @@ import org.karolgurecki.autotask.R;
 import org.karolgurecki.autotask.factory.TaskFactory;
 import org.karolgurecki.autotask.service.StartUpService;
 import org.karolgurecki.autotask.tasks.TaskObject;
-import org.karolgurecki.autotask.tasks.TaskType;
 import org.karolgurecki.autotask.ui.ListDialog;
 import org.karolgurecki.autotask.ui.adapters.ExpandableListAdapter;
 import org.karolgurecki.autotask.utils.ConstanceFieldHolder;
@@ -95,7 +94,7 @@ public class NewTaskActivity extends Activity {
         public void onReceive(Context context, Intent intent) {
             String type = intent.getStringExtra(ConstanceFieldHolder.EXTRA_TYPE);
             if (StringUtils.isNotBlank(type)) {
-                if (type.equalsIgnoreCase(getString(R.string.add_trigger))) {
+                if (type.equalsIgnoreCase(ConstanceFieldHolder.TRIGGER_TYPE)) {
                     taskTriggerList.add(tempChosenObject);
                 } else {
                     taskActionsList.add(tempChosenObject);
@@ -264,16 +263,16 @@ public class NewTaskActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getTitle().equals(add_action)) {
-            chooseTaskObject(ConstanceFieldHolder.actionsList, getString(R.string.add_action));
+            chooseTaskObject(ConstanceFieldHolder.actionsList, getString(R.string.add_action), ConstanceFieldHolder.ACTION_TYPE);
         } else if (item.getTitle().equals(add_trigger)) {
-            chooseTaskObject(ConstanceFieldHolder.triggersList, getString(R.string.add_trigger));
+            chooseTaskObject(ConstanceFieldHolder.triggersList, getString(R.string.add_trigger), ConstanceFieldHolder.TRIGGER_TYPE);
         } else {
             alertDialogBuilder.show();
         }
         return true;
     }
 
-    private void chooseTaskObject(List<TaskObject> taskObjects, String dialogTitle) {
-        dialog = new ListDialog(this, taskObjects, dialogTitle);
+    private void chooseTaskObject(List<TaskObject> taskObjects, String dialogTitle, String type) {
+        dialog = new ListDialog(this, taskObjects, dialogTitle, type);
     }
 }

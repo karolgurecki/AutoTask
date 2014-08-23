@@ -20,14 +20,14 @@ public class ListDialog extends Dialog {
 
     private ListView listView;
 
-    public ListDialog(Context context, List<TaskObject> taskObjects, String title) {
+    public ListDialog(Context context, List<TaskObject> taskObjects, String title, String type) {
         super(context);
 
         setContentView(R.layout.task_list);
         listView = (ListView) findViewById(R.id.listView);
         TaskObjectItemAdapter adapter = new TaskObjectItemAdapter(context, R.layout.item_row, taskObjects);
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new OnItemClickListenerListViewItem(title, context));
+        listView.setOnItemClickListener(new OnItemClickListenerListViewItem(type, context));
         setTitle(title);
         show();
     }
