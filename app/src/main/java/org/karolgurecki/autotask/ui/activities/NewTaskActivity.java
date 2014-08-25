@@ -56,7 +56,7 @@ public class NewTaskActivity extends Activity {
     private List<TaskObject> taskTriggerList = new ArrayList<>();
     private List<TaskObject> taskActionsList = new ArrayList<>();
     private Dialog dialog = null;
-    private BroadcastReceiver addTaskObjectreceiver = new BroadcastReceiver() {
+    private BroadcastReceiver addTaskObjectReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
 
@@ -65,9 +65,9 @@ public class NewTaskActivity extends Activity {
 
             if (StringUtils.isNotBlank(type) && index >= 0) {
                 if (ConstanceFieldHolder.TRIGGER_TYPE.equalsIgnoreCase(type)) {
-                    openConfigDialog(ConstanceFieldHolder.triggersList, taskTriggerList, index);
+                    openConfigDialog(ConstanceFieldHolder.triggersList, index);
                 } else {
-                    openConfigDialog(ConstanceFieldHolder.actionsList, taskActionsList, index);
+                    openConfigDialog(ConstanceFieldHolder.actionsList, index);
                 }
             }
 
@@ -79,16 +79,17 @@ public class NewTaskActivity extends Activity {
 
         }
 
-        private void openConfigDialog(List<TaskObject> taskObjectList, List<TaskObject> taskList, int index) {
+        private void openConfigDialog(List<TaskObject> taskObjectList,int index) {
             try {
                 tempChosenObject = taskObjectList.get(index).getClass().newInstance();
                 tempChosenObject.openDialog(NewTaskActivity.this);
-                ;
+
             } catch (InstantiationException | IllegalAccessException e) {
                 Log.e(ConstanceFieldHolder.AUTOTASK_TAG, ExceptionUtils.stackTraceToString(e));
             }
         }
     };
+
     private BroadcastReceiver confirmAddingObject = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -224,7 +225,7 @@ public class NewTaskActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        localBroadcastManager.registerReceiver(addTaskObjectreceiver,
+        localBroadcastManager.registerReceiver(addTaskObjectReceiver,
                 new IntentFilter(ConstanceFieldHolder.INTERNAL_ADD_TASK_OBJECT_ACTION));
         localBroadcastManager.registerReceiver(confirmAddingObject,
                 new IntentFilter(ConstanceFieldHolder.INTERNAL_CONFIRM_ADDING_TASK_OBJECT_ACTION));
@@ -233,14 +234,14 @@ public class NewTaskActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        localBroadcastManager.unregisterReceiver(addTaskObjectreceiver);
+        localBroadcastManager.unregisterReceiver(addTaskObjectReceiver);
         localBroadcastManager.unregisterReceiver(confirmAddingObject);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        localBroadcastManager.unregisterReceiver(addTaskObjectreceiver);
+        localBroadcastManager.unregisterReceiver(addTaskObjectReceiver);
         localBroadcastManager.unregisterReceiver(confirmAddingObject);
     }
 
