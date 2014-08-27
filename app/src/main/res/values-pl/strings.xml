@@ -34,4 +34,8 @@
     <string name="outgoindCallTriggerName">Outgoing Call Trigger</string>
     <string name="outgoingCalldialogTitle">Outgoing Call Trigger Configuration</string>
     <string name="vibrateActionName">Vibrate Action</string>
+    <string name="vibrateActionConfigurationDialogTitle">How long should device vibrate</string>
+    <string name="wrongValue">Wrong value</string>
+    <string name="willVibrate">Will vibrate for</string>
+    <string name="ms">ms</string>
 </resources>

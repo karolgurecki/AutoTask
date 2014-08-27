@@ -7,6 +7,8 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import org.karolgurecki.autotask.R;
 import org.karolgurecki.autotask.utils.ConstanceFieldHolder;
 
@@ -51,6 +53,8 @@ public abstract class AbstractInputTextDialog extends Dialog {
                     intent.putExtra(ConstanceFieldHolder.EXTRA_TYPE,type);
                     LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
                     dismiss();
+                } else {
+                    Toast.makeText(context, R.string.wrongValue, Toast.LENGTH_SHORT);
                 }
             }
         });

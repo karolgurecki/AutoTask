@@ -19,10 +19,10 @@
     <string name="off">Off</string>
     <string name="on">On</string>
     <string name="confirm">Confirm</string>
-    <string name="bluetoothTriggerConfigTitle">Bluetooth trigger configuration</string>
-    <string name="bluetoothTrigger">Bluetooth trigger</string>
+    <string name="bluetoothTriggerConfigTitle">Bluetooth Trigger configuration</string>
+    <string name="bluetoothTrigger">Bluetooth Trigger</string>
     <string name="ifString">If</string>
-    <string name="toastDialogTitle">Toast Text Confuguration</string>
+    <string name="toastDialogTitle">Toast Text Configuration</string>
     <string name="display">Display</string>
     <string name="toastActionName">Toast Action</string>
     <string name="wifiTriggerName">Wi-Fi Trigger</string>
@@ -32,6 +32,10 @@
     <string name="nfcTriggerDialogTitle">Nfc Trigger configuration</string>
     <string name="ifCallingTo">If calling to:</string>
     <string name="outgoindCallTriggerName">Outgoing Call Trigger</string>
-    <string name="outgoingCalldialogTitle">Outgoing Call Trigger Configuration</string>
+    <string name="outgoingCalldialogTitle">Put phone number</string>
     <string name="vibrateActionName">Vibrate Action</string>
+    <string name="vibrateActionConfigurationDialogTitle">How long should device vibrate [in ms]?</string>
+    <string name="wrongValue">Wrong value</string>
+    <string name="willVibrate">Will vibrate for</string>
+    <string name="ms">ms</string>
 </resources>
