@@ -46,4 +46,7 @@
     <string name="discardCallAction">Discard Call Action</string>
     <string name="doYouWantProceedCallDiscardDialogTitle">Do you want to proceed?</string>
     <string name="doYouWantProceedCallDiscardDialogText">This action will only work with outgoing/incomming call triggers. Do you want to proceed?</string>
+    <string name="incomingCalldialogTitle">Put phone number</string>
+    <string name="incomingCallTriggerName">Incoming Call Trigger</string>
+    <string name="ifCalling">If colling:</string>
 </resources>
