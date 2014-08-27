@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
 
+import org.apache.commons.lang3.StringUtils;
 import org.karolgurecki.autotask.R;
+import org.karolgurecki.autotask.ui.tasks.AbstractInputTextDialog;
 import org.karolgurecki.autotask.utils.ConstanceFieldHolder;
 
 import java.util.HashMap;
@@ -21,14 +23,15 @@ public class CallNumberAction extends AbstractActionTaskObject {
     private static final IntentFilter INTENT_FILTER = new IntentFilter(ACTION);
     private static final Intent INTENT = new Intent(ACTION);
     private static final Map<String, String> STRING_STRING_MAP = new HashMap<>();
-    private static String toastString;
+    private static String activeValue;
 
     @Override
     public void onReceive(Context context, Intent intent) {
         String taskName = intent.getStringExtra(ConstanceFieldHolder.TASK_HOLDER_NAME_EXTRA);
         String number = STRING_STRING_MAP.get(taskName);
         Uri telUri = Uri.parse(String.format("tel:%s", number));
-        Intent dialIntent = new Intent(Intent.ACTION_DIAL, telUri);
+        Intent dialIntent = new Intent(Intent.ACTION_CALL, telUri);
+        dialIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(dialIntent);
     }
 
@@ -44,12 +47,14 @@ public class CallNumberAction extends AbstractActionTaskObject {
 
     @Override
     public String getDisplayConfiguration(Context context) {
-        return null;
+        String willCall = context.getString(R.string.dialNumber);
+
+        return String.format("%s %S", willCall, activeValue);
     }
 
     @Override
     public void openDialog(Context context) {
-
+        new CallNumberDialog(context);
     }
 
     @Override
@@ -59,12 +64,12 @@ public class CallNumberAction extends AbstractActionTaskObject {
 
     @Override
     public String getConfig() {
-        return null;
+        return activeValue;
     }
 
     @Override
     public void setConfig(String config) {
-
+        activeValue = config;
     }
 
     @Override
@@ -74,6 +79,24 @@ public class CallNumberAction extends AbstractActionTaskObject {
 
     @Override
     public void assignResponseIntentToActivationStatus() {
+        String taskName = responseIntent.getStringExtra(ConstanceFieldHolder.TASK_HOLDER_NAME_EXTRA);
+        STRING_STRING_MAP.put(taskName, activeValue);
+    }
 
+    private final class CallNumberDialog extends AbstractInputTextDialog {
+
+        private CallNumberDialog(Context context) {
+            super(context, context.getString(R.string.callNumberActionDialogTitle),
+                    ConstanceFieldHolder.ACTION_CLASSES);
+        }
+
+        @Override
+        protected boolean setActiveValue(String text) {
+            if (text == null || !text.matches("[+]?\\d+")) {
+                return false;
+            }
+            activeValue = text;
+            return true;
+        }
     }
 }

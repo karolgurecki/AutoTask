@@ -54,7 +54,7 @@ public abstract class AbstractInputTextDialog extends Dialog {
                     LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
                     dismiss();
                 } else {
-                    Toast.makeText(context, R.string.wrongValue, Toast.LENGTH_SHORT);
+                    Toast.makeText(context, R.string.wrongValue, Toast.LENGTH_SHORT).show();
                 }
             }
         });

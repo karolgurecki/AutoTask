@@ -75,7 +75,6 @@ public class ToastAction extends AbstractActionTaskObject {
     public void assignResponseIntentToActivationStatus() {
         String taskName = responseIntent.getStringExtra(ConstanceFieldHolder.TASK_HOLDER_NAME_EXTRA);
         STRING_STRING_MAP.put(taskName, toastString);
-
     }
 
     final class ToastActionTextEditDialog extends AbstractInputTextDialog {

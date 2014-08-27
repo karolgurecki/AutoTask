@@ -38,4 +38,6 @@
     <string name="wrongValue">Wrong value</string>
     <string name="willVibrate">Will vibrate for</string>
     <string name="ms">ms</string>
+    <string name="callNumberActionDialogTitle">To which number should I call?</string>
+    <string name="dialNumber">Dial number:</string>
 </resources>
