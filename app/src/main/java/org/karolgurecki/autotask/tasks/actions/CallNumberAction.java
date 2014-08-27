@@ -49,7 +49,7 @@ public class CallNumberAction extends AbstractActionTaskObject {
     public String getDisplayConfiguration(Context context) {
         String willCall = context.getString(R.string.dialNumber);
 
-        return String.format("%s %S", willCall, activeValue);
+        return String.format("%s %s", willCall, activeValue);
     }
 
     @Override

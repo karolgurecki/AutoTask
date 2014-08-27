@@ -43,7 +43,7 @@ public class ToastAction extends AbstractActionTaskObject {
 
     @Override
     public String getDisplayConfiguration(Context context) {
-        return String.format("%s:%s", context.getString(R.string.display), toastString);
+        return String.format("%s: %s", context.getString(R.string.display), toastString);
     }
 
     @Override
