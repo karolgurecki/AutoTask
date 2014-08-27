@@ -43,4 +43,7 @@
     <string name="openSiteActionDialogTitle">Which website should be open?</string>
     <string name="openSiteActionDisplayName">Open WebSite Action</string>
     <string name="openSite">website will be opened.</string>
+    <string name="discardCallAction">Discard Call Action</string>
+    <string name="doYouWantProceedCallDiscardDialogTitle">Do you want to proceed?</string>
+    <string name="doYouWantProceedCallDiscardDialogText">This action will only work with outgoing/incomming call triggers. Do you want to proceed?</string>
 </resources>
