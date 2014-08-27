@@ -40,4 +40,7 @@
     <string name="ms">ms</string>
     <string name="callNumberActionDialogTitle">To which number should I call?</string>
     <string name="dialNumber">Dial number:</string>
+    <string name="openSiteActionDialogTitle">Which website should be open?</string>
+    <string name="openSiteActionDisplayName">Open WebSite Action</string>
+    <string name="openSite">website will be opened.</string>
 </resources>

@@ -108,7 +108,7 @@ public class OutgoingCallTrigger extends AbstractBroadcastReceiverTrigger {
 
         @Override
         protected boolean setActiveValue(String text) {
-            if (text == null || text.matches("[+]?\\d+")) {
+            if (text == null || !text.matches("[+]?\\d+")) {
                 return false;
             }
             activeValue = text;
