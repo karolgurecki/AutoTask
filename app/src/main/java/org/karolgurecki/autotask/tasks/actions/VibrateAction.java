@@ -23,7 +23,7 @@ import java.util.Set;
 public class VibrateAction extends AbstractActionTaskObject {
 
     private static final String ACTION = "org.karolgurecki.autotask.tasks.actions.VibrateAction";
-    private static final IntentFilter INTENT_FILTER = new IntentFilter(ACTION);
+    privBtatic final IntentFilter INTENT_FILTER = new IntentFilter(ACTION);
     private static final Intent INTENT = new Intent(ACTION);
     private static final Map<String,Long> VIBRATE_DURATION_MAP= new HashMap<>();
 
